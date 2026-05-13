@@ -9,8 +9,8 @@ export default function CTASection({
   description?: string;
 }) {
   return (
-    <section className="mt-10 rounded-[3px] bg-brand-900 text-white">
-      <div className="flex flex-col gap-7 p-7 sm:p-9 lg:gap-10 lg:p-10">
+    <section className="mt-12 bg-brand-900 text-white">
+      <div className="shell-pad flex flex-col gap-7 py-14 sm:py-16 lg:flex-row lg:items-end lg:justify-between lg:gap-10">
         <div className="max-w-2xl">
           <p className="flex items-center text-[12.5px] font-bold uppercase tracking-[0.14em] text-white/55">
             <span aria-hidden className="mr-2.5 h-px w-7 bg-white/55" />

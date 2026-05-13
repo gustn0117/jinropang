@@ -15,7 +15,7 @@ export default function PageHero({
   image?: string;
 }) {
   return (
-    <section className="relative isolate overflow-hidden rounded-[3px] bg-brand-900 text-white">
+    <section className="relative isolate overflow-hidden bg-brand-900 text-white">
       {image && (
         <img
           src={image}
@@ -48,7 +48,7 @@ export default function PageHero({
         aria-hidden
         className="pointer-events-none absolute -top-40 left-1/2 h-80 w-[44rem] -translate-x-1/2 rounded-full bg-white/10 blur-3xl"
       />
-      <div className="relative flex min-h-[220px] flex-col justify-end px-7 pb-9 pt-12 sm:min-h-[260px] sm:px-9 sm:pb-11 sm:pt-14">
+      <div className="shell-pad relative flex min-h-[260px] flex-col justify-end pb-12 pt-16 sm:min-h-[320px] sm:pb-14 sm:pt-20">
         {breadcrumb && (
           <ol className="mb-5 flex flex-wrap items-center gap-x-2 gap-y-1 text-[12.5px] leading-[1.5] text-white/55">
             <li>

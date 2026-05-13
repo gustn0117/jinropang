@@ -52,7 +52,7 @@ export default function AboutPage() {
         breadcrumb={[{ label: "진로팡 소개" }]}
       />
 
-      <section className="py-12 lg:py-16">
+      <section className="shell-pad py-12 lg:py-16">
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-5">
             <p className="section-eyebrow">OUR STORY</p>
@@ -95,7 +95,7 @@ export default function AboutPage() {
       </section>
 
       <section id="commitment" className="scroll-mt-16 bg-soft-grad">
-        <div className="py-12 lg:py-16">
+        <div className="shell-pad py-12 lg:py-16">
           <p className="section-eyebrow">OUR COMMITMENT</p>
           <h2 className="section-title mt-3">우리가 약속드리는 가치</h2>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
@@ -116,7 +116,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section id="contact" className="py-12 lg:py-16 scroll-mt-16">
+      <section id="contact" className="shell-pad py-12 lg:py-16 scroll-mt-16">
         <div className="rounded-[3px] border border-ink-100 bg-white p-8 sm:p-12">
           <div className="grid items-center gap-10 md:grid-cols-12">
             <div className="md:col-span-7">

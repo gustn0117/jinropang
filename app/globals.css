@@ -27,6 +27,10 @@
   .container-pad {
     @apply mx-auto w-full max-w-site px-5 sm:px-6 lg:px-8;
   }
+  /* 페이지 본문 좌·우 패딩 — 데스크탑(lg+)에선 고정된 좌/우 사이드(left-6 w-200 / right-6 w-188)를 비켜가도록 */
+  .shell-pad {
+    @apply px-5 sm:px-6 lg:pl-[244px] lg:pr-[232px];
+  }
 
   /* 버튼 — 모서리 거의 직각, 화살표 동반 */
   .btn-primary {

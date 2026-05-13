@@ -130,13 +130,29 @@ export default function RootLayout({
           본문 바로가기
         </a>
         <Header />
-        <main id="main" className="container-pad py-10 lg:py-14">
-          <div className="grid gap-5 lg:grid-cols-[200px_minmax(0,1fr)_188px] lg:gap-5">
-            <LeftAside />
-            <div className="min-w-0">{children}</div>
-            <RightAside />
-          </div>
-        </main>
+
+        {/* 데스크탑 — 좌·우 사이드를 뷰포트 가장자리에 고정. 본문 sections는 풀폭 bg 가능 */}
+        <aside
+          aria-label="좌측 안내"
+          className="fixed left-6 top-[152px] z-30 hidden w-[200px] lg:block"
+        >
+          <LeftAside />
+        </aside>
+        <aside
+          aria-label="채널 / 문의"
+          className="fixed right-6 top-[152px] z-30 hidden w-[188px] lg:block"
+        >
+          <RightAside />
+        </aside>
+
+        <main id="main" className="py-10 lg:py-14">{children}</main>
+
+        {/* 모바일 — 본문 하단에 사이드 인라인 표시 */}
+        <div className="container-pad space-y-4 pb-12 lg:hidden">
+          <LeftAside />
+          <RightAside />
+        </div>
+
         <Footer />
         <FloatingCTA />
       </body>
