@@ -68,6 +68,7 @@ export default function ReviewsPage() {
     <>
       <PageHero
         eyebrow="REVIEWS"
+        image="/hero-reviews.png"
         title="현장에서 전해주신 진행 후기"
         description="학교·기관 담당 선생님과 학생들의 목소리로 듣는 진로팡 운영 현장. 다양한 규모와 형태의 운영 사례를 확인하실 수 있습니다."
         breadcrumb={[{ label: "진행후기" }]}

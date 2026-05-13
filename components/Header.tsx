@@ -28,20 +28,34 @@ export default function Header() {
           : "border-transparent bg-white"
       }`}
     >
-      <div className="container-pad flex h-16 items-center justify-between">
-        <Link href="/" aria-label="진로팡 홈" className="shrink-0">
-          <Logo />
+      {/* 상단 줄 — 데스크탑 전용: 로고만 */}
+      <div className="hidden border-b border-ink-100 lg:block">
+        <div className="container-pad flex h-20 items-center justify-center">
+          <Link href="/" aria-label="진로팡 홈">
+            <Logo sizeClassName="h-12" />
+          </Link>
+        </div>
+      </div>
+
+      {/* 메인 줄 — 데스크탑: 가운데 정렬된 nav · 모바일: 로고 + 햄버거 */}
+      <div className="container-pad flex h-16 items-center justify-between lg:h-14 lg:justify-center">
+        <Link
+          href="/"
+          aria-label="진로팡 홈"
+          className="shrink-0 lg:hidden"
+        >
+          <Logo sizeClassName="h-9" />
         </Link>
 
         <nav
-          className="hidden items-center gap-0.5 lg:flex"
+          className="hidden items-center gap-1 lg:flex"
           aria-label="주요 메뉴"
         >
           {NAV.map((item) => (
             <div key={item.href} className="group relative">
               <Link
                 href={item.href}
-                className="inline-flex items-center gap-1 rounded-[2px] px-3.5 py-2 text-[14px] leading-[1.2] font-semibold text-ink-700 transition-colors group-hover:text-brand-700"
+                className="inline-flex items-center gap-1 rounded-[2px] px-4 py-2 text-[15px] leading-[1.2] font-bold text-ink-900 transition-colors group-hover:text-brand-700"
               >
                 {item.label}
                 {item.children && (
@@ -115,28 +129,6 @@ export default function Header() {
             </div>
           ))}
         </nav>
-
-        <div className="hidden items-center gap-2 lg:flex">
-          <a
-            href={`tel:${SITE.phoneE164}`}
-            className="btn-ghost"
-            aria-label={`전화 ${SITE.phone}`}
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
-              <path
-                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.95.36 1.87.69 2.74a2 2 0 0 1-.45 2.11L8.09 9.83a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.87.33 1.79.56 2.74.69A2 2 0 0 1 22 16.92Z"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-            {SITE.phone}
-          </a>
-          <Link href="/contact" className="btn-primary">
-            무료 상담 신청
-          </Link>
-        </div>
 
         <button
           type="button"

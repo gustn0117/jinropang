@@ -66,8 +66,7 @@ export const NAV: NavItem[] = [
         href: "/programs/elementary",
         items: [
           { href: "/programs/elementary#g12", label: "1-2학년" },
-          { href: "/programs/elementary#g34", label: "3-4학년" },
-          { href: "/programs/elementary#g56", label: "5-6학년" },
+          { href: "/programs/elementary#g36", label: "3-6학년" },
         ],
       },
       { href: "/programs/elementary#field-trip", label: "체험학습 패키지" },

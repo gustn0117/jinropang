@@ -159,6 +159,7 @@ export default function SafetyPage() {
     <>
       <PageHero
         eyebrow="SAFETY MANAGEMENT"
+        image="/hero-safety.png"
         title="안전이 가장 먼저, 6단계 안전 운영 프로세스"
         description="진로팡은 학교·기관 대상 교육 및 체험 운영 경험을 기반으로 프로그램별 위험요소 분석, 운영인력 안전교육, 장비 점검, 응급 대응 체계를 포함한 안전운영 프로세스를 구축하여 운영하고 있습니다."
         breadcrumb={[{ label: "안전관리계획" }]}

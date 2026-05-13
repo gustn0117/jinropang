@@ -77,6 +77,7 @@ export default function EventPage() {
     <>
       <PageHero
         eyebrow="EVENTS & BOOTHS"
+        image="/hero-event.png"
         title="축제·행사 부스, 대회 운영까지"
         description="동시에 많은 학생이 즐기는 부스부터 진지한 경진대회까지. 학교 행사의 색깔에 맞춘 모듈식 운영으로 안전하게 진행합니다."
         breadcrumb={[{ label: "행사부스 운영" }]}

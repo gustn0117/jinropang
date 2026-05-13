@@ -60,18 +60,18 @@ const LINKS = [
     icon: <NaverBlogIcon className="h-4 w-4" />,
   },
   {
-    href: `tel:${SITE.phoneE164}`,
-    label: "문의전화",
-    sub: SITE.phone,
-    external: false,
-    icon: <PhoneIcon className="h-[17px] w-[17px]" />,
-  },
-  {
     href: SITE.kakaoChannel,
     label: "카카오톡 채널",
     sub: "1:1 문의하기",
     external: true,
     icon: <KakaoTalkIcon className={ICON_CLS} />,
+  },
+  {
+    href: `tel:${SITE.phoneE164}`,
+    label: "대표번호",
+    sub: SITE.phone,
+    external: false,
+    icon: <PhoneIcon className="h-[17px] w-[17px]" />,
   },
 ];
 
@@ -170,6 +170,13 @@ export default function HomeHero() {
               </span>
             </a>
           ))}
+          <Link
+            href="/contact"
+            className="mt-1 inline-flex items-center justify-between gap-2 rounded-[3px] bg-brand-700 px-4 py-3.5 text-[14px] font-bold text-white transition-colors hover:bg-brand-800"
+          >
+            무료 상담 신청
+            <Arrow />
+          </Link>
         </aside>
       </div>
     </section>

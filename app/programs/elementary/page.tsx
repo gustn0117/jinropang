@@ -20,18 +20,11 @@ const GRADE_GROUPS = [
       "글보다 그림이 익숙한 저학년에게 직관적인 조작과 짧은 호흡의 미션 중심으로 구성합니다. 안전 펜스와 저학년 보호 운영을 기본으로 합니다.",
   },
   {
-    id: "g34",
-    label: "3-4학년",
-    title: "AI와 메타버스, 직접 만들어 보기",
+    id: "g36",
+    label: "3-6학년",
+    title: "AI · 코딩 · 메이커, 직접 만들어 보기",
     description:
-      "스스로 데이터를 만들고 결과를 확인하는 단계로 발전합니다. 친구들과 협력하며 디지털 시민 의식을 함께 다룹니다.",
-  },
-  {
-    id: "g56",
-    label: "5-6학년",
-    title: "코딩과 메이커, 결과물 만들기",
-    description:
-      "센서·드론·로봇 등 결과 중심의 심화 활동. 발표·전시까지 이어져 진로 포트폴리오의 첫 경험을 제공합니다.",
+      "스스로 데이터를 만들고, 센서·드론·로봇으로 결과물을 완성하는 단계로 발전합니다. 협력·발표·전시까지 이어져 진로 포트폴리오의 첫 경험을 제공합니다.",
   },
   {
     id: "field-trip",
@@ -53,7 +46,7 @@ export default function ElementaryPage() {
       />
 
       <section className="container-pad py-20 lg:py-28">
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 md:grid-cols-3">
           {GRADE_GROUPS.map((g) => (
             <a
               key={g.id}
@@ -90,8 +83,7 @@ export default function ElementaryPage() {
         const items = ELEMENTARY.filter((p) => {
           if (g.id === "field-trip") return p.tag === "체험학습";
           if (g.id === "g12") return p.tag === "1-2학년";
-          if (g.id === "g34") return p.tag === "3-4학년";
-          if (g.id === "g56") return p.tag === "5-6학년";
+          if (g.id === "g36") return p.tag === "3-4학년" || p.tag === "5-6학년";
           return false;
         });
         return (
