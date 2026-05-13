@@ -178,7 +178,7 @@ export default function SafetyPage() {
               <h2 className="mt-3 text-[16px] leading-[1.4] font-bold text-ink-900">
                 {s.title}
               </h2>
-              <p className="mt-2 text-[13px] leading-[1.7] text-ink-500">
+              <p className="mt-2 text-[13px] leading-[1.7] text-ink-700">
                 {s.description}
               </p>
               <span className="mt-4 inline-flex items-center gap-1 text-[13px] leading-[1.3] font-semibold text-brand-700">
@@ -205,7 +205,7 @@ export default function SafetyPage() {
                   <h2 className="mt-2 text-2xl leading-[1.3] font-extrabold text-ink-900 sm:text-3xl sm:leading-[1.25]">
                     {s.title}
                   </h2>
-                  <p className="mt-4 text-[15px] leading-[1.8] text-ink-500">
+                  <p className="mt-4 text-[15px] leading-[1.8] text-ink-700">
                     {s.description}
                   </p>
                 </div>

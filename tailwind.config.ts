@@ -51,7 +51,7 @@ const config: Config = {
         ],
       },
       boxShadow: {
-        soft: "0 1px 2px rgba(11, 19, 34, 0.05)",
+        soft: "0 6px 24px -8px rgba(11, 19, 34, 0.12)",
         ring: "0 0 0 3px rgba(15, 58, 130, 0.14)",
       },
       maxWidth: {

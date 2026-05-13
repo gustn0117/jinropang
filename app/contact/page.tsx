@@ -28,7 +28,7 @@ export default function ContactPage() {
               <h2 className="mt-2 text-2xl leading-[1.3] font-extrabold text-ink-900 sm:text-3xl sm:leading-[1.25]">
                 신청서 작성
               </h2>
-              <p className="mt-3 text-[14px] leading-[1.7] text-ink-500">
+              <p className="mt-3 text-[14px] leading-[1.7] text-ink-700">
                 * 표시는 필수 항목입니다. 제출 시 메일 앱이 열리고, 내용이
                 자동으로 채워집니다.
               </p>
@@ -83,7 +83,7 @@ export default function ContactPage() {
                 <h3 className="mt-2 text-lg leading-[1.4] font-bold text-ink-900">
                   결재용·내부 검토 PDF
                 </h3>
-                <p className="mt-2 text-[13px] leading-[1.7] text-ink-500">
+                <p className="mt-2 text-[13px] leading-[1.7] text-ink-700">
                   회사 소개서, 안전관리계획서, 프로그램별 운영계획서, 견적서를
                   함께 보내드립니다.
                 </p>
@@ -100,7 +100,7 @@ export default function ContactPage() {
                 <h3 className="mt-2 text-lg leading-[1.4] font-bold text-ink-900">
                   평일 30분 이내 1차 회신
                 </h3>
-                <p className="mt-2 text-[13px] leading-[1.7] text-ink-500">
+                <p className="mt-2 text-[13px] leading-[1.7] text-ink-700">
                   업무 시간은 평일 09:00 - 18:00 입니다. 그 외 시간 문의는
                   카카오톡 채널로 남겨주시면 다음 영업일에 빠르게 안내드립니다.
                 </p>

@@ -1,5 +1,12 @@
 import Link from "next/link";
 import { SITE } from "@/lib/site";
+import {
+  InstagramIcon,
+  YoutubeIcon,
+  NaverBlogIcon,
+  KakaoTalkIcon,
+  PhoneIcon,
+} from "./SocialIcons";
 
 const PROGRAMS = [
   {
@@ -28,71 +35,43 @@ const PROGRAMS = [
   },
 ];
 
+const ICON_CLS = "h-[18px] w-[18px]";
+
 const LINKS = [
   {
     href: SITE.social.instagram,
     label: "인스타그램",
     sub: "바로가기",
     external: true,
-    icon: (
-      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden>
-        <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" strokeWidth="1.8" />
-        <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.8" />
-        <circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" />
-      </svg>
-    ),
+    icon: <InstagramIcon className={ICON_CLS} />,
   },
   {
     href: SITE.social.youtube,
     label: "유튜브",
     sub: "바로가기",
     external: true,
-    icon: (
-      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden>
-        <rect x="2.5" y="5.5" width="19" height="13" rx="3.5" stroke="currentColor" strokeWidth="1.8" />
-        <path d="M10.5 9.2v5.6L15 12z" fill="currentColor" />
-      </svg>
-    ),
+    icon: <YoutubeIcon className={ICON_CLS} />,
   },
   {
     href: SITE.social.blog,
     label: "네이버 블로그",
     sub: "바로가기",
     external: true,
-    icon: (
-      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden>
-        <rect x="3.5" y="3.5" width="17" height="17" rx="3" stroke="currentColor" strokeWidth="1.8" />
-        <path d="M8.5 16V8l5 5.5V8" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
+    icon: <NaverBlogIcon className="h-4 w-4" />,
   },
   {
     href: `tel:${SITE.phoneE164}`,
     label: "문의전화",
     sub: SITE.phone,
     external: false,
-    icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
-        <path
-          d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.95.36 1.87.69 2.74a2 2 0 0 1-.45 2.11L8.09 9.83a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.87.33 1.79.56 2.74.69A2 2 0 0 1 22 16.92Z"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    ),
+    icon: <PhoneIcon className="h-[17px] w-[17px]" />,
   },
   {
     href: SITE.kakaoChannel,
     label: "카카오톡 채널",
     sub: "1:1 문의하기",
     external: true,
-    icon: (
-      <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-        <path d="M12 4C6.9 4 2.8 7.2 2.8 11.2c0 2.5 1.7 4.7 4.2 6L6 21l4.2-2.3c.6.1 1.2.1 1.8.1 5.1 0 9.2-3.2 9.2-7.6S17.1 4 12 4Z" />
-      </svg>
-    ),
+    icon: <KakaoTalkIcon className={ICON_CLS} />,
   },
 ];
 

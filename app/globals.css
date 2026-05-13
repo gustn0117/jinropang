@@ -66,9 +66,9 @@
     @apply text-[15px] leading-[1.75] text-ink-700 sm:text-[16px] sm:leading-[1.75];
   }
 
-  /* 카드 — 거의 플랫, 얇은 라인, 살짝만 둥글게 */
+  /* 카드 — 거의 플랫, 얇은 라인, 살짝만 둥글게. 호버 시 살짝 부양 */
   .card {
-    @apply rounded-[3px] border border-ink-100 bg-white p-6 transition-colors hover:border-brand-300;
+    @apply rounded-[3px] border border-ink-100 bg-white p-6 transition duration-200 hover:border-brand-300 hover:shadow-soft;
   }
 
   /* dl/표 형태 — 좌측 라벨(회색) + 우측 값(진하게) */

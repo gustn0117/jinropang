@@ -102,7 +102,7 @@ export default function EventPage() {
               <h3 className="mt-5 text-lg leading-[1.4] font-bold text-ink-900">
                 {b.title}
               </h3>
-              <p className="mt-2 text-[14px] leading-[1.75] text-ink-500">
+              <p className="mt-2 text-[14px] leading-[1.75] text-ink-700">
                 {b.description}
               </p>
             </article>
@@ -134,7 +134,7 @@ export default function EventPage() {
                     <h3 className="mt-3 text-[16px] leading-[1.4] font-bold text-ink-900">
                       {o.title}
                     </h3>
-                    <p className="mt-2 text-[14px] leading-[1.75] text-ink-500">
+                    <p className="mt-2 text-[14px] leading-[1.75] text-ink-700">
                       {o.description}
                     </p>
                   </li>
@@ -171,7 +171,7 @@ export default function EventPage() {
                   <h3 className="text-[16px] leading-[1.4] font-bold text-ink-900">
                     {x.t}
                   </h3>
-                  <p className="mt-2 text-[14px] leading-[1.75] text-ink-500">{x.d}</p>
+                  <p className="mt-2 text-[14px] leading-[1.75] text-ink-700">{x.d}</p>
                 </div>
               ))}
             </div>

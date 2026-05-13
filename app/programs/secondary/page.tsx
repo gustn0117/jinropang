@@ -58,7 +58,7 @@ export default function SecondaryPage() {
                 <h2 className="mt-4 text-lg leading-[1.4] font-bold text-ink-900">
                   {g.title}
                 </h2>
-                <p className="mt-2 text-[13px] leading-[1.7] text-ink-500">
+                <p className="mt-2 text-[13px] leading-[1.7] text-ink-700">
                   {g.description}
                 </p>
               </div>
