@@ -24,7 +24,7 @@ function Arrow() {
 
 export function LeftAside() {
   return (
-    <aside className="flex flex-col rounded-[3px] border border-ink-100 bg-soft-grad p-6 lg:self-start">
+    <aside className="flex flex-col rounded-[3px] border border-ink-100 bg-soft-grad p-6 lg:sticky lg:top-[152px] lg:self-start">
       <p className="section-eyebrow">전국 학교·기관 출강</p>
       <p className="mt-3 text-[19px] font-bold leading-[1.32] text-ink-900">
         학교로 찾아가는
@@ -88,7 +88,7 @@ const LINKS = [
 
 export function RightAside() {
   return (
-    <aside className="flex flex-col gap-2.5 lg:self-start">
+    <aside className="flex flex-col gap-2.5 lg:sticky lg:top-[152px] lg:self-start">
       {LINKS.map((l) => (
         <a
           key={l.label}

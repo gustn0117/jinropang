@@ -55,7 +55,7 @@ const config: Config = {
         ring: "0 0 0 3px rgba(15, 58, 130, 0.14)",
       },
       maxWidth: {
-        site: "1480px",
+        site: "none",
       },
       backgroundImage: {
         "hero-grad": "linear-gradient(140deg, #0b1322 0%, #0f3a82 100%)",
