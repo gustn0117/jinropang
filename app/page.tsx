@@ -226,6 +226,37 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* On-site video */}
+      <section className="container-pad pb-24 lg:pb-32">
+        <div className="grid gap-8 md:grid-cols-12 md:items-end">
+          <div className="md:col-span-5">
+            <p className="section-eyebrow">ON-SITE</p>
+            <h2 className="section-title mt-3">
+              현장에서 만든 시간을,<br />
+              영상으로 보세요
+            </h2>
+            <p className="lead mt-5">
+              학교 교실과 행사장에서 진행한 진로팡 미래교육 현장 모습입니다.
+              아이들이 직접 만지고 움직이며 배우는 시간을 담았습니다.
+            </p>
+          </div>
+          <div className="md:col-span-7">
+            <div className="relative aspect-video w-full overflow-hidden rounded-[3px] border border-ink-100 bg-ink-50">
+              <video
+                className="absolute inset-0 h-full w-full object-cover"
+                src="/assets/hero.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-label="진로팡 학교 출강 미래교육 현장 영상"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Values */}
       <section className="bg-soft-grad">
         <div className="container-pad grid gap-10 py-24 lg:py-32 md:grid-cols-12">
