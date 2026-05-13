@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-50: #eef4ff;
+  --brand-500: #3866f5;
+  --brand-600: #2347d6;
+  --brand-700: #1d39ad;
+  --brand-900: #1c2f6e;
+  --ink-900: #0b1020;
+  --ink-500: #535a72;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-white text-ink-900 antialiased;
+    font-feature-settings: "ss01", "tnum";
+    word-break: keep-all;
+    line-break: strict;
+  }
+  h1, h2, h3, h4 {
+    @apply tracking-tight;
+    word-break: keep-all;
+  }
+  ::selection {
+    background: #dae6ff;
+    color: #0b1020;
+  }
+}
+
+@layer components {
+  .container-pad {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-brand-600 px-6 py-3 text-[15px] leading-[1.2] font-semibold text-white shadow-soft transition hover:bg-brand-700 active:scale-[0.98];
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-brand-200 bg-white px-6 py-3 text-[15px] leading-[1.2] font-semibold text-brand-700 transition hover:border-brand-500 hover:text-brand-800;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm leading-[1.2] font-semibold text-ink-700 transition hover:bg-ink-100;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full bg-brand-50 px-3 py-1 text-xs leading-[1.2] font-semibold text-brand-700;
+  }
+  .section-title {
+    @apply text-3xl leading-[1.25] font-bold text-ink-900 sm:text-4xl sm:leading-[1.2];
+  }
+  .section-eyebrow {
+    @apply text-xs leading-[1.3] font-semibold uppercase tracking-[0.18em] text-brand-600;
+  }
+  .lead {
+    @apply text-base leading-[1.75] text-ink-500 sm:text-lg sm:leading-[1.75];
+  }
+  .card {
+    @apply rounded-2xl border border-ink-100 bg-white p-6 transition hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-soft;
+  }
+}
+
+.video-mask {
+  -webkit-mask-image: radial-gradient(120% 90% at 50% 35%, black 60%, transparent 100%);
+          mask-image: radial-gradient(120% 90% at 50% 35%, black 60%, transparent 100%);
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(56, 102, 245, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 102, 245, 0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
