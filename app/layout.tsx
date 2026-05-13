@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingCTA from "@/components/FloatingCTA";
+import { LeftAside, RightAside } from "@/components/SiteAsides";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -129,7 +130,13 @@ export default function RootLayout({
           본문 바로가기
         </a>
         <Header />
-        <main id="main">{children}</main>
+        <main id="main" className="container-pad py-10 lg:py-14">
+          <div className="grid gap-5 lg:grid-cols-[218px_minmax(0,1fr)_200px] lg:gap-5">
+            <LeftAside />
+            <div className="min-w-0">{children}</div>
+            <RightAside />
+          </div>
+        </main>
         <Footer />
         <FloatingCTA />
       </body>

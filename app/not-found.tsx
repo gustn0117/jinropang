@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <section className="container-pad flex min-h-[60vh] flex-col items-center justify-center py-24 text-center">
+    <section className="flex min-h-[60vh] flex-col items-center justify-center py-24 text-center">
       <span className="chip">404</span>
       <h1 className="mt-5 text-3xl leading-[1.25] font-extrabold text-ink-900 sm:text-4xl sm:leading-[1.2]">
         페이지를 찾을 수 없습니다

@@ -74,7 +74,7 @@ export default function ReviewsPage() {
         breadcrumb={[{ label: "진행후기" }]}
       />
 
-      <section className="container-pad py-20 lg:py-28">
+      <section className="py-10 lg:py-14">
         <dl className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {HIGHLIGHTS.map((h) => (
             <div key={h.label} className="card text-center">
@@ -90,7 +90,7 @@ export default function ReviewsPage() {
       </section>
 
       <section className="bg-soft-grad">
-        <div className="container-pad py-20 lg:py-28">
+        <div className="py-10 lg:py-14">
           <div className="max-w-3xl">
             <p className="section-eyebrow">CASE STORIES</p>
             <h2 className="section-title mt-3">운영 사례 모음</h2>
@@ -118,7 +118,7 @@ export default function ReviewsPage() {
         </div>
       </section>
 
-      <section className="container-pad py-20 lg:py-28">
+      <section className="py-10 lg:py-14">
         <div className="grid items-center gap-10 md:grid-cols-12">
           <div className="md:col-span-6">
             <p className="section-eyebrow">WHY SCHOOLS TRUST US</p>
