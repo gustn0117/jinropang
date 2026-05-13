@@ -99,26 +99,24 @@ const LINKS = [
 export default function HomeHero() {
   return (
     <section className="container-pad py-12 lg:py-16">
-      <div className="grid animate-fadeUp gap-5 lg:grid-cols-[268px_minmax(0,1fr)_244px] lg:gap-6">
+      <div className="grid animate-fadeUp gap-5 lg:grid-cols-[218px_minmax(0,1fr)_200px] lg:gap-5">
         {/* 좌측 — 소개 + 신청서 작성 */}
-        <aside className="flex flex-col rounded-[3px] border border-ink-100 bg-soft-grad p-7">
+        <aside className="flex flex-col rounded-[3px] border border-ink-100 bg-soft-grad p-6 lg:self-start">
           <p className="section-eyebrow">전국 학교·기관 출강</p>
-          <h1 className="mt-4 text-[24px] font-bold leading-[1.3] text-ink-900">
+          <h1 className="mt-3 text-[20px] font-bold leading-[1.32] text-ink-900">
             학교로 찾아가는
             <br />
             미래교육 진로팡
           </h1>
-          <div aria-hidden className="my-5 h-px bg-ink-100" />
-          <p className="flex-1 text-[14.5px] leading-[1.85] text-ink-700">
-            학교 일정과 대상 학년, 진로교육 및 축제·행사 운영 목적에 맞춰 최적의
-            체험 프로그램과 맞춤형 체험부스를 제안해드립니다. 신청서 작성 후
-            담당자가 확인하여 빠르게 안내드리겠습니다.
+          <p className="mt-3.5 text-[14px] leading-[1.75] text-ink-700">
+            학교 일정·대상 학년·운영 목적에 맞춰 최적의 체험 프로그램과 부스를
+            제안해 드립니다.
           </p>
-          <Link href="/contact" className="btn-primary mt-7 w-full">
+          <Link href="/contact" className="btn-primary mt-5 w-full">
             신청서 작성
             <Arrow />
           </Link>
-          <p className="mt-3 text-center text-[12px] leading-[1.4] text-ink-500">
+          <p className="mt-2.5 text-center text-[12px] leading-[1.4] text-ink-500">
             평일 30분 이내 1차 회신
           </p>
         </aside>
@@ -172,41 +170,25 @@ export default function HomeHero() {
         </div>
 
         {/* 우측 — 채널 / 문의 바로가기 */}
-        <aside className="flex flex-col gap-3">
+        <aside className="flex flex-col gap-2.5 lg:self-start">
           {LINKS.map((l) => (
             <a
               key={l.label}
               href={l.href}
               {...(l.external ? { target: "_blank", rel: "noreferrer" } : {})}
-              className="group flex items-center gap-3.5 rounded-[3px] border border-ink-100 bg-white px-4 py-3.5 transition-colors hover:border-brand-700"
+              className="group flex items-center gap-3 rounded-[3px] border border-ink-100 bg-white px-3.5 py-3 transition-colors hover:border-brand-700"
             >
-              <span className="grid h-9 w-9 shrink-0 place-items-center rounded-[2px] bg-ink-50 text-ink-700 transition-colors group-hover:bg-brand-50 group-hover:text-brand-700">
+              <span className="grid h-8 w-8 shrink-0 place-items-center rounded-[2px] bg-ink-50 text-ink-700 transition-colors group-hover:bg-brand-50 group-hover:text-brand-700">
                 {l.icon}
               </span>
               <span className="min-w-0 flex-1">
-                <span className="block text-[14px] font-semibold leading-[1.3] text-ink-900">
+                <span className="block text-[13.5px] font-semibold leading-[1.3] text-ink-900">
                   {l.label}
                 </span>
-                <span className="block text-[12px] leading-[1.3] text-ink-500">
+                <span className="block text-[11.5px] leading-[1.3] text-ink-500">
                   {l.sub}
                 </span>
               </span>
-              <svg
-                width="13"
-                height="13"
-                viewBox="0 0 24 24"
-                fill="none"
-                className="shrink-0 text-ink-300 transition-colors group-hover:text-brand-700"
-                aria-hidden
-              >
-                <path
-                  d="M5 12h14M13 5l7 7-7 7"
-                  stroke="currentColor"
-                  strokeWidth="2.4"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
             </a>
           ))}
         </aside>
