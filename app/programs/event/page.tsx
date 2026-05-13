@@ -82,7 +82,7 @@ export default function EventPage() {
         breadcrumb={[{ label: "행사부스 운영" }]}
       />
 
-      <section className="container-pad py-16">
+      <section className="container-pad py-20 lg:py-28">
         <div className="max-w-3xl">
           <p className="section-eyebrow">BOOTH MODULES</p>
           <h2 className="section-title mt-3">인기 부스 6종, 모듈식 조합</h2>
@@ -96,7 +96,7 @@ export default function EventPage() {
         <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {EVENT_BOOTHS.map((b) => (
             <article key={b.slug} className="card">
-              <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-50 text-brand-700">
+              <span className="inline-flex h-11 w-11 items-center justify-center rounded-[3px] bg-brand-50 text-brand-700">
                 {ICONS[b.icon]}
               </span>
               <h3 className="mt-5 text-lg leading-[1.4] font-bold text-ink-900">
@@ -111,7 +111,7 @@ export default function EventPage() {
       </section>
 
       <section className="bg-soft-grad" id="operation">
-        <div className="container-pad py-20">
+        <div className="container-pad py-24 lg:py-32">
           <div className="grid gap-12 md:grid-cols-12">
             <div className="md:col-span-5">
               <p className="section-eyebrow">OPERATION FLOW</p>
@@ -145,7 +145,7 @@ export default function EventPage() {
         </div>
       </section>
 
-      <section className="container-pad py-20" id="competition">
+      <section className="container-pad py-24 lg:py-32" id="competition">
         <div className="grid gap-10 md:grid-cols-12">
           <div className="md:col-span-5">
             <p className="section-eyebrow">COMPETITION</p>

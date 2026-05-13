@@ -22,10 +22,10 @@ export default function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-40 w-full transition ${
+      className={`sticky top-0 z-40 w-full border-b transition-colors ${
         scrolled
-          ? "border-b border-ink-100 bg-white/85 backdrop-blur"
-          : "bg-white/70 backdrop-blur"
+          ? "border-ink-100 bg-white/95 backdrop-blur"
+          : "border-transparent bg-white"
       }`}
     >
       <div className="container-pad flex h-16 items-center justify-between">
@@ -38,7 +38,7 @@ export default function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="rounded-full px-3.5 py-2 text-[14px] leading-[1.2] font-semibold text-ink-700 transition hover:bg-brand-50 hover:text-brand-700"
+              className="rounded-[2px] px-3.5 py-2 text-[14px] leading-[1.2] font-semibold text-ink-700 transition-colors hover:text-brand-700"
             >
               {item.label}
             </Link>
@@ -71,7 +71,7 @@ export default function Header() {
           type="button"
           aria-label="메뉴 열기"
           aria-expanded={open}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-ink-100 lg:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-[2px] border border-ink-100 lg:hidden"
           onClick={() => setOpen((v) => !v)}
         >
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
@@ -102,7 +102,7 @@ export default function Header() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="block rounded-xl px-3 py-3 text-[15px] leading-[1.2] font-semibold text-ink-900 hover:bg-brand-50"
+                    className="block rounded-[2px] px-3 py-3 text-[15px] leading-[1.2] font-semibold text-ink-900 hover:bg-ink-50"
                     onClick={() => setOpen(false)}
                   >
                     {item.label}

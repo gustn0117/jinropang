@@ -17,7 +17,7 @@ export default async function OGImage() {
           justifyContent: "space-between",
           padding: 72,
           background:
-            "linear-gradient(135deg, #0f1a45 0%, #1d39ad 45%, #3866f5 100%)",
+            "linear-gradient(140deg, #0b1322 0%, #0f3a82 100%)",
           color: "white",
           fontFamily: "sans-serif",
         }}
@@ -27,9 +27,9 @@ export default async function OGImage() {
             style={{
               width: 64,
               height: 64,
-              borderRadius: 16,
-              background: "#FFC94A",
-              color: "#1D39AD",
+              borderRadius: 3,
+              background: "#ffffff",
+              color: "#0f3a82",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -37,7 +37,7 @@ export default async function OGImage() {
               fontSize: 36,
             }}
           >
-            R
+            진
           </div>
           <div style={{ fontSize: 28, fontWeight: 800, letterSpacing: -0.5, display: "flex" }}>
             진로팡
@@ -48,8 +48,8 @@ export default async function OGImage() {
           <div
             style={{
               fontSize: 22,
-              letterSpacing: 4,
-              color: "#FFC94A",
+              letterSpacing: 3,
+              color: "rgba(255,255,255,0.6)",
               fontWeight: 700,
               display: "flex",
             }}

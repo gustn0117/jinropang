@@ -164,7 +164,7 @@ export default function SafetyPage() {
         breadcrumb={[{ label: "안전관리계획" }]}
       />
 
-      <section className="container-pad py-16">
+      <section className="container-pad py-20 lg:py-28">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {STEPS.map((s) => (
             <a
@@ -190,7 +190,7 @@ export default function SafetyPage() {
       </section>
 
       <section className="bg-soft-grad">
-        <div className="container-pad py-16">
+        <div className="container-pad py-20 lg:py-28">
           {STEPS.map((s, idx) => (
             <div
               key={s.n}
@@ -227,7 +227,7 @@ export default function SafetyPage() {
                                 height="16"
                                 viewBox="0 0 24 24"
                                 fill="none"
-                                className="mt-0.5 shrink-0 text-brand-600"
+                                className="mt-0.5 shrink-0 text-brand-700"
                                 aria-hidden
                               >
                                 <path
@@ -252,8 +252,8 @@ export default function SafetyPage() {
         </div>
       </section>
 
-      <section className="container-pad py-16">
-        <div className="rounded-3xl border border-ink-100 bg-white p-8 sm:p-10">
+      <section className="container-pad py-20 lg:py-28">
+        <div className="rounded-[3px] border border-ink-100 bg-white p-8 sm:p-10">
           <div className="grid items-center gap-8 md:grid-cols-12">
             <div className="md:col-span-8">
               <p className="section-eyebrow">결재 · 내부 검토 자료</p>

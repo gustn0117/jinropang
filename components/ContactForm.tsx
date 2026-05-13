@@ -60,10 +60,10 @@ export default function ContactForm() {
           {TYPES.map((t) => (
             <label
               key={t}
-              className={`cursor-pointer rounded-full border px-3.5 py-2 text-[13px] leading-[1.2] font-semibold transition ${
+              className={`cursor-pointer rounded-[2px] border px-3.5 py-2 text-[13px] leading-[1.2] font-semibold transition-colors ${
                 type === t
-                  ? "border-brand-600 bg-brand-600 text-white"
-                  : "border-ink-100 bg-white text-ink-700 hover:border-brand-200"
+                  ? "border-brand-700 bg-brand-700 text-white"
+                  : "border-ink-100 bg-white text-ink-700 hover:border-brand-400"
               }`}
             >
               <input
@@ -132,7 +132,7 @@ export default function ContactForm() {
           value={memo}
           onChange={(e) => setMemo(e.target.value)}
           placeholder="운영 목적, 예산 범위, 선호 프로그램, 공간 정보 등을 자유롭게 적어주세요."
-          className="mt-2 w-full rounded-2xl border border-ink-100 bg-white p-4 text-[14px] leading-[1.7] outline-none transition placeholder:text-ink-300 focus:border-brand-500 focus:shadow-ring"
+          className="mt-2 w-full rounded-[3px] border border-ink-100 bg-white p-4 text-[14px] leading-[1.7] outline-none transition placeholder:text-ink-300 focus:border-brand-500 focus:shadow-ring"
         />
       </div>
 
@@ -168,7 +168,7 @@ export default function ContactForm() {
       </div>
 
       {submitted && (
-        <p className="rounded-2xl bg-brand-50 p-4 text-[13px] leading-[1.7] text-brand-800">
+        <p className="rounded-[3px] bg-brand-50 p-4 text-[13px] leading-[1.7] text-brand-800">
           메일 앱이 열렸습니다. 보내주시면 평일 30분 이내 1차 회신을 드립니다.
           메일이 어려우시면 카카오톡 또는 전화로 편하게 연락 주세요.
         </p>
@@ -204,7 +204,7 @@ function Field({
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
         required={required}
-        className="mt-2 w-full rounded-2xl border border-ink-100 bg-white px-4 py-3 text-[14px] leading-[1.4] outline-none transition placeholder:text-ink-300 focus:border-brand-500 focus:shadow-ring"
+        className="mt-2 w-full rounded-[3px] border border-ink-100 bg-white px-4 py-3 text-[14px] leading-[1.4] outline-none transition placeholder:text-ink-300 focus:border-brand-500 focus:shadow-ring"
       />
     </label>
   );

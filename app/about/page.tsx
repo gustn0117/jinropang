@@ -52,7 +52,7 @@ export default function AboutPage() {
         breadcrumb={[{ label: "진로팡 소개" }]}
       />
 
-      <section className="container-pad py-20">
+      <section className="container-pad py-24 lg:py-32">
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-5">
             <p className="section-eyebrow">OUR STORY</p>
@@ -95,13 +95,13 @@ export default function AboutPage() {
       </section>
 
       <section className="bg-soft-grad">
-        <div className="container-pad py-20">
+        <div className="container-pad py-24 lg:py-32">
           <p className="section-eyebrow">OUR COMMITMENT</p>
           <h2 className="section-title mt-3">우리가 약속드리는 가치</h2>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {COMMITMENT.map((c, i) => (
               <div key={c.title} className="card">
-                <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-[14px] leading-[1.2] font-extrabold text-brand-700">
+                <span className="inline-flex h-10 w-10 items-center justify-center rounded-[2px] bg-brand-50 text-[14px] leading-[1.2] font-extrabold text-brand-700">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <h3 className="mt-5 text-lg leading-[1.4] font-bold text-ink-900">
@@ -116,8 +116,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="container-pad py-20">
-        <div className="rounded-3xl border border-ink-100 bg-white p-8 sm:p-12">
+      <section className="container-pad py-24 lg:py-32">
+        <div className="rounded-[3px] border border-ink-100 bg-white p-8 sm:p-12">
           <div className="grid items-center gap-10 md:grid-cols-12">
             <div className="md:col-span-7">
               <p className="section-eyebrow">CONTACT</p>

@@ -6,29 +6,45 @@ export default function PageHero({
   description,
   breadcrumb,
 }: {
-  eyebrow: string;
+  eyebrow?: string;
   title: string;
-  description: string;
+  description?: string;
   breadcrumb?: { label: string; href?: string }[];
 }) {
   return (
-    <section className="relative overflow-hidden bg-hero-grad text-white">
-      <div className="absolute inset-0 bg-grid opacity-30" aria-hidden />
-      <div className="absolute -left-32 top-12 h-72 w-72 rounded-full bg-brand-500/40 blur-3xl" aria-hidden />
-      <div className="absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-accent-500/30 blur-3xl" aria-hidden />
-      <div className="container-pad relative z-10 py-16 sm:py-20">
+    <section className="relative isolate overflow-hidden bg-hero-grad text-white">
+      {/* 아주 옅은 라인 텍스처 + 상단 광원 */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-[0.06]"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,0.7) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.7) 1px, transparent 1px)",
+          backgroundSize: "44px 44px",
+        }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-40 left-1/2 h-80 w-[44rem] -translate-x-1/2 rounded-full bg-white/10 blur-3xl"
+      />
+      <div className="container-pad relative flex min-h-[300px] flex-col justify-end pb-12 pt-24 sm:min-h-[340px] sm:pb-14 sm:pt-28">
         {breadcrumb && (
-          <ol className="mb-5 flex flex-wrap items-center gap-1.5 text-[12px] leading-[1.4] text-white/70">
+          <ol className="mb-5 flex flex-wrap items-center gap-x-2 gap-y-1 text-[12.5px] leading-[1.5] text-white/55">
             <li>
-              <Link href="/" className="hover:text-white">
+              <Link href="/" className="transition-colors hover:text-white">
                 홈
               </Link>
             </li>
             {breadcrumb.map((b, i) => (
-              <li key={i} className="flex items-center gap-1.5">
-                <span aria-hidden>›</span>
+              <li key={i} className="flex items-center gap-2">
+                <span aria-hidden className="text-white/35">
+                  /
+                </span>
                 {b.href ? (
-                  <Link href={b.href} className="hover:text-white">
+                  <Link
+                    href={b.href}
+                    className="transition-colors hover:text-white"
+                  >
                     {b.label}
                   </Link>
                 ) : (
@@ -38,15 +54,19 @@ export default function PageHero({
             ))}
           </ol>
         )}
-        <p className="text-[12px] leading-[1.3] font-semibold uppercase tracking-[0.18em] text-accent-400">
-          {eyebrow}
-        </p>
-        <h1 className="mt-3 max-w-3xl text-3xl leading-[1.25] font-extrabold sm:text-5xl sm:leading-[1.15]">
+        {eyebrow && (
+          <p className="mb-3 text-[12.5px] font-bold uppercase tracking-[0.14em] text-white/55">
+            {eyebrow}
+          </p>
+        )}
+        <h1 className="max-w-3xl text-[28px] font-bold leading-[1.25] sm:text-[36px] sm:leading-[1.2] lg:text-[44px]">
           {title}
         </h1>
-        <p className="mt-5 max-w-2xl text-[15px] leading-[1.8] text-white/85 sm:text-[17px] sm:leading-[1.8]">
-          {description}
-        </p>
+        {description && (
+          <p className="mt-4 max-w-2xl text-[15px] leading-[1.75] text-white/75 sm:text-[16px] sm:leading-[1.75]">
+            {description}
+          </p>
+        )}
       </div>
     </section>
   );

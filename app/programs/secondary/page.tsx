@@ -45,7 +45,7 @@ export default function SecondaryPage() {
         breadcrumb={[{ label: "중·고등학교" }]}
       />
 
-      <section className="container-pad py-16">
+      <section className="container-pad py-20 lg:py-28">
         <div className="grid gap-4 md:grid-cols-3">
           {GROUPS.map((g) => (
             <a
@@ -80,9 +80,9 @@ export default function SecondaryPage() {
           <section
             key={g.id}
             id={g.id}
-            className={idx % 2 === 0 ? "container-pad py-16" : "bg-soft-grad"}
+            className={idx % 2 === 0 ? "container-pad py-20 lg:py-28" : "bg-soft-grad"}
           >
-            <div className={idx % 2 === 0 ? "" : "container-pad py-16"}>
+            <div className={idx % 2 === 0 ? "" : "container-pad py-20 lg:py-28"}>
               <div>
                 <p className="section-eyebrow">{g.label}</p>
                 <h2 className="section-title mt-3">{g.title}</h2>

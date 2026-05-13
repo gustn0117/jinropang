@@ -52,7 +52,7 @@ export default function ElementaryPage() {
         breadcrumb={[{ label: "초등학교" }]}
       />
 
-      <section className="container-pad py-16">
+      <section className="container-pad py-20 lg:py-28">
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {GRADE_GROUPS.map((g) => (
             <a
@@ -98,9 +98,9 @@ export default function ElementaryPage() {
           <section
             key={g.id}
             id={g.id}
-            className={idx % 2 === 0 ? "container-pad py-16" : "bg-soft-grad"}
+            className={idx % 2 === 0 ? "container-pad py-20 lg:py-28" : "bg-soft-grad"}
           >
-            <div className={idx % 2 === 0 ? "" : "container-pad py-16"}>
+            <div className={idx % 2 === 0 ? "" : "container-pad py-20 lg:py-28"}>
               <div className="flex items-end justify-between gap-6">
                 <div>
                   <p className="section-eyebrow">{g.label}</p>

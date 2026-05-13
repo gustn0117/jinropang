@@ -161,7 +161,7 @@ export default function HomePage() {
           ].map((t) => (
             <div
               key={t.label}
-              className="flex items-center justify-between rounded-2xl border border-ink-100 bg-soft-grad px-5 py-4"
+              className="flex items-center justify-between rounded-[3px] border border-ink-100 bg-soft-grad px-5 py-4"
             >
               <span className="text-[12px] leading-[1.3] font-semibold uppercase tracking-[0.15em] text-ink-500">
                 {t.label}
@@ -175,7 +175,7 @@ export default function HomePage() {
       </section>
 
       {/* Services */}
-      <section className="container-pad py-20">
+      <section className="container-pad py-24 lg:py-32">
         <div className="max-w-3xl">
           <p className="section-eyebrow">SERVICES</p>
           <h2 className="section-title mt-3">
@@ -193,7 +193,7 @@ export default function HomePage() {
             <Link key={s.href} href={s.href} className="card group block">
               <div className="flex items-center justify-between">
                 <span className="chip">{s.badge}</span>
-                <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-50 text-brand-600 transition group-hover:bg-brand-600 group-hover:text-white">
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-50 text-brand-700 transition group-hover:bg-brand-700 group-hover:text-white">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
                     <path
                       d="M5 12h14M13 5l7 7-7 7"
@@ -228,7 +228,7 @@ export default function HomePage() {
 
       {/* Values */}
       <section className="bg-soft-grad">
-        <div className="container-pad grid gap-10 py-20 md:grid-cols-12">
+        <div className="container-pad grid gap-10 py-24 lg:py-32 md:grid-cols-12">
           <div className="md:col-span-5">
             <p className="section-eyebrow">WHY JINROPANG</p>
             <h2 className="section-title mt-3">
@@ -253,7 +253,7 @@ export default function HomePage() {
               {VALUES.map((v, i) => (
                 <div key={v.title} className="card">
                   <div className="flex items-center gap-3">
-                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-brand-50 text-[14px] leading-[1.2] font-extrabold text-brand-700">
+                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-[2px] bg-brand-50 text-[14px] leading-[1.2] font-extrabold text-brand-700">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <h3 className="text-[16px] leading-[1.4] font-bold text-ink-900">
@@ -271,7 +271,7 @@ export default function HomePage() {
       </section>
 
       {/* Process */}
-      <section className="container-pad py-20">
+      <section className="container-pad py-24 lg:py-32">
         <div className="max-w-3xl">
           <p className="section-eyebrow">HOW IT WORKS</p>
           <h2 className="section-title mt-3">신청부터 운영까지, 단 4단계</h2>
@@ -284,7 +284,7 @@ export default function HomePage() {
           {PROCESS.map((p) => (
             <li
               key={p.n}
-              className="relative rounded-2xl border border-ink-100 bg-white p-6 transition hover:border-brand-200 hover:shadow-soft"
+              className="relative rounded-[3px] border border-ink-100 bg-white p-6 transition hover:border-brand-300"
             >
               <span className="text-[44px] leading-[1] font-black text-brand-100">
                 {p.n}
@@ -302,7 +302,7 @@ export default function HomePage() {
 
       {/* FAQ */}
       <section className="bg-soft-grad">
-        <div className="container-pad py-20">
+        <div className="container-pad py-24 lg:py-32">
           <div className="max-w-3xl">
             <p className="section-eyebrow">FAQ</p>
             <h2 className="section-title mt-3">
@@ -313,7 +313,7 @@ export default function HomePage() {
             {FAQ.map((item) => (
               <details
                 key={item.q}
-                className="group rounded-2xl border border-ink-100 bg-white p-5 transition hover:border-brand-200"
+                className="group rounded-[3px] border border-ink-100 bg-white p-5 transition hover:border-brand-300"
               >
                 <summary className="flex cursor-pointer list-none items-start justify-between gap-4">
                   <span className="text-[15px] leading-[1.55] font-bold text-ink-900 sm:text-[16px]">

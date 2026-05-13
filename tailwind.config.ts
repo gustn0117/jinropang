@@ -8,31 +8,31 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // 딥 네이비블루 — 절제된 포인트 컬러
         brand: {
-          50: "#eef4ff",
-          100: "#dae6ff",
-          200: "#bdd2ff",
-          300: "#8db4ff",
-          400: "#5a8dff",
-          500: "#3866f5",
-          600: "#2347d6",
-          700: "#1d39ad",
-          800: "#1d3389",
-          900: "#1c2f6e",
-          950: "#0f1a45",
+          50: "#eef2f8",
+          100: "#dde4f0",
+          200: "#bccbe0",
+          300: "#8aa5c7",
+          400: "#5378a8",
+          500: "#244f8c",
+          600: "#143d75",
+          700: "#0f3a82",
+          800: "#0a2a60",
+          900: "#0b1322",
+          950: "#070d18",
         },
-        accent: {
-          400: "#ffc94a",
-          500: "#ffb420",
-          600: "#e89500",
-        },
+        // 무채색 잉크 + 라인
         ink: {
-          900: "#0b1020",
-          800: "#1a1f33",
-          700: "#2a3043",
-          500: "#535a72",
-          300: "#a0a6bb",
-          100: "#e6e8ef",
+          900: "#0b1220",
+          800: "#1b2433",
+          700: "#3b4658",
+          600: "#586173",
+          500: "#6b7280",
+          400: "#9aa1ad",
+          300: "#c4c9d1",
+          100: "#e5e7eb",
+          50: "#f5f6f8",
         },
       },
       fontFamily: {
@@ -51,31 +51,34 @@ const config: Config = {
         ],
       },
       boxShadow: {
-        soft: "0 10px 30px -10px rgba(15, 26, 69, 0.18)",
-        ring: "0 0 0 4px rgba(56, 102, 245, 0.18)",
+        soft: "0 1px 2px rgba(11, 19, 34, 0.05)",
+        ring: "0 0 0 3px rgba(15, 58, 130, 0.14)",
       },
-      borderRadius: {
-        xl2: "1.25rem",
+      maxWidth: {
+        site: "1240px",
       },
       backgroundImage: {
-        "hero-grad":
-          "linear-gradient(135deg, #0f1a45 0%, #1d39ad 45%, #3866f5 100%)",
-        "soft-grad":
-          "linear-gradient(180deg, #f7f9ff 0%, #ffffff 100%)",
+        "hero-grad": "linear-gradient(140deg, #0b1322 0%, #0f3a82 100%)",
+        "soft-grad": "linear-gradient(0deg, #f5f6f8 0%, #f5f6f8 100%)",
       },
       keyframes: {
-        float: {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-6px)" },
-        },
         fadeUp: {
-          "0%": { opacity: "0", transform: "translateY(12px)" },
+          "0%": { opacity: "0", transform: "translateY(14px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        slowZoom: {
+          "0%": { transform: "scale(1.05)" },
+          "100%": { transform: "scale(1.16)" },
+        },
+        fade: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
         },
       },
       animation: {
-        float: "float 4s ease-in-out infinite",
-        fadeUp: "fadeUp 0.6s ease-out both",
+        fadeUp: "fadeUp 0.9s ease-out both",
+        slowZoom: "slowZoom 9s ease-out forwards",
+        fade: "fade 0.5s ease-out both",
       },
     },
   },

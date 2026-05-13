@@ -20,10 +20,10 @@ export default function ContactPage() {
         breadcrumb={[{ label: "신청서 작성" }]}
       />
 
-      <section className="container-pad py-16">
+      <section className="container-pad py-20 lg:py-28">
         <div className="grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-7">
-            <div className="rounded-3xl border border-ink-100 bg-white p-6 sm:p-8">
+            <div className="rounded-[3px] border border-ink-100 bg-white p-6 sm:p-8">
               <p className="section-eyebrow">FORM</p>
               <h2 className="mt-2 text-2xl leading-[1.3] font-extrabold text-ink-900 sm:text-3xl sm:leading-[1.25]">
                 신청서 작성

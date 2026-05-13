@@ -4,10 +4,10 @@ import { SITE } from "@/lib/site";
 export default function FloatingCTA() {
   return (
     <div className="pointer-events-none fixed inset-x-0 bottom-3 z-30 flex justify-center px-4 sm:bottom-6">
-      <div className="pointer-events-auto flex items-center gap-2 rounded-full border border-ink-100 bg-white/95 p-1.5 shadow-soft backdrop-blur">
+      <div className="pointer-events-auto flex items-center gap-1.5 rounded-[3px] border border-ink-100 bg-white/95 p-1.5 shadow-soft backdrop-blur">
         <a
           href={`tel:${SITE.phoneE164}`}
-          className="hidden items-center gap-2 rounded-full px-4 py-2 text-[13px] leading-[1.2] font-semibold text-ink-700 hover:bg-ink-100 sm:inline-flex"
+          className="hidden items-center gap-2 rounded-[2px] px-4 py-2 text-[13px] leading-[1.2] font-semibold text-ink-700 hover:bg-ink-50 sm:inline-flex"
           aria-label="전화 문의"
         >
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
@@ -25,7 +25,7 @@ export default function FloatingCTA() {
           href={SITE.kakaoChannel}
           target="_blank"
           rel="noreferrer"
-          className="inline-flex items-center gap-2 rounded-full bg-[#FEE500] px-4 py-2 text-[13px] leading-[1.2] font-bold text-[#3C1E1E] transition hover:brightness-95"
+          className="inline-flex items-center gap-2 rounded-[2px] bg-[#FEE500] px-4 py-2 text-[13px] leading-[1.2] font-bold text-[#3C1E1E] transition hover:brightness-95"
           aria-label="카카오톡 채널 문의"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
@@ -35,7 +35,7 @@ export default function FloatingCTA() {
         </a>
         <Link
           href="/contact"
-          className="inline-flex items-center gap-2 rounded-full bg-brand-600 px-4 py-2 text-[13px] leading-[1.2] font-bold text-white shadow-soft hover:bg-brand-700"
+          className="inline-flex items-center gap-2 rounded-[2px] bg-brand-700 px-4 py-2 text-[13px] leading-[1.2] font-bold text-white hover:bg-brand-800"
         >
           신청서 작성
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
