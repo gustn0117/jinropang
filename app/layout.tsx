@@ -131,7 +131,7 @@ export default function RootLayout({
         </a>
         <Header />
         <main id="main" className="container-pad py-10 lg:py-14">
-          <div className="grid gap-5 lg:grid-cols-[218px_minmax(0,1fr)_200px] lg:gap-5">
+          <div className="grid gap-5 lg:grid-cols-[200px_minmax(0,1fr)_188px] lg:gap-5">
             <LeftAside />
             <div className="min-w-0">{children}</div>
             <RightAside />
