@@ -34,11 +34,18 @@ export const SITE = {
   ],
 };
 
+export type NavLink = { href: string; label: string };
+export type NavGroup = { heading: string; href?: string; items: NavLink[] };
+export type NavChild = NavLink | NavGroup;
 export type NavItem = {
   href: string;
   label: string;
-  children?: { href: string; label: string }[];
+  children?: NavChild[];
 };
+
+export function isNavGroup(c: NavChild): c is NavGroup {
+  return (c as NavGroup).items !== undefined;
+}
 
 export const NAV: NavItem[] = [
   {
@@ -54,9 +61,15 @@ export const NAV: NavItem[] = [
     href: "/programs/elementary",
     label: "초등학교",
     children: [
-      { href: "/programs/elementary#g12", label: "1-2학년" },
-      { href: "/programs/elementary#g34", label: "3-4학년" },
-      { href: "/programs/elementary#g56", label: "5-6학년" },
+      {
+        heading: "교육 프로그램",
+        href: "/programs/elementary",
+        items: [
+          { href: "/programs/elementary#g12", label: "1-2학년" },
+          { href: "/programs/elementary#g34", label: "3-4학년" },
+          { href: "/programs/elementary#g56", label: "5-6학년" },
+        ],
+      },
       { href: "/programs/elementary#field-trip", label: "체험학습 패키지" },
     ],
   },
@@ -64,8 +77,14 @@ export const NAV: NavItem[] = [
     href: "/programs/secondary",
     label: "중·고등학교",
     children: [
-      { href: "/programs/secondary#middle", label: "중학교" },
-      { href: "/programs/secondary#high", label: "고등학교" },
+      {
+        heading: "교육 프로그램",
+        href: "/programs/secondary",
+        items: [
+          { href: "/programs/secondary#middle", label: "중학교" },
+          { href: "/programs/secondary#high", label: "고등학교" },
+        ],
+      },
       { href: "/programs/secondary#festival", label: "축제 · 진로의 날 부스" },
     ],
   },

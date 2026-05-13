@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { NAV, SITE } from "@/lib/site";
+import { NAV, SITE, isNavGroup } from "@/lib/site";
 import Logo from "./Logo";
 
 export default function Header() {
@@ -66,17 +66,49 @@ export default function Header() {
 
               {item.children && (
                 <div className="invisible absolute left-1/2 top-full z-50 pt-2 opacity-0 transition-[opacity,transform] duration-150 [transform:translate(-50%,4px)] group-hover:visible group-hover:opacity-100 group-hover:[transform:translate(-50%,0)] group-focus-within:visible group-focus-within:opacity-100 group-focus-within:[transform:translate(-50%,0)]">
-                  <ul className="min-w-[200px] rounded-[3px] border border-ink-100 bg-white py-2 shadow-[0_14px_36px_-10px_rgba(11,19,34,0.22)]">
-                    {item.children.map((c) => (
-                      <li key={c.href}>
-                        <Link
-                          href={c.href}
-                          className="block px-5 py-2.5 text-[14px] leading-[1.3] font-medium text-ink-700 transition-colors hover:bg-ink-50 hover:text-brand-700"
+                  <ul className="min-w-[212px] rounded-[3px] border border-ink-100 bg-white py-2 shadow-[0_14px_36px_-10px_rgba(11,19,34,0.22)]">
+                    {item.children.map((c, ci) =>
+                      isNavGroup(c) ? (
+                        <li
+                          key={`g-${ci}`}
+                          className="mb-1 border-b border-ink-100 pb-1 last:mb-0 last:border-0 last:pb-0"
                         >
-                          {c.label}
-                        </Link>
-                      </li>
-                    ))}
+                          {c.href ? (
+                            <Link
+                              href={c.href}
+                              className="block px-5 pb-1.5 pt-2 text-[11px] font-bold uppercase tracking-[0.1em] text-ink-400 transition-colors hover:text-brand-700"
+                            >
+                              {c.heading}
+                            </Link>
+                          ) : (
+                            <p className="px-5 pb-1.5 pt-2 text-[11px] font-bold uppercase tracking-[0.1em] text-ink-400">
+                              {c.heading}
+                            </p>
+                          )}
+                          <ul>
+                            {c.items.map((it) => (
+                              <li key={it.href}>
+                                <Link
+                                  href={it.href}
+                                  className="block py-2 pl-8 pr-5 text-[14px] leading-[1.3] font-medium text-ink-700 transition-colors hover:bg-ink-50 hover:text-brand-700"
+                                >
+                                  {it.label}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </li>
+                      ) : (
+                        <li key={c.href}>
+                          <Link
+                            href={c.href}
+                            className="block px-5 py-2.5 text-[14px] leading-[1.3] font-medium text-ink-700 transition-colors hover:bg-ink-50 hover:text-brand-700"
+                          >
+                            {c.label}
+                          </Link>
+                        </li>
+                      ),
+                    )}
                   </ul>
                 </div>
               )}
@@ -148,17 +180,48 @@ export default function Header() {
                   </Link>
                   {item.children && (
                     <ul className="mb-1 ml-3 border-l border-ink-100">
-                      {item.children.map((c) => (
-                        <li key={c.href}>
-                          <Link
-                            href={c.href}
-                            className="block py-2.5 pl-4 text-[14px] leading-[1.3] font-medium text-ink-600 hover:text-brand-700"
-                            onClick={() => setOpen(false)}
-                          >
-                            {c.label}
-                          </Link>
-                        </li>
-                      ))}
+                      {item.children.map((c, ci) =>
+                        isNavGroup(c) ? (
+                          <li key={`g-${ci}`}>
+                            {c.href ? (
+                              <Link
+                                href={c.href}
+                                className="block py-2.5 pl-4 text-[12.5px] font-bold uppercase tracking-[0.08em] text-ink-500 hover:text-brand-700"
+                                onClick={() => setOpen(false)}
+                              >
+                                {c.heading}
+                              </Link>
+                            ) : (
+                              <p className="py-2.5 pl-4 text-[12.5px] font-bold uppercase tracking-[0.08em] text-ink-500">
+                                {c.heading}
+                              </p>
+                            )}
+                            <ul className="ml-4 border-l border-ink-100">
+                              {c.items.map((it) => (
+                                <li key={it.href}>
+                                  <Link
+                                    href={it.href}
+                                    className="block py-2 pl-4 text-[14px] leading-[1.3] font-medium text-ink-600 hover:text-brand-700"
+                                    onClick={() => setOpen(false)}
+                                  >
+                                    {it.label}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          </li>
+                        ) : (
+                          <li key={c.href}>
+                            <Link
+                              href={c.href}
+                              className="block py-2.5 pl-4 text-[14px] leading-[1.3] font-medium text-ink-600 hover:text-brand-700"
+                              onClick={() => setOpen(false)}
+                            >
+                              {c.label}
+                            </Link>
+                          </li>
+                        ),
+                      )}
                     </ul>
                   )}
                 </li>

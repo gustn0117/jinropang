@@ -258,25 +258,17 @@ export default function SafetyPage() {
             <div className="md:col-span-8">
               <p className="section-eyebrow">결재 · 내부 검토 자료</p>
               <h2 className="mt-3 text-2xl leading-[1.3] font-extrabold text-ink-900 sm:text-3xl sm:leading-[1.25]">
-                안전관리계획서 / 운영계획서 PDF 제공
+                안전관리계획서 / 운영계획서 제공
               </h2>
               <p className="lead mt-4">
                 결재용·내부 검토용 자료로 활용하실 수 있도록 안전관리계획서,
-                프로그램별 운영계획서, 견적서를 PDF로 함께 보내드립니다.
+                프로그램별 운영계획서, 견적서를 신청 시 함께 보내드립니다.
               </p>
             </div>
             <div className="md:col-span-4">
-              <div className="flex flex-col gap-2">
-                <a
-                  href="/assets/jinropang-brochure.pdf"
-                  className="btn-primary"
-                >
-                  회사 소개서 PDF 다운로드
-                </a>
-                <a href="/contact" className="btn-secondary">
-                  자료 요청 신청
-                </a>
-              </div>
+              <a href="/contact" className="btn-primary w-full">
+                자료 요청 신청
+              </a>
             </div>
           </div>
         </div>

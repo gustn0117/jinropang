@@ -139,7 +139,7 @@ export default function AboutPage() {
                     {SITE.phone}
                   </a>
                 </li>
-                <li className="flex items-center justify-between border-b border-ink-100 py-3">
+                <li className="flex items-center justify-between py-3">
                   <span className="font-semibold text-ink-500">카카오톡</span>
                   <a
                     href={SITE.kakaoChannel}
@@ -148,15 +148,6 @@ export default function AboutPage() {
                     className="text-[15px] leading-[1.4] font-bold text-brand-700 hover:underline"
                   >
                     1:1 채널 문의
-                  </a>
-                </li>
-                <li className="flex items-center justify-between py-3">
-                  <span className="font-semibold text-ink-500">자료</span>
-                  <a
-                    href="/assets/jinropang-brochure.pdf"
-                    className="text-[15px] leading-[1.4] font-bold text-brand-700 hover:underline"
-                  >
-                    회사 소개서 PDF
                   </a>
                 </li>
               </ul>

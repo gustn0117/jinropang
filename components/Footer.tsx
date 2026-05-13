@@ -83,7 +83,7 @@ export default function Footer() {
 
         <div>
           <h4 className="text-[13px] font-bold uppercase tracking-[0.1em] text-ink-700">
-            채널 · 자료
+            채널
           </h4>
           <ul className="mt-4 space-y-2.5">
             {SOCIALS.map(({ href, label, Icon }) => (
@@ -99,28 +99,6 @@ export default function Footer() {
                 </a>
               </li>
             ))}
-            <li>
-              <a
-                href="/assets/jinropang-brochure.pdf"
-                className="group inline-flex items-center gap-2.5 text-[14px] leading-[1.6] text-ink-600 transition-colors hover:text-brand-700"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  className="h-4 w-4 shrink-0 text-ink-400 transition-colors group-hover:text-brand-700"
-                  fill="none"
-                  aria-hidden
-                >
-                  <path
-                    d="M14 3v5h5M14 3H6v18h12V8m-9 4h6m-6 4h6"
-                    stroke="currentColor"
-                    strokeWidth="1.8"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-                회사 소개서 PDF
-              </a>
-            </li>
           </ul>
         </div>
       </div>

@@ -79,20 +79,14 @@ export default function ContactPage() {
               </div>
 
               <div className="card">
-                <p className="section-eyebrow">자료 받기</p>
+                <p className="section-eyebrow">자료 안내</p>
                 <h3 className="mt-2 text-lg leading-[1.4] font-bold text-ink-900">
-                  결재용·내부 검토 PDF
+                  결재용·내부 검토 자료
                 </h3>
                 <p className="mt-2 text-[13px] leading-[1.7] text-ink-700">
-                  회사 소개서, 안전관리계획서, 프로그램별 운영계획서, 견적서를
-                  함께 보내드립니다.
+                  안전관리계획서, 프로그램별 운영계획서, 견적서 등 결재·내부
+                  검토에 필요한 자료를 신청 시 함께 보내드립니다.
                 </p>
-                <a
-                  href="/assets/jinropang-brochure.pdf"
-                  className="btn-secondary mt-4 w-full"
-                >
-                  회사 소개서 다운로드
-                </a>
               </div>
 
               <div className="card">
