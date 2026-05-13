@@ -1,64 +1,127 @@
 import Link from "next/link";
 import { SITE } from "@/lib/site";
 
-const STATS = [
-  { label: "출강 지역", value: "전국" },
-  { label: "안전 운영", value: "6단계" },
-  { label: "평일 1차 회신", value: "30분" },
+const PROGRAMS = [
+  {
+    href: "/programs/elementary",
+    badge: "초등학교",
+    title: "학교로 찾아가는 미래교육",
+    desc: "초등학교 학년별 로봇·코딩·AI·메타버스 체험 프로그램",
+  },
+  {
+    href: "/programs/secondary",
+    badge: "중·고등학교",
+    title: "학교로 찾아가는 체험학습",
+    desc: "중·고등학교 진로 연계 워크숍·캠프·VR 진로직업 체험",
+  },
+  {
+    href: "/programs/event",
+    badge: "행사부스 운영",
+    title: "축제 · 행사 체험부스",
+    desc: "AI 포토·VR·로봇 대결·드론 미션 등 인기 부스 모듈 운영",
+  },
+  {
+    href: "/programs/event#competition",
+    badge: "대회 운영",
+    title: "대회 운영",
+    desc: "코딩·로봇·AI 경진대회 기획·심사·운영·시상 일괄 진행",
+  },
+];
+
+const LINKS = [
+  { href: SITE.social.instagram, label: "인스타그램 바로가기", external: true },
+  { href: SITE.social.youtube, label: "유튜브 바로가기", external: true },
+  { href: SITE.social.blog, label: "블로그 바로가기", external: true },
+  { href: `tel:${SITE.phoneE164}`, label: `문의전화 ${SITE.phone}` },
+  { href: SITE.kakaoChannel, label: "카카오톡 채널 1:1 문의하기", external: true },
 ];
 
 export default function HomeHero() {
   return (
-    <section className="bg-brand-900 text-white">
-      <div className="container-pad animate-fadeUp pb-16 pt-16 sm:pb-20 sm:pt-20 lg:pb-24 lg:pt-24">
-        <div className="max-w-2xl">
-          <p className="flex items-center text-[12.5px] font-bold uppercase tracking-[0.14em] text-white/70">
-            <span aria-hidden className="mr-2.5 h-px w-7 bg-white/70" />
-            전국 학교·기관 출강 · 안전관리 체계 운영
+    <section className="container-pad py-10 lg:py-14">
+      <div className="grid gap-5 lg:grid-cols-[260px_minmax(0,1fr)_232px] lg:gap-6">
+        {/* 좌측 — 소개 + 신청서 작성 */}
+        <aside className="flex flex-col rounded-[3px] border border-ink-100 bg-soft-grad p-6">
+          <p className="section-eyebrow">진로팡</p>
+          <p className="mt-4 flex-1 text-[15px] leading-[1.85] text-ink-700">
+            학교 일정과 대상 학년, 진로교육 및 축제·행사 운영 목적에 맞춰 최적의
+            체험 프로그램과 맞춤형 체험부스를 제안해드립니다. 신청서 작성 후
+            담당자가 확인하여 빠르게 안내드리겠습니다.
           </p>
-          <h1 className="mt-5 text-[34px] font-bold leading-[1.18] sm:text-[48px] lg:text-[58px] lg:leading-[1.12]">
-            학교로 찾아가는
-            <br />
-            미래교육 진로체험, <span className="text-white">진로팡</span>
-          </h1>
-          <p className="mt-6 max-w-xl text-[15px] leading-[1.8] text-white/75 sm:text-[17px]">
-            로봇·코딩·AI·메타버스·VR·드론까지. 학교 일정과 대상 학년, 운영
-            목적에 맞춰 최적의 체험 프로그램과 맞춤형 부스를 안전하게 운영해
-            드립니다.
-          </p>
+          <Link href="/contact" className="btn-primary mt-6 w-full">
+            신청서 작성
+            <Arrow />
+          </Link>
+        </aside>
 
-          <div className="mt-9 flex flex-wrap items-center gap-3">
-            <Link href="/contact" className="btn-dark">
-              무료 견적·상담 신청
-              <Arrow />
-            </Link>
-            <a
-              href={`tel:${SITE.phoneE164}`}
-              className="inline-flex items-center gap-2 rounded-[2px] border border-white/35 px-6 py-[14px] text-[14.5px] font-semibold text-white transition-colors hover:border-white"
-            >
-              전화 문의 {SITE.phone}
-            </a>
-            <a
-              href="/assets/jinropang-brochure.pdf"
-              className="inline-flex items-center gap-1.5 px-2 py-2 text-[13.5px] font-semibold text-white/70 underline-offset-4 transition-colors hover:text-white hover:underline"
-            >
-              회사 소개 PDF
-            </a>
+        {/* 중앙 — 동영상 + 프로그램 4종 */}
+        <div className="flex flex-col gap-4">
+          <div className="relative aspect-video w-full overflow-hidden rounded-[3px] border border-ink-100 bg-ink-50">
+            <video
+              className="absolute inset-0 h-full w-full object-cover"
+              src="/assets/hero.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              aria-label="진로팡 학교 출강 미래교육 현장 영상"
+            />
           </div>
 
-          <dl className="mt-12 grid max-w-md grid-cols-3 gap-6 border-t border-white/15 pt-6">
-            {STATS.map((s) => (
-              <div key={s.label}>
-                <dt className="text-[11.5px] font-semibold uppercase tracking-[0.12em] text-white/55">
-                  {s.label}
-                </dt>
-                <dd className="mt-1.5 text-[24px] font-bold leading-[1.2] tabular-nums">
-                  {s.value}
-                </dd>
+          {PROGRAMS.map((p) => (
+            <Link
+              key={p.title}
+              href={p.href}
+              className="card group flex items-center justify-between gap-5"
+            >
+              <div>
+                <span className="chip">{p.badge}</span>
+                <h3 className="mt-3 text-[18px] font-bold leading-[1.35] text-ink-900">
+                  {p.title}
+                </h3>
+                <p className="mt-1 text-[14px] leading-[1.65] text-ink-700">
+                  {p.desc}
+                </p>
               </div>
-            ))}
-          </dl>
+              <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-[2px] bg-brand-50 text-brand-700 transition-colors group-hover:bg-brand-700 group-hover:text-white">
+                <Arrow />
+              </span>
+            </Link>
+          ))}
         </div>
+
+        {/* 우측 — 채널 / 문의 바로가기 */}
+        <aside className="flex flex-col gap-3">
+          {LINKS.map((l) => (
+            <a
+              key={l.label}
+              href={l.href}
+              {...(l.external
+                ? { target: "_blank", rel: "noreferrer" }
+                : {})}
+              className="group flex items-center justify-between gap-3 rounded-[3px] border border-ink-100 bg-white px-4 py-3.5 text-[14px] font-semibold text-ink-800 transition-colors hover:border-brand-700 hover:text-brand-700"
+            >
+              {l.label}
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                className="shrink-0 text-ink-400 transition-colors group-hover:text-brand-700"
+                aria-hidden
+              >
+                <path
+                  d="M5 12h14M13 5l7 7-7 7"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </a>
+          ))}
+        </aside>
       </div>
     </section>
   );
