@@ -94,7 +94,7 @@ export default function AboutPage() {
         </dl>
       </section>
 
-      <section className="bg-soft-grad">
+      <section id="commitment" className="scroll-mt-16 bg-soft-grad">
         <div className="container-pad py-24 lg:py-32">
           <p className="section-eyebrow">OUR COMMITMENT</p>
           <h2 className="section-title mt-3">우리가 약속드리는 가치</h2>
@@ -116,7 +116,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="container-pad py-24 lg:py-32">
+      <section id="contact" className="container-pad py-24 lg:py-32 scroll-mt-16">
         <div className="rounded-[3px] border border-ink-100 bg-white p-8 sm:p-12">
           <div className="grid items-center gap-10 md:grid-cols-12">
             <div className="md:col-span-7">

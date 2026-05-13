@@ -33,15 +33,54 @@ export default function Header() {
           <Logo />
         </Link>
 
-        <nav className="hidden items-center gap-1 lg:flex" aria-label="주요 메뉴">
+        <nav
+          className="hidden items-center gap-0.5 lg:flex"
+          aria-label="주요 메뉴"
+        >
           {NAV.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="rounded-[2px] px-3.5 py-2 text-[14px] leading-[1.2] font-semibold text-ink-700 transition-colors hover:text-brand-700"
-            >
-              {item.label}
-            </Link>
+            <div key={item.href} className="group relative">
+              <Link
+                href={item.href}
+                className="inline-flex items-center gap-1 rounded-[2px] px-3.5 py-2 text-[14px] leading-[1.2] font-semibold text-ink-700 transition-colors group-hover:text-brand-700"
+              >
+                {item.label}
+                {item.children && (
+                  <svg
+                    width="11"
+                    height="11"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    className="mt-px text-ink-400 transition-transform group-hover:rotate-180 group-hover:text-brand-700"
+                    aria-hidden
+                  >
+                    <path
+                      d="m6 9 6 6 6-6"
+                      stroke="currentColor"
+                      strokeWidth="2.4"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                )}
+              </Link>
+
+              {item.children && (
+                <div className="invisible absolute left-1/2 top-full z-50 pt-2 opacity-0 transition-[opacity,transform] duration-150 [transform:translate(-50%,4px)] group-hover:visible group-hover:opacity-100 group-hover:[transform:translate(-50%,0)] group-focus-within:visible group-focus-within:opacity-100 group-focus-within:[transform:translate(-50%,0)]">
+                  <ul className="min-w-[200px] rounded-[3px] border border-ink-100 bg-white py-2 shadow-[0_14px_36px_-10px_rgba(11,19,34,0.22)]">
+                    {item.children.map((c) => (
+                      <li key={c.href}>
+                        <Link
+                          href={c.href}
+                          className="block px-5 py-2.5 text-[14px] leading-[1.3] font-medium text-ink-700 transition-colors hover:bg-ink-50 hover:text-brand-700"
+                        >
+                          {c.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
           ))}
         </nav>
 
@@ -96,7 +135,7 @@ export default function Header() {
 
       {open && (
         <div className="lg:hidden">
-          <div className="container-pad pb-6">
+          <div className="container-pad max-h-[calc(100vh-4rem)] overflow-y-auto pb-6">
             <ul className="flex flex-col gap-1 border-t border-ink-100 pt-4">
               {NAV.map((item) => (
                 <li key={item.href}>
@@ -107,6 +146,21 @@ export default function Header() {
                   >
                     {item.label}
                   </Link>
+                  {item.children && (
+                    <ul className="mb-1 ml-3 border-l border-ink-100">
+                      {item.children.map((c) => (
+                        <li key={c.href}>
+                          <Link
+                            href={c.href}
+                            className="block py-2.5 pl-4 text-[14px] leading-[1.3] font-medium text-ink-600 hover:text-brand-700"
+                            onClick={() => setOpen(false)}
+                          >
+                            {c.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </li>
               ))}
             </ul>
