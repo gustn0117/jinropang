@@ -28,14 +28,14 @@ export default function Header() {
           : "border-transparent bg-white"
       }`}
     >
-      {/* 단일 줄 — 좌측 로고 + 우측 nav. 모바일은 좌측 로고 + 우측 햄버거 */}
-      <div className="mx-auto flex h-16 w-full max-w-[1280px] items-center justify-between px-5 sm:px-6 lg:h-20 lg:px-8">
-        <Link href="/" aria-label="진로팡 홈" className="shrink-0">
+      {/* 단일 줄 — 좌측 로고 + 가운데 nav. 모바일은 좌측 로고 + 우측 햄버거 */}
+      <div className="mx-auto grid h-16 w-full max-w-[1280px] grid-cols-[1fr_auto_1fr] items-center px-5 sm:px-6 lg:h-20 lg:px-8">
+        <Link href="/" aria-label="진로팡 홈" className="shrink-0 justify-self-start">
           <Logo sizeClassName="h-9 lg:h-11" />
         </Link>
 
         <nav
-          className="hidden items-center gap-1.5 lg:flex"
+          className="hidden items-center gap-1.5 justify-self-center lg:flex"
           aria-label="주요 메뉴"
         >
           {NAV.map((item) => (
@@ -121,7 +121,7 @@ export default function Header() {
           type="button"
           aria-label="메뉴 열기"
           aria-expanded={open}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-[2px] border border-ink-100 lg:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center justify-self-end rounded-[2px] border border-ink-100 lg:hidden"
           onClick={() => setOpen((v) => !v)}
         >
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
