@@ -1,9 +1,9 @@
 export type Program = {
   slug: string;
   title: string;
-  category: "elementary" | "secondary";
-  /** elementary 한정: 학년 그룹 / 체험학습 패키지 */
-  group?: "g12" | "g36" | "trip";
+  category: "elementary" | "secondary" | "event";
+  /** elementary: 학년 그룹 / 체험학습 · secondary·event: festival */
+  group?: "g12" | "g36" | "trip" | "festival";
   duration: string;
   capacity: string;
   description: string;
@@ -568,7 +568,10 @@ export function programHref(p: Program): string {
   if (p.category === "elementary") {
     return `/programs/elementary/${groupToSegment(p.group)}/${p.slug}`;
   }
-  return `/programs/secondary/${p.slug}`;
+  if (p.category === "secondary") {
+    return `/programs/secondary/${p.slug}`;
+  }
+  return `/programs/event/${p.slug}`;
 }
 
 export function findElementaryProgram(
@@ -582,9 +585,34 @@ export function findElementaryProgram(
 export function findSecondaryProgram(slug: string): Program | undefined {
   return SECONDARY.find((p) => p.slug === slug);
 }
+export function findEventProgram(slug: string): Program | undefined {
+  return EVENT_PROGRAMS.find((p) => p.slug === slug);
+}
 
 export const ELEMENTARY_GROUP_LABEL: Record<ElementaryGroupSegment, string> = {
   "12": "1-2학년",
   "36": "3-6학년",
   trip: "체험학습 패키지",
 };
+
+/* ===== 행사부스 운영 — 초등 체험학습과 동일한 콘텐츠, 사진만 별도 ===== */
+const EVENT_IMAGE_EXT: Record<string, string> = {
+  "four-legged-robot": "png",
+  "pop-drone-bingo": "png",
+};
+
+export const EVENT_PROGRAMS: Program[] = ELEMENTARY_TRIP.map((p) => ({
+  ...p,
+  category: "event" as const,
+  group: undefined,
+  image: `/programs/event/${p.slug}.${EVENT_IMAGE_EXT[p.slug] ?? "jpg"}`,
+}));
+
+/* ===== 중·고등 축제·진로의 날 부스 — 동일 콘텐츠, 사진 별도 ===== */
+/** 카드 표시용. 카드 클릭 시 /programs/event/[slug] 상세로 이동 */
+export const SECONDARY_FESTIVAL: Program[] = ELEMENTARY_TRIP.map((p) => ({
+  ...p,
+  category: "event" as const,
+  group: undefined,
+  image: `/programs/secondary/festival/${p.slug}.${EVENT_IMAGE_EXT[p.slug] ?? "jpg"}`,
+}));

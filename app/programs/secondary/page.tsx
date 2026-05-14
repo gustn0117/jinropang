@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import ProgramCard from "@/components/ProgramCard";
 import CTASection from "@/components/CTASection";
-import { SECONDARY } from "@/lib/programs";
+import { SECONDARY, SECONDARY_FESTIVAL } from "@/lib/programs";
 
 export const metadata: Metadata = {
   title: "중·고등학교 미래교육 프로그램 — 진로 연계 워크숍",
@@ -44,34 +43,23 @@ export default function SecondaryPage() {
         </div>
       </section>
 
-      <section
-        id="festival"
-        className="bg-soft-grad scroll-mt-16"
-      >
+      <section id="festival" className="bg-soft-grad scroll-mt-16">
         <div className="container-pad py-10 lg:py-14">
           <div>
-            <p className="section-eyebrow">축제부스</p>
-            <h2 className="section-title mt-3">축제 · 진로의 날 부스 패키지</h2>
+            <p className="section-eyebrow">축제 · 진로의 날 부스</p>
+            <h2 className="section-title mt-3">
+              중·고등 축제·진로의 날 부스 패키지
+            </h2>
             <p className="lead mt-4 max-w-2xl">
               동시에 많은 학생이 빠르게 회전할 수 있도록 모듈식으로 부스를
-              구성합니다. AI 포토·VR·로봇 대결·드론 미션 등 인기 부스 6종을
-              자유롭게 조합해 운영합니다.
+              구성합니다. 로봇·드론·AR 스포츠·인공지능 등 다양한 부스를 자유롭게
+              조합해 운영합니다.
             </p>
-            <Link
-              href="/programs/event"
-              className="btn-secondary mt-6 inline-flex"
-            >
-              부스 패키지 자세히 보기
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
-                <path
-                  d="M5 12h14M13 5l7 7-7 7"
-                  stroke="currentColor"
-                  strokeWidth="2.2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </Link>
+          </div>
+          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {SECONDARY_FESTIVAL.map((p) => (
+              <ProgramCard key={`festival-${p.slug}`} p={p} />
+            ))}
           </div>
         </div>
       </section>

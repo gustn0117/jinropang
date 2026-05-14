@@ -68,7 +68,9 @@ export default function ProgramDetailView({
                       : program.group === "g36"
                         ? "초등 3-6학년"
                         : "초등 체험학습"
-                    : "중·고등학생"}
+                    : program.category === "secondary"
+                      ? "중·고등학생"
+                      : "축제·행사부스 / 전 학년"}
                 </dd>
               </div>
             </dl>

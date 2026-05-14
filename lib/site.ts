@@ -84,7 +84,7 @@ export const NAV: NavItem[] = [
     href: "/programs/event",
     label: "행사부스 운영",
     children: [
-      { href: "/programs/event#booths", label: "부스 모듈 6종" },
+      { href: "/programs/event#booths", label: "축제행사부스" },
       { href: "/programs/event#operation", label: "행사 운영 절차" },
       { href: "/programs/event#competition", label: "대회 · 경진대회 운영" },
     ],
