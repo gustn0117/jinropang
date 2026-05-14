@@ -61,7 +61,7 @@ export default function HomeHero() {
         <Link
           key={p.title}
           href={p.href}
-          className="group relative isolate block aspect-[5/3] overflow-hidden rounded-[3px] border border-ink-100 bg-brand-900 text-white transition-colors hover:border-brand-700"
+          className="group relative isolate block aspect-video overflow-hidden rounded-[3px] border border-ink-100 bg-brand-900 text-white transition-colors hover:border-brand-700"
         >
           {/* 배경 이미지 — 풀-블리드, 선명하게 */}
           <img
