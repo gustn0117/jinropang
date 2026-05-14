@@ -2,22 +2,23 @@ import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import ProgramCard from "@/components/ProgramCard";
 import CTASection from "@/components/CTASection";
-import { ELEMENTARY } from "@/lib/programs";
+import { ELEMENTARY_GROUPS } from "@/lib/programs";
 
 export const metadata: Metadata = {
   title: "초등학교 미래교육 프로그램 — 학년별 맞춤 체험",
   description:
-    "초등 1-2학년 입문부터 3-4학년 AI·메타버스, 5-6학년 코딩 드론·IoT 메이커, 그리고 체험학습 패키지까지. 진로팡의 초등 전용 미래교육 체험 프로그램을 소개합니다.",
+    "초등 1-2학년 입문부터 3-6학년 AI·코딩·메이커, 그리고 체험학습 패키지까지. 진로팡의 초등 전용 미래교육 체험 프로그램을 소개합니다.",
   alternates: { canonical: "/programs/elementary" },
 };
 
-const GRADE_GROUPS = [
+const GROUPS = [
   {
     id: "g12",
     label: "1-2학년",
     title: "처음 만나는 미래 기술, 즐겁게 입문",
     description:
       "글보다 그림이 익숙한 저학년에게 직관적인 조작과 짧은 호흡의 미션 중심으로 구성합니다.",
+    items: ELEMENTARY_GROUPS.g12,
   },
   {
     id: "g36",
@@ -25,13 +26,15 @@ const GRADE_GROUPS = [
     title: "AI · 코딩 · 메이커, 직접 만들어 보기",
     description:
       "스스로 데이터를 만들고, 센서·드론·로봇으로 결과물을 완성하는 단계로 발전합니다.",
+    items: ELEMENTARY_GROUPS.g36,
   },
   {
-    id: "field-trip",
-    label: "체험학습",
+    id: "trip",
+    label: "체험학습 패키지",
     title: "하루 만에 즐기는 미래교육 패키지",
     description:
       "여러 프로그램을 순환식으로 운영해, 한 학교에서 다양한 미래기술을 만나는 체험학습형 패키지입니다.",
+    items: ELEMENTARY_GROUPS.trip,
   },
 ];
 
@@ -48,7 +51,7 @@ export default function ElementaryPage() {
 
       <section className="container-pad py-10 lg:py-14">
         <div className="grid gap-4 md:grid-cols-3">
-          {GRADE_GROUPS.map((g) => (
+          {GROUPS.map((g) => (
             <a
               key={g.id}
               href={`#${g.id}`}
@@ -64,7 +67,7 @@ export default function ElementaryPage() {
                 </p>
               </div>
               <span className="mt-5 inline-flex items-center gap-1 text-[13px] leading-[1.3] font-semibold text-brand-700">
-                프로그램 보기
+                프로그램 {g.items.length}개 보기
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
                   <path
                     d="M5 12h14M13 5l7 7-7 7"
@@ -80,36 +83,30 @@ export default function ElementaryPage() {
         </div>
       </section>
 
-      {GRADE_GROUPS.map((g, idx) => {
-        const items = ELEMENTARY.filter((p) => {
-          if (g.id === "field-trip") return p.tag === "체험학습";
-          if (g.id === "g12") return p.tag === "1-2학년";
-          if (g.id === "g36") return p.tag === "3-4학년" || p.tag === "5-6학년";
-          return false;
-        });
-        return (
-          <section
-            key={g.id}
-            id={g.id}
-            className={idx % 2 === 0 ? "container-pad py-10 lg:py-14" : "bg-soft-grad"}
-          >
-            <div className={idx % 2 === 0 ? "" : "container-pad py-10 lg:py-14"}>
-              <div className="flex items-end justify-between gap-6">
-                <div>
-                  <p className="section-eyebrow">{g.label}</p>
-                  <h2 className="section-title mt-3">{g.title}</h2>
-                  <p className="lead mt-4 max-w-2xl">{g.description}</p>
-                </div>
-              </div>
-              <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-                {items.map((p) => (
-                  <ProgramCard key={p.slug} p={p} />
-                ))}
-              </div>
+      {GROUPS.map((g, idx) => (
+        <section
+          key={g.id}
+          id={g.id}
+          className={
+            idx % 2 === 0
+              ? "container-pad scroll-mt-16 py-10 lg:py-14"
+              : "bg-soft-grad scroll-mt-16"
+          }
+        >
+          <div className={idx % 2 === 0 ? "" : "container-pad py-10 lg:py-14"}>
+            <div>
+              <p className="section-eyebrow">{g.label}</p>
+              <h2 className="section-title mt-3">{g.title}</h2>
+              <p className="lead mt-4 max-w-2xl">{g.description}</p>
             </div>
-          </section>
-        );
-      })}
+            <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {g.items.map((p) => (
+                <ProgramCard key={`${p.group}-${p.slug}`} p={p} />
+              ))}
+            </div>
+          </div>
+        </section>
+      ))}
 
       <CTASection
         title="초등 학교 일정에 맞춘 맞춤 견적이 필요하신가요?"

@@ -69,21 +69,14 @@ export const NAV: NavItem[] = [
           { href: "/programs/elementary#g36", label: "3-6학년" },
         ],
       },
-      { href: "/programs/elementary#field-trip", label: "체험학습 패키지" },
+      { href: "/programs/elementary#trip", label: "체험학습 패키지" },
     ],
   },
   {
     href: "/programs/secondary",
     label: "중·고등학교",
     children: [
-      {
-        heading: "교육 프로그램",
-        href: "/programs/secondary",
-        items: [
-          { href: "/programs/secondary#middle", label: "중학교" },
-          { href: "/programs/secondary#high", label: "고등학교" },
-        ],
-      },
+      { href: "/programs/secondary#middle", label: "교육 프로그램" },
       { href: "/programs/secondary#festival", label: "축제 · 진로의 날 부스" },
     ],
   },

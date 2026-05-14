@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import ProgramCard from "@/components/ProgramCard";
 import CTASection from "@/components/CTASection";
@@ -7,33 +8,9 @@ import { SECONDARY } from "@/lib/programs";
 export const metadata: Metadata = {
   title: "중·고등학교 미래교육 프로그램 — 진로 연계 워크숍",
   description:
-    "중학교 AI 데이터 워크숍, VR 진로직업 체험, 고등학교 로봇 엔지니어링·생성형 AI 캠프, 그리고 축제·진로의 날 부스 패키지까지. 진로팡의 중·고등 전용 프로그램을 만나보세요.",
+    "로봇공학·자율주행·웨어러블·메타버스·IoT·생성형 AI·드론 등 중·고등학생을 위한 진로 연계 미래교육 프로그램. 진로팡이 학교 교실로 찾아갑니다.",
   alternates: { canonical: "/programs/secondary" },
 };
-
-const GROUPS = [
-  {
-    id: "middle",
-    label: "중학교",
-    title: "흥미와 동기를 함께 키우는 워크숍",
-    description:
-      "AI 데이터 리터러시, VR 진로직업 체험, 진로 탐색형 메타버스까지. 학생들이 스스로 탐색하고 표현하는 시간을 만듭니다.",
-  },
-  {
-    id: "high",
-    label: "고등학교",
-    title: "진로 포트폴리오로 이어지는 심화 캠프",
-    description:
-      "제어공학·AI·로봇 엔지니어링·프롬프트 등 학생부 활용이 가능한 결과물을 함께 만들어가는 캠프형 프로그램입니다.",
-  },
-  {
-    id: "festival",
-    label: "축제부스",
-    title: "축제·진로의 날 부스 패키지",
-    description:
-      "동시에 많은 학생이 빠르게 회전할 수 있도록 모듈식으로 부스를 구성합니다. 스탬프 운영과 MC 지원도 가능합니다.",
-  },
-];
 
 export default function SecondaryPage() {
   return (
@@ -46,58 +23,58 @@ export default function SecondaryPage() {
         breadcrumb={[{ label: "중·고등학교" }]}
       />
 
-      <section className="container-pad py-10 lg:py-14">
-        <div className="grid gap-4 md:grid-cols-3">
-          {GROUPS.map((g) => (
-            <a
-              key={g.id}
-              href={`#${g.id}`}
-              className="card flex h-full flex-col justify-between"
-            >
-              <div>
-                <span className="chip">{g.label}</span>
-                <h2 className="mt-4 text-lg leading-[1.4] font-bold text-ink-900">
-                  {g.title}
-                </h2>
-                <p className="mt-2 text-[13px] leading-[1.7] text-ink-700">
-                  {g.description}
-                </p>
-              </div>
-              <span className="mt-5 inline-flex items-center gap-1 text-[13px] leading-[1.3] font-semibold text-brand-700">
-                프로그램 보기 →
-              </span>
-            </a>
+      <section
+        id="middle"
+        className="container-pad scroll-mt-16 py-10 lg:py-14"
+      >
+        <div>
+          <p className="section-eyebrow">교육 프로그램</p>
+          <h2 className="section-title mt-3">
+            진로 연계 심화 워크숍 · 캠프
+          </h2>
+          <p className="lead mt-4 max-w-2xl">
+            로봇·자율주행·웨어러블·메타버스·IoT·생성형 AI·드론까지. 중·고등학생
+            대상 진로 포트폴리오와 학생부 활용이 가능한 결과물 중심 프로그램입니다.
+          </p>
+        </div>
+        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {SECONDARY.map((p) => (
+            <ProgramCard key={p.slug} p={p} />
           ))}
         </div>
       </section>
 
-      {GROUPS.map((g, idx) => {
-        const items = SECONDARY.filter((p) => {
-          if (g.id === "middle") return p.tag === "중학교";
-          if (g.id === "high") return p.tag === "고등학교";
-          return p.tag === "축제부스";
-        });
-        return (
-          <section
-            key={g.id}
-            id={g.id}
-            className={idx % 2 === 0 ? "container-pad py-10 lg:py-14" : "bg-soft-grad"}
-          >
-            <div className={idx % 2 === 0 ? "" : "container-pad py-10 lg:py-14"}>
-              <div>
-                <p className="section-eyebrow">{g.label}</p>
-                <h2 className="section-title mt-3">{g.title}</h2>
-                <p className="lead mt-4 max-w-2xl">{g.description}</p>
-              </div>
-              <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-                {items.map((p) => (
-                  <ProgramCard key={p.slug} p={p} />
-                ))}
-              </div>
-            </div>
-          </section>
-        );
-      })}
+      <section
+        id="festival"
+        className="bg-soft-grad scroll-mt-16"
+      >
+        <div className="container-pad py-10 lg:py-14">
+          <div>
+            <p className="section-eyebrow">축제부스</p>
+            <h2 className="section-title mt-3">축제 · 진로의 날 부스 패키지</h2>
+            <p className="lead mt-4 max-w-2xl">
+              동시에 많은 학생이 빠르게 회전할 수 있도록 모듈식으로 부스를
+              구성합니다. AI 포토·VR·로봇 대결·드론 미션 등 인기 부스 6종을
+              자유롭게 조합해 운영합니다.
+            </p>
+            <Link
+              href="/programs/event"
+              className="btn-secondary mt-6 inline-flex"
+            >
+              부스 패키지 자세히 보기
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
+                <path
+                  d="M5 12h14M13 5l7 7-7 7"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </Link>
+          </div>
+        </div>
+      </section>
 
       <CTASection
         title="진로의 날 / 직업 체험의 날 운영 일정을 알려주세요"
