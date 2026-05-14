@@ -56,11 +56,12 @@ export default function HomeHero() {
         </p>
       </div>
 
+      <div className="grid gap-4 sm:grid-cols-2">
       {PROGRAMS.map((p, i) => (
         <Link
           key={p.title}
           href={p.href}
-          className="group relative isolate block aspect-[16/7] overflow-hidden rounded-[3px] border border-ink-100 bg-brand-900 text-white transition-colors hover:border-brand-700 sm:aspect-[5/2]"
+          className="group relative isolate block aspect-[5/3] overflow-hidden rounded-[3px] border border-ink-100 bg-brand-900 text-white transition-colors hover:border-brand-700"
         >
           {/* 배경 이미지 — 풀-블리드, 선명하게 */}
           <img
@@ -113,6 +114,7 @@ export default function HomeHero() {
           </div>
         </Link>
       ))}
+      </div>
     </div>
   );
 }
