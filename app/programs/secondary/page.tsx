@@ -41,7 +41,6 @@ export default function SecondaryPage() {
       <PageHero
         eyebrow="MIDDLE · HIGH SCHOOL"
         image="/hero-secondary.png"
-        image="/hero-secondary.png"
         title="중·고등학교 미래교육 프로그램"
         description="진로 동기부여부터 학생부 활용 가능한 포트폴리오 결과물까지. 중·고등학생의 발달 단계에 맞춘 심화 체험을 운영합니다."
         breadcrumb={[{ label: "중·고등학교" }]}

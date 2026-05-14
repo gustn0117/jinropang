@@ -41,7 +41,6 @@ export default function ElementaryPage() {
       <PageHero
         eyebrow="ELEMENTARY"
         image="/hero-elementary.png"
-        image="/hero-elementary.png"
         title="초등학교 미래교육 프로그램"
         description="학년별 발달 단계와 안전 기준에 맞춰 설계한 로봇·코딩·AI·메타버스 체험. 학교 교실로 직접 찾아갑니다."
         breadcrumb={[{ label: "초등학교" }]}
