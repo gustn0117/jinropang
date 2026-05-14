@@ -60,26 +60,13 @@ export default function HomeHero() {
         <Link
           key={p.title}
           href={p.href}
-          className="group relative isolate flex items-center gap-5 overflow-hidden rounded-[3px] border border-ink-100 bg-white p-5 transition-colors hover:border-brand-700 sm:p-6"
+          className="group flex items-center gap-5 rounded-[3px] border border-ink-100 bg-white p-4 transition-colors hover:border-brand-700 sm:p-5"
         >
-          {/* 배경 이미지 — 카드 우측에 자연스럽게 페이드 */}
-          <img
-            src={p.image}
-            alt=""
-            aria-hidden
-            className="absolute inset-y-0 right-0 -z-10 h-full w-3/5 object-cover opacity-90 transition-transform duration-500 ease-out group-hover:scale-[1.04]"
-            loading="lazy"
-          />
-          <div
-            aria-hidden
-            className="absolute inset-0 -z-10 bg-gradient-to-r from-white from-50% via-white/85 to-transparent"
-          />
-
           <span className="text-[22px] font-bold leading-none tabular-nums text-brand-100 transition-colors group-hover:text-brand-700 sm:text-[26px]">
             {String(i + 1).padStart(2, "0")}
           </span>
           <div className="min-w-0 flex-1">
-            <span className="chip bg-white">{p.badge}</span>
+            <span className="chip">{p.badge}</span>
             <h3 className="mt-2.5 text-[18px] font-bold leading-[1.35] text-ink-900">
               {p.title}
             </h3>
@@ -87,17 +74,15 @@ export default function HomeHero() {
               {p.desc}
             </p>
           </div>
-          <span className="hidden h-9 w-9 shrink-0 items-center justify-center rounded-[2px] bg-white/90 text-brand-700 ring-1 ring-ink-100 transition-colors group-hover:bg-brand-700 group-hover:text-white group-hover:ring-brand-700 sm:inline-flex">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
-              <path
-                d="M5 12h14M13 5l7 7-7 7"
-                stroke="currentColor"
-                strokeWidth="2.2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </span>
+          <div className="relative hidden h-[92px] w-[148px] shrink-0 overflow-hidden rounded-[2px] bg-ink-50 sm:block">
+            <img
+              src={p.image}
+              alt=""
+              aria-hidden
+              loading="lazy"
+              className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05]"
+            />
+          </div>
         </Link>
       ))}
     </div>
