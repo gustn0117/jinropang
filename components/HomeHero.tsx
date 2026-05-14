@@ -6,24 +6,28 @@ const PROGRAMS = [
     badge: "초등학교",
     title: "학교로 찾아가는 미래교육",
     desc: "초등학교 학년별 로봇·코딩·AI·메타버스 체험 프로그램",
+    image: "/card-elementary.jpg",
   },
   {
     href: "/programs/secondary",
     badge: "중·고등학교",
     title: "학교로 찾아가는 체험학습",
     desc: "중·고등학교 진로 연계 워크숍·캠프·VR 진로직업 체험",
+    image: "/card-secondary.jpg",
   },
   {
     href: "/programs/event",
     badge: "행사부스 운영",
     title: "축제 · 행사 체험부스",
     desc: "AI 포토·VR·로봇 대결·드론 미션 등 인기 부스 모듈 운영",
+    image: "/card-event.jpg",
   },
   {
     href: "/programs/event#competition",
     badge: "대회 운영",
     title: "대회 운영",
     desc: "코딩·로봇·AI 경진대회 기획·심사·운영·시상 일괄 진행",
+    image: "/card-competition.jpg",
   },
 ];
 
@@ -56,13 +60,26 @@ export default function HomeHero() {
         <Link
           key={p.title}
           href={p.href}
-          className="group flex items-center gap-5 rounded-[3px] border border-ink-100 bg-white p-5 transition-colors hover:border-brand-700 sm:p-6"
+          className="group relative isolate flex items-center gap-5 overflow-hidden rounded-[3px] border border-ink-100 bg-white p-5 transition-colors hover:border-brand-700 sm:p-6"
         >
+          {/* 배경 이미지 — 카드 우측에 자연스럽게 페이드 */}
+          <img
+            src={p.image}
+            alt=""
+            aria-hidden
+            className="absolute inset-y-0 right-0 -z-10 h-full w-3/5 object-cover opacity-90 transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+            loading="lazy"
+          />
+          <div
+            aria-hidden
+            className="absolute inset-0 -z-10 bg-gradient-to-r from-white from-50% via-white/85 to-transparent"
+          />
+
           <span className="text-[22px] font-bold leading-none tabular-nums text-brand-100 transition-colors group-hover:text-brand-700 sm:text-[26px]">
             {String(i + 1).padStart(2, "0")}
           </span>
           <div className="min-w-0 flex-1">
-            <span className="chip">{p.badge}</span>
+            <span className="chip bg-white">{p.badge}</span>
             <h3 className="mt-2.5 text-[18px] font-bold leading-[1.35] text-ink-900">
               {p.title}
             </h3>
@@ -70,7 +87,7 @@ export default function HomeHero() {
               {p.desc}
             </p>
           </div>
-          <span className="hidden h-9 w-9 shrink-0 items-center justify-center rounded-[2px] bg-brand-50 text-brand-700 transition-colors group-hover:bg-brand-700 group-hover:text-white sm:inline-flex">
+          <span className="hidden h-9 w-9 shrink-0 items-center justify-center rounded-[2px] bg-white/90 text-brand-700 ring-1 ring-ink-100 transition-colors group-hover:bg-brand-700 group-hover:text-white group-hover:ring-brand-700 sm:inline-flex">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
               <path
                 d="M5 12h14M13 5l7 7-7 7"
