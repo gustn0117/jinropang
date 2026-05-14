@@ -155,7 +155,7 @@ export default function ContactForm() {
           견적 문의 보내기
         </button>
         <a
-          href="https://pf.kakao.com/_jinropang"
+          href="http://pf.kakao.com/_XNtWG/chat"
           target="_blank"
           rel="noreferrer"
           className="btn-secondary"

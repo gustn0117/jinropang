@@ -6,12 +6,12 @@ export const SITE = {
   url: "https://www.jinropang.kr",
   phone: "1668-1758",
   phoneE164: "+8216681758",
-  kakaoChannel: "https://pf.kakao.com/_jinropang",
+  kakaoChannel: "http://pf.kakao.com/_XNtWG/chat",
   email: "contact@jinropang.kr",
   address: "대한민국 전 지역 학교·기관 출강",
   social: {
     youtube: "https://www.youtube.com/@jinropang",
-    instagram: "https://www.instagram.com/jinropang",
+    instagram: "https://www.instagram.com/jinro_pang",
     blog: "https://blog.naver.com/jinropang",
   },
   keywords: [
