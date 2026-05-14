@@ -60,29 +60,45 @@ export default function HomeHero() {
         <Link
           key={p.title}
           href={p.href}
-          className="group flex items-center gap-5 rounded-[3px] border border-ink-100 bg-white p-4 transition-colors hover:border-brand-700 sm:p-5"
+          className="group relative isolate flex items-center gap-5 overflow-hidden rounded-[3px] border border-brand-900/40 bg-brand-900 p-5 text-white transition-colors hover:border-white sm:p-6"
         >
-          <span className="text-[22px] font-bold leading-none tabular-nums text-brand-100 transition-colors group-hover:text-brand-700 sm:text-[26px]">
+          <img
+            src={p.image}
+            alt=""
+            aria-hidden
+            loading="lazy"
+            className="absolute inset-0 -z-10 h-full w-full object-cover opacity-65 transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+          />
+          <div
+            aria-hidden
+            className="absolute inset-0 -z-10 bg-gradient-to-r from-brand-900/95 via-brand-900/65 to-brand-900/30"
+          />
+
+          <span className="text-[22px] font-bold leading-none tabular-nums text-white/35 transition-colors group-hover:text-white sm:text-[26px]">
             {String(i + 1).padStart(2, "0")}
           </span>
           <div className="min-w-0 flex-1">
-            <span className="chip">{p.badge}</span>
-            <h3 className="mt-2.5 text-[18px] font-bold leading-[1.35] text-ink-900">
+            <span className="inline-flex items-center rounded-[2px] border border-white/30 bg-white/10 px-2.5 py-1 text-[11.5px] font-semibold tracking-[0.02em] text-white backdrop-blur-sm">
+              {p.badge}
+            </span>
+            <h3 className="mt-2.5 text-[18px] font-bold leading-[1.35] text-white">
               {p.title}
             </h3>
-            <p className="mt-1 text-[14px] leading-[1.65] text-ink-700">
+            <p className="mt-1 text-[14px] leading-[1.65] text-white/75">
               {p.desc}
             </p>
           </div>
-          <div className="relative hidden h-[92px] w-[148px] shrink-0 overflow-hidden rounded-[2px] bg-ink-50 sm:block">
-            <img
-              src={p.image}
-              alt=""
-              aria-hidden
-              loading="lazy"
-              className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05]"
-            />
-          </div>
+          <span className="hidden h-9 w-9 shrink-0 items-center justify-center rounded-[2px] border border-white/30 bg-white/10 text-white backdrop-blur-sm transition-colors group-hover:border-white group-hover:bg-white group-hover:text-brand-700 sm:inline-flex">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
+              <path
+                d="M5 12h14M13 5l7 7-7 7"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </span>
         </Link>
       ))}
     </div>
