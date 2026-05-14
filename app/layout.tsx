@@ -76,6 +76,7 @@ export default function RootLayout({
     },
     sameAs: [SITE.social.youtube, SITE.social.instagram, SITE.social.blog],
     areaServed: { "@type": "Country", name: "대한민국" },
+    taxID: "390-88-03117",
     knowsAbout: [
       "로봇 체험 교육",
       "코딩 체험 교육",
