@@ -48,7 +48,7 @@ export default function PageHero({
         aria-hidden
         className="pointer-events-none absolute -top-40 left-1/2 h-80 w-[44rem] -translate-x-1/2 rounded-full bg-white/10 blur-3xl"
       />
-      <div className="shell-pad relative flex min-h-[260px] flex-col justify-end pb-12 pt-16 sm:min-h-[320px] sm:pb-14 sm:pt-20">
+      <div className="container-pad relative flex min-h-[260px] flex-col justify-end pb-12 pt-16 sm:min-h-[320px] sm:pb-14 sm:pt-20">
         {breadcrumb && (
           <ol className="mb-5 flex flex-wrap items-center gap-x-2 gap-y-1 text-[12.5px] leading-[1.5] text-white/55">
             <li>

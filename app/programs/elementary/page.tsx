@@ -40,12 +40,14 @@ export default function ElementaryPage() {
     <>
       <PageHero
         eyebrow="ELEMENTARY"
+        image="/hero-elementary.png"
+        image="/hero-elementary.png"
         title="초등학교 미래교육 프로그램"
         description="학년별 발달 단계와 안전 기준에 맞춰 설계한 로봇·코딩·AI·메타버스 체험. 학교 교실로 직접 찾아갑니다."
         breadcrumb={[{ label: "초등학교" }]}
       />
 
-      <section className="shell-pad py-10 lg:py-14">
+      <section className="container-pad py-10 lg:py-14">
         <div className="grid gap-4 md:grid-cols-3">
           {GRADE_GROUPS.map((g) => (
             <a
@@ -90,9 +92,9 @@ export default function ElementaryPage() {
           <section
             key={g.id}
             id={g.id}
-            className={idx % 2 === 0 ? "shell-pad py-10 lg:py-14" : "bg-soft-grad"}
+            className={idx % 2 === 0 ? "container-pad py-10 lg:py-14" : "bg-soft-grad"}
           >
-            <div className={idx % 2 === 0 ? "" : "shell-pad py-10 lg:py-14"}>
+            <div className={idx % 2 === 0 ? "" : "container-pad py-10 lg:py-14"}>
               <div className="flex items-end justify-between gap-6">
                 <div>
                   <p className="section-eyebrow">{g.label}</p>

@@ -40,12 +40,14 @@ export default function SecondaryPage() {
     <>
       <PageHero
         eyebrow="MIDDLE · HIGH SCHOOL"
+        image="/hero-secondary.png"
+        image="/hero-secondary.png"
         title="중·고등학교 미래교육 프로그램"
         description="진로 동기부여부터 학생부 활용 가능한 포트폴리오 결과물까지. 중·고등학생의 발달 단계에 맞춘 심화 체험을 운영합니다."
         breadcrumb={[{ label: "중·고등학교" }]}
       />
 
-      <section className="shell-pad py-10 lg:py-14">
+      <section className="container-pad py-10 lg:py-14">
         <div className="grid gap-4 md:grid-cols-3">
           {GROUPS.map((g) => (
             <a
@@ -80,9 +82,9 @@ export default function SecondaryPage() {
           <section
             key={g.id}
             id={g.id}
-            className={idx % 2 === 0 ? "shell-pad py-10 lg:py-14" : "bg-soft-grad"}
+            className={idx % 2 === 0 ? "container-pad py-10 lg:py-14" : "bg-soft-grad"}
           >
-            <div className={idx % 2 === 0 ? "" : "shell-pad py-10 lg:py-14"}>
+            <div className={idx % 2 === 0 ? "" : "container-pad py-10 lg:py-14"}>
               <div>
                 <p className="section-eyebrow">{g.label}</p>
                 <h2 className="section-title mt-3">{g.title}</h2>

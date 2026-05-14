@@ -29,7 +29,7 @@ export default function Header() {
       }`}
     >
       {/* 단일 줄 — 좌측 로고 + 우측 nav. 모바일은 좌측 로고 + 우측 햄버거 */}
-      <div className="container-pad flex h-16 items-center justify-between lg:h-20">
+      <div className="mx-auto flex h-16 w-full max-w-[1280px] items-center justify-between px-5 sm:px-6 lg:h-20 lg:px-8">
         <Link href="/" aria-label="진로팡 홈" className="shrink-0">
           <Logo sizeClassName="h-9 lg:h-11" />
         </Link>

@@ -83,7 +83,7 @@ export default function EventPage() {
         breadcrumb={[{ label: "행사부스 운영" }]}
       />
 
-      <section id="booths" className="shell-pad py-10 lg:py-14 scroll-mt-16">
+      <section id="booths" className="container-pad py-10 lg:py-14 scroll-mt-16">
         <div className="max-w-3xl">
           <p className="section-eyebrow">BOOTH MODULES</p>
           <h2 className="section-title mt-3">인기 부스 6종, 모듈식 조합</h2>
@@ -112,7 +112,7 @@ export default function EventPage() {
       </section>
 
       <section id="operation" className="scroll-mt-16 bg-soft-grad">
-        <div className="shell-pad py-12 lg:py-16">
+        <div className="container-pad py-12 lg:py-16">
           <div className="grid gap-12 md:grid-cols-12">
             <div className="md:col-span-5">
               <p className="section-eyebrow">OPERATION FLOW</p>
@@ -146,7 +146,7 @@ export default function EventPage() {
         </div>
       </section>
 
-      <section id="competition" className="shell-pad py-12 lg:py-16 scroll-mt-16">
+      <section id="competition" className="container-pad py-12 lg:py-16 scroll-mt-16">
         <div className="grid gap-10 md:grid-cols-12">
           <div className="md:col-span-5">
             <p className="section-eyebrow">COMPETITION</p>
