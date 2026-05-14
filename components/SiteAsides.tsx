@@ -36,7 +36,7 @@ export function LeftAside() {
         제안해 드립니다.
       </p>
       <Link href="/contact" className="btn-primary mt-5 w-full">
-        신청서 작성
+        견적 문의하기
         <Arrow />
       </Link>
       <p className="mt-2.5 text-center text-[12px] leading-[1.4] text-ink-500">
@@ -65,8 +65,8 @@ const LINKS = [
   },
   {
     href: SITE.social.blog,
-    label: "네이버 블로그",
-    sub: "바로가기",
+    label: "더 많은 후기",
+    sub: "블로그 연결",
     external: true,
     icon: <NaverBlogIcon className="h-4 w-4" />,
   },

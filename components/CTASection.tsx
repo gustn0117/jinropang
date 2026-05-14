@@ -25,7 +25,7 @@ export default function CTASection({
         </div>
         <div className="flex shrink-0 flex-wrap gap-2">
           <Link href="/contact" className="btn-dark">
-            신청서 작성하기
+            견적 문의하기
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
               <path
                 d="M5 12h14M13 5l7 7-7 7"

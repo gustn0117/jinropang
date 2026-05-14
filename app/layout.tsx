@@ -134,13 +134,13 @@ export default function RootLayout({
         {/* 데스크탑 — 좌·우 사이드를 뷰포트 가장자리에 고정. 본문 sections는 풀폭 bg 가능 */}
         <aside
           aria-label="좌측 안내"
-          className="fixed left-6 top-[152px] z-30 hidden w-[200px] lg:block"
+          className="fixed left-6 top-[96px] z-30 hidden w-[200px] lg:block"
         >
           <LeftAside />
         </aside>
         <aside
           aria-label="채널 / 문의"
-          className="fixed right-6 top-[152px] z-30 hidden w-[188px] lg:block"
+          className="fixed right-6 top-[96px] z-30 hidden w-[188px] lg:block"
         >
           <RightAside />
         </aside>

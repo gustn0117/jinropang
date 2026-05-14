@@ -35,7 +35,7 @@ export default function Footer() {
               대표번호 {SITE.phone}
             </a>
             <Link href="/contact" className="btn-primary">
-              신청서 작성
+              견적 문의하기
             </Link>
           </div>
           <div className="mt-6 flex gap-2">

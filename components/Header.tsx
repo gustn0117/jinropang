@@ -28,34 +28,21 @@ export default function Header() {
           : "border-transparent bg-white"
       }`}
     >
-      {/* 상단 줄 — 데스크탑 전용: 로고만 */}
-      <div className="hidden border-b border-ink-100 lg:block">
-        <div className="container-pad flex h-20 items-center justify-center">
-          <Link href="/" aria-label="진로팡 홈">
-            <Logo sizeClassName="h-12" />
-          </Link>
-        </div>
-      </div>
-
-      {/* 메인 줄 — 데스크탑: 가운데 정렬된 nav · 모바일: 로고 + 햄버거 */}
-      <div className="container-pad flex h-16 items-center justify-between lg:h-14 lg:justify-center">
-        <Link
-          href="/"
-          aria-label="진로팡 홈"
-          className="shrink-0 lg:hidden"
-        >
-          <Logo sizeClassName="h-9" />
+      {/* 단일 줄 — 좌측 로고 + 우측 nav. 모바일은 좌측 로고 + 우측 햄버거 */}
+      <div className="container-pad flex h-16 items-center justify-between lg:h-20">
+        <Link href="/" aria-label="진로팡 홈" className="shrink-0">
+          <Logo sizeClassName="h-9 lg:h-11" />
         </Link>
 
         <nav
-          className="hidden items-center gap-1 lg:flex"
+          className="hidden items-center gap-1.5 lg:flex"
           aria-label="주요 메뉴"
         >
           {NAV.map((item) => (
             <div key={item.href} className="group relative">
               <Link
                 href={item.href}
-                className="inline-flex items-center gap-1 rounded-[2px] px-4 py-2 text-[15px] leading-[1.2] font-bold text-ink-900 transition-colors group-hover:text-brand-700"
+                className="inline-flex items-center gap-1.5 rounded-[2px] px-3.5 py-2.5 text-[16px] leading-[1.2] font-bold text-ink-900 transition-colors group-hover:text-brand-700"
               >
                 {item.label}
                 {item.children && (
@@ -228,7 +215,7 @@ export default function Header() {
                 className="btn-primary"
                 onClick={() => setOpen(false)}
               >
-                무료 상담 신청서 작성
+                무료 견적 문의하기
               </Link>
             </div>
           </div>

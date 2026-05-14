@@ -152,7 +152,7 @@ export default function ContactForm() {
 
       <div className="flex flex-wrap items-center gap-2">
         <button type="submit" className="btn-primary" disabled={!agree}>
-          신청서 제출하기
+          견적 문의 보내기
         </button>
         <a
           href="https://pf.kakao.com/_jinropang"

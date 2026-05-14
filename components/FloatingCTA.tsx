@@ -37,7 +37,7 @@ export default function FloatingCTA() {
           href="/contact"
           className="inline-flex items-center gap-2 rounded-[2px] bg-brand-700 px-4 py-2 text-[13px] leading-[1.2] font-bold text-white hover:bg-brand-800"
         >
-          신청서 작성
+          견적 문의하기
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
             <path
               d="M5 12h14M13 5l7 7-7 7"
