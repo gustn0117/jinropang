@@ -92,7 +92,7 @@ export default function ReviewsPage() {
 
       <section className="bg-soft-grad">
         <div className="container-pad py-10 lg:py-14">
-          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+          <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between sm:gap-8">
             <div className="max-w-3xl">
               <p className="section-eyebrow">CASE STORIES</p>
               <h2 className="section-title mt-3">운영 사례 모음</h2>
@@ -105,7 +105,7 @@ export default function ReviewsPage() {
               href={SITE.social.blog}
               target="_blank"
               rel="noreferrer"
-              className="btn-secondary shrink-0"
+              className="btn-secondary shrink-0 sm:mt-10"
             >
               더 많은 후기 보기
               <svg

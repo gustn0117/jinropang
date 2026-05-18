@@ -1,7 +1,7 @@
 import Link from "next/link";
 import PageHero from "./PageHero";
 import CTASection from "./CTASection";
-import { type Program } from "@/lib/programs";
+import { type Program, displayTitle } from "@/lib/programs";
 
 export default function ProgramDetailView({
   program,
@@ -21,7 +21,7 @@ export default function ProgramDetailView({
       <PageHero
         eyebrow={eyebrow}
         image={program.image}
-        title={program.title}
+        title={displayTitle(program)}
         description={program.description}
         breadcrumb={breadcrumb}
       />

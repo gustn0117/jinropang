@@ -1,8 +1,9 @@
 import Link from "next/link";
-import { type Program, programHref } from "@/lib/programs";
+import { type Program, programHref, displayTitle } from "@/lib/programs";
 
 export default function ProgramCard({ p }: { p: Program }) {
   const href = programHref(p);
+  const title = displayTitle(p);
   return (
     <Link
       href={href}
@@ -18,7 +19,7 @@ export default function ProgramCard({ p }: { p: Program }) {
       </div>
       <div className="flex flex-1 flex-col p-5">
         <h3 className="text-[16px] font-bold leading-[1.35] text-ink-900">
-          {p.title}
+          {title}
         </h3>
         <p className="mt-2 line-clamp-2 text-[13.5px] leading-[1.65] text-ink-700">
           {p.description}

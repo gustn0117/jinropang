@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import ProgramCard from "@/components/ProgramCard";
 import CTASection from "@/components/CTASection";
-import { EVENT_PROGRAMS } from "@/lib/programs";
+import { EVENT_GROUPS } from "@/lib/programs";
 
 export const metadata: Metadata = {
   title: "행사부스 운영 — 축제행사부스·대회 운영",
@@ -54,10 +54,44 @@ export default function EventPage() {
           </p>
         </div>
 
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {EVENT_PROGRAMS.map((p) => (
-            <ProgramCard key={p.slug} p={p} />
-          ))}
+        {/* 체험부스 고급형 */}
+        <div className="mt-12">
+          <div className="flex items-center gap-3">
+            <span className="inline-flex items-center rounded-[2px] bg-brand-700 px-2.5 py-1 text-[11.5px] font-bold tracking-[0.04em] text-white">
+              PREMIUM
+            </span>
+            <h3 className="text-[18px] font-bold leading-[1.3] text-ink-900 sm:text-[20px]">
+              체험부스 고급형
+            </h3>
+            <span className="text-[12.5px] text-ink-500">
+              총 {EVENT_GROUPS.premium.length}종
+            </span>
+          </div>
+          <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {EVENT_GROUPS.premium.map((p) => (
+              <ProgramCard key={`premium-${p.slug}`} p={p} />
+            ))}
+          </div>
+        </div>
+
+        {/* 체험부스 일반형 */}
+        <div className="mt-14">
+          <div className="flex items-center gap-3">
+            <span className="inline-flex items-center rounded-[2px] border border-ink-100 bg-white px-2.5 py-1 text-[11.5px] font-bold tracking-[0.04em] text-ink-700">
+              STANDARD
+            </span>
+            <h3 className="text-[18px] font-bold leading-[1.3] text-ink-900 sm:text-[20px]">
+              체험부스 일반형
+            </h3>
+            <span className="text-[12.5px] text-ink-500">
+              총 {EVENT_GROUPS.standard.length}종
+            </span>
+          </div>
+          <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {EVENT_GROUPS.standard.map((p) => (
+              <ProgramCard key={`standard-${p.slug}`} p={p} />
+            ))}
+          </div>
         </div>
       </section>
 
