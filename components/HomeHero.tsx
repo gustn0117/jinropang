@@ -46,14 +46,6 @@ export default function HomeHero() {
           preload="metadata"
           aria-label="진로팡 학교 출강 미래교육 현장 영상"
         />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-brand-900/80 to-transparent"
-        />
-        <p className="absolute bottom-4 left-5 flex items-center text-[11.5px] font-bold uppercase tracking-[0.14em] text-white">
-          <span aria-hidden className="mr-2.5 h-px w-6 bg-white" />
-          ON-SITE · 현장 운영 실황
-        </p>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 
 const TYPES = [
   "초등 체험학습",
@@ -21,37 +21,55 @@ export default function ContactForm() {
   const [date, setDate] = useState("");
   const [memo, setMemo] = useState("");
   const [agree, setAgree] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "ok" | "err">(
+    "idle",
+  );
+  const [errMsg, setErrMsg] = useState("");
 
-  const mailto = useMemo(() => {
-    const body = [
-      `[ 진로팡 견적·상담 신청 ]`,
-      `프로그램 유형: ${type}`,
-      `기관/학교명: ${school}`,
-      `담당자: ${name}`,
-      `연락처: ${phone}`,
-      `대상 학년: ${grade}`,
-      `예상 인원: ${count}`,
-      `희망 일정: ${date}`,
-      ``,
-      `요청 사항:`,
-      memo,
-    ].join("\n");
-    const subject = `[견적 문의] ${school || "(미입력)"} - ${type}`;
-    return `mailto:contact@jinropang.kr?subject=${encodeURIComponent(
-      subject,
-    )}&body=${encodeURIComponent(body)}`;
-  }, [type, school, name, phone, grade, count, date, memo]);
+  async function submit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!agree) return;
+    setStatus("sending");
+    setErrMsg("");
+    try {
+      const r = await fetch("/api/inquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type,
+          school,
+          name,
+          phone,
+          grade,
+          count,
+          date,
+          memo,
+        }),
+      });
+      if (!r.ok) {
+        const data = await r.json().catch(() => ({}));
+        setStatus("err");
+        setErrMsg(data?.error ?? "전송에 실패했습니다. 잠시 후 다시 시도해주세요.");
+        return;
+      }
+      setStatus("ok");
+      // Reset form
+      setSchool("");
+      setName("");
+      setPhone("");
+      setGrade("");
+      setCount("");
+      setDate("");
+      setMemo("");
+      setAgree(false);
+    } catch {
+      setStatus("err");
+      setErrMsg("네트워크 오류. 다시 시도해주세요.");
+    }
+  }
 
   return (
-    <form
-      className="grid gap-4"
-      onSubmit={(e) => {
-        e.preventDefault();
-        setSubmitted(true);
-        window.location.href = mailto;
-      }}
-    >
+    <form className="grid gap-4" onSubmit={submit}>
       <fieldset>
         <legend className="text-[13px] leading-[1.3] font-semibold text-ink-900">
           어떤 운영을 원하시나요?
@@ -151,8 +169,12 @@ export default function ContactForm() {
       </label>
 
       <div className="flex flex-wrap items-center gap-2">
-        <button type="submit" className="btn-primary" disabled={!agree}>
-          견적 문의 보내기
+        <button
+          type="submit"
+          className="btn-primary disabled:cursor-not-allowed disabled:opacity-60"
+          disabled={!agree || status === "sending"}
+        >
+          {status === "sending" ? "전송 중..." : "견적 문의 보내기"}
         </button>
         <a
           href="http://pf.kakao.com/_XNtWG/chat"
@@ -167,10 +189,15 @@ export default function ContactForm() {
         </a>
       </div>
 
-      {submitted && (
-        <p className="rounded-[3px] bg-brand-50 p-4 text-[13px] leading-[1.7] text-brand-800">
-          메일 앱이 열렸습니다. 보내주시면 평일 30분 이내 1차 회신을 드립니다.
-          메일이 어려우시면 카카오톡 또는 전화로 편하게 연락 주세요.
+      {status === "ok" && (
+        <p className="rounded-[3px] bg-brand-50 p-4 text-[13.5px] leading-[1.7] text-brand-800">
+          접수되었습니다. 평일 30분 이내 1차 회신을 드립니다. 빠른 연결이 필요하시면
+          카카오톡 또는 전화로 편하게 연락 주세요.
+        </p>
+      )}
+      {status === "err" && (
+        <p className="rounded-[3px] bg-red-50 p-4 text-[13.5px] leading-[1.7] text-red-700">
+          {errMsg}
         </p>
       )}
     </form>

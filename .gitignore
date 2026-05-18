@@ -5,6 +5,7 @@ out
 .DS_Store
 *.tsbuildinfo
 next-env.d.ts
+/data/
 /메인동영상.mp4
 /진로팡.pdf
 /로고.png

@@ -103,16 +103,16 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-ink-100">
-        <div className="container-pad flex flex-col gap-2 py-6 text-[12px] leading-[1.6] text-ink-500 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-3">
-            <p>© {new Date().getFullYear()} 진로팡. All rights reserved.</p>
-            <span aria-hidden className="hidden sm:inline text-ink-300">|</span>
-            <p>
-              사업자등록번호 <span className="font-semibold text-ink-700">390-88-03117</span>
-            </p>
-          </div>
-          <p>찾아가는 미래교육 · 진로체험 전문기관 · 전국 학교·기관 출강</p>
+      <div className="border-t border-ink-100 bg-white">
+        <div className="container-pad flex flex-col gap-2 py-5 text-[13px] leading-[1.6] text-ink-700 sm:flex-row sm:items-center sm:justify-between">
+          <p className="font-semibold text-ink-900">
+            사업자등록번호 <span className="ml-1 font-bold tabular-nums">390-88-03117</span>
+            <span aria-hidden className="mx-2 text-ink-300">|</span>
+            <span className="font-medium text-ink-700">진로팡</span>
+          </p>
+          <p className="text-[12px] text-ink-500">
+            © {new Date().getFullYear()} 진로팡. All rights reserved. · 찾아가는 미래교육 · 전국 학교·기관 출강
+          </p>
         </div>
       </div>
     </footer>
