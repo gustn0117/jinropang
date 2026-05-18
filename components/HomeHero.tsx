@@ -35,7 +35,7 @@ export default function HomeHero() {
   return (
     <div className="shell-pad flex animate-fadeUp flex-col gap-4">
       <h1 className="sr-only">찾아가는 미래교육 진로팡 — 학교·기관 출강 로봇·코딩·AI 체험</h1>
-      <div className="relative mx-auto aspect-video w-full max-w-[820px] overflow-hidden rounded-[3px] border border-ink-100 bg-brand-900">
+      <div className="relative aspect-video w-full overflow-hidden rounded-[3px] border border-ink-100 bg-brand-900">
         <video
           className="absolute inset-0 h-full w-full object-contain"
           src="/assets/hero.mp4"
