@@ -93,37 +93,42 @@ export default function StatsBanner() {
           </p>
         </div>
 
-        {/* 5개 스탯 — 라이트 카드 그리드, 라인으로 구분 */}
-        <dl className="overflow-hidden rounded-[3px] border border-ink-100 bg-white">
-          <div className="grid grid-cols-1 divide-y divide-ink-100 sm:grid-cols-2 sm:divide-y-0 sm:divide-x lg:grid-cols-5">
-            {STATS.map((s, i) => (
-              <div key={i} className="flex flex-col gap-3 p-5 sm:p-6 [&:nth-child(2)]:border-t [&:nth-child(2)]:border-ink-100 sm:[&:nth-child(2)]:border-t-0 lg:[&:nth-child(n)]:border-t-0">
-                <div className="flex items-center justify-between">
-                  <span className="grid h-9 w-9 place-items-center rounded-[2px] bg-brand-50 text-brand-700">
-                    {s.icon}
+        {/* 5개 스탯 — 흰 카드 + 좌측 정렬 세로 스택, 동일 높이 */}
+        <dl className="grid grid-cols-1 overflow-hidden rounded-[3px] border border-ink-100 bg-white lg:grid-cols-5">
+          {STATS.map((s, i) => (
+            <div
+              key={i}
+              className={`flex min-w-0 flex-col p-5 lg:p-6 ${
+                i > 0 ? "border-t border-ink-100 lg:border-l lg:border-t-0" : ""
+              }`}
+            >
+              <div className="flex items-center gap-2">
+                <span className="grid h-8 w-8 shrink-0 place-items-center rounded-[2px] bg-brand-50 text-brand-700">
+                  {s.icon}
+                </span>
+                {s.badge && (
+                  <span className="whitespace-nowrap rounded-[2px] bg-brand-50 px-1.5 py-0.5 text-[10px] font-bold tracking-[0.04em] text-brand-700">
+                    {s.badge}
                   </span>
-                  {s.badge && (
-                    <span className="rounded-[2px] bg-brand-50 px-2 py-1 text-[10.5px] font-bold tracking-[0.04em] text-brand-700">
-                      {s.badge}
-                    </span>
-                  )}
-                </div>
-                <dd
-                  className={`mt-1 font-extrabold leading-[1.1] tabular-nums text-ink-900 ${
-                    s.badge ? "text-[30px] sm:text-[34px]" : "text-[17px] sm:text-[19px]"
-                  }`}
-                >
-                  {s.value}
-                </dd>
-                <dt className="text-[14px] font-semibold leading-[1.35] text-ink-900">
-                  {s.label}
-                </dt>
-                <p className="text-[12.5px] leading-[1.55] text-ink-500">
-                  {s.sub}
-                </p>
+                )}
               </div>
-            ))}
-          </div>
+              <dd
+                className={`mt-4 font-extrabold leading-[1.05] tabular-nums text-ink-900 ${
+                  s.badge
+                    ? "text-[26px] xl:text-[30px]"
+                    : "text-[16px] leading-[1.3]"
+                }`}
+              >
+                {s.value}
+              </dd>
+              <dt className="mt-2 text-[13.5px] font-semibold leading-[1.4] text-ink-900">
+                {s.label}
+              </dt>
+              <p className="mt-auto pt-3 text-[12px] leading-[1.55] text-ink-500">
+                {s.sub}
+              </p>
+            </div>
+          ))}
         </dl>
 
         {/* 4개 지역 거점 운영 — 라이트 카드 */}
