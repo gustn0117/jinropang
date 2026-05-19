@@ -81,7 +81,7 @@ const REGIONS = [
 export default function StatsBanner() {
   return (
     <section className="bg-ink-50">
-      <div className="container-pad shell-pad py-12 lg:py-16">
+      <div className="shell-pad py-12 lg:py-16">
         {/* 헤더 */}
         <div className="mb-10 max-w-2xl">
           <p className="section-eyebrow">JINROPANG IN NUMBERS</p>
