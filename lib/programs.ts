@@ -188,6 +188,28 @@ const ELEMENTARY_36: Program[] = [
 /* ===== 초등 체험학습 패키지 (팝드론 빙고게임은 행사부스 고급형으로 이동되어 제외) ===== */
 const ELEMENTARY_TRIP: Program[] = [
   {
+    slug: "smart-robot-pet",
+    title: "스마트 로봇 펫",
+    category: "elementary",
+    group: "trip",
+    duration: "체험학습 패키지",
+    capacity: "현장 운영",
+    description:
+      "사족보행 로봇의 다양한 움직임을 직접 체험하며 미래 로봇 기술을 경험합니다.",
+    image: "/programs/elementary/trip/smart-robot-pet.png",
+  },
+  {
+    slug: "dinosaur-alive",
+    title: "공룡이 살아있다",
+    category: "elementary",
+    group: "trip",
+    duration: "체험학습 패키지",
+    capacity: "현장 운영",
+    description:
+      "실제 공룡처럼 움직이는 사족보행 로봇을 체험하며 생동감 있는 로봇 콘텐츠를 즐겨볼 수 있습니다.",
+    image: "/programs/elementary/trip/dinosaur-alive.png",
+  },
+  {
     slug: "four-legged-robot",
     title: "4족보행 로봇",
     category: "elementary",
@@ -522,7 +544,7 @@ export const SECONDARY: Program[] = [
     capacity: "20-30명",
     description:
       "도형을 조합하여 입체 구조를 만들어 보면서 디지털 설계 과정을 학습 및 이해할 수 있습니다.",
-    image: "/programs/secondary/3d-design.jpg",
+    image: "/programs/secondary/3d-design.png",
   },
   {
     slug: "3d-pen-maker",

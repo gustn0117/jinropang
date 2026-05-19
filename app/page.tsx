@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import HomeHero from "@/components/HomeHero";
+import StatsBanner from "@/components/StatsBanner";
 import { LeftAside, RightAside } from "@/components/SiteAsides";
 import { SITE } from "@/lib/site";
 
@@ -51,6 +52,9 @@ export default function HomePage() {
       </aside>
 
       <HomeHero />
+
+      {/* 2026년 실적 + 4개 지역 거점 운영 + 학교 업무 부담 */}
+      <StatsBanner />
 
       {/* 모바일 — 본문 하단에 사이드 인라인 표시 */}
       <div className="container-pad space-y-4 pt-10 lg:hidden">

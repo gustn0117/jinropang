@@ -35,6 +35,16 @@ export default function SecondaryPage() {
             로봇·자율주행·웨어러블·메타버스·IoT·생성형 AI·드론까지. 중·고등학생
             대상 진로 포트폴리오와 학생부 활용이 가능한 결과물 중심 프로그램입니다.
           </p>
+          <p className="mt-3 inline-flex items-start gap-2 rounded-[3px] border border-brand-100 bg-brand-50 px-3.5 py-2.5 text-[13.5px] font-medium leading-[1.55] text-brand-800">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="mt-0.5 shrink-0 text-brand-700" aria-hidden>
+              <path d="M12 8v5M12 16.5v.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8" />
+            </svg>
+            <span>
+              동일 프로그램이라도 학교급 및 학년 수준에 따라 난이도와 활동 내용을
+              조정하여 운영합니다.
+            </span>
+          </p>
         </div>
         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {SECONDARY.map((p) => (
