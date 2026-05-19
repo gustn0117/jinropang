@@ -185,7 +185,7 @@ const ELEMENTARY_36: Program[] = [
   },
 ];
 
-/* ===== 초등 체험학습 패키지 (팝드론 빙고게임은 행사부스 고급형으로 이동되어 제외) ===== */
+/* ===== 초등 체험학습 패키지 (팝드론 빙고게임은 행사부스 고급형으로 이동되어 제외 · 4족보행 로봇 제거 · 사용자 순서 반영) ===== */
 const ELEMENTARY_TRIP: Program[] = [
   {
     slug: "smart-robot-pet",
@@ -210,26 +210,26 @@ const ELEMENTARY_TRIP: Program[] = [
     image: "/programs/elementary/trip/dinosaur-alive.png",
   },
   {
-    slug: "four-legged-robot",
-    title: "4족보행 로봇",
+    slug: "robot-soccer",
+    title: "로봇축구",
     category: "elementary",
     group: "trip",
     duration: "체험학습 패키지",
     capacity: "현장 운영",
     description:
-      "사족보행 로봇의 다양한 움직임을 직접 체험하며 미래 로봇 기술을 경험합니다.",
-    image: "/programs/elementary/trip/four-legged-robot.png",
+      "로봇을 활용하여 전략과 조작을 통해 로봇 축구 경기를 하며 실감형 로봇 콘텐츠를 경험합니다.",
+    image: "/programs/elementary/trip/robot-soccer.jpg",
   },
   {
-    slug: "basketball",
-    title: "농구",
+    slug: "ar-archery",
+    title: "AR 양궁",
     category: "elementary",
     group: "trip",
     duration: "체험학습 패키지",
     capacity: "현장 운영",
     description:
-      "로봇을 직접 조종하여 농구 미션을 수행하며 방향 제어와 조작 원리를 체험합니다.",
-    image: "/programs/elementary/trip/basketball.jpg",
+      "증강현실 기술이 적용된 양궁 콘텐츠를 통해 몰입형 스포츠 활동을 경험합니다.",
+    image: "/programs/elementary/trip/ar-archery.jpg",
   },
   {
     slug: "ict-running",
@@ -252,6 +252,40 @@ const ELEMENTARY_TRIP: Program[] = [
     description:
       "로봇을 직접 조종하여 레이싱 경주를 즐기며 속도감 있는 로봇 체험을 경험합니다.",
     image: "/programs/elementary/trip/robot-racing.jpg",
+  },
+  {
+    slug: "pop-touch",
+    title: "팝 터치",
+    category: "elementary",
+    group: "trip",
+    duration: "체험학습 패키지",
+    capacity: "현장 운영",
+    description:
+      "화면에 나타나는 목표를 빠르게 터치하며 순발력 게임을 활동합니다.",
+    image: "/programs/elementary/trip/pop-touch.jpg",
+  },
+  {
+    slug: "ai-omok",
+    title: "인공지능 오목",
+    category: "elementary",
+    group: "trip",
+    duration: "체험학습 패키지",
+    capacity: "현장 운영",
+    description:
+      "AI 기반 오목 시스템과 대결하며 AI의 판단 방식과 전략 플레이를 경험합니다.",
+    image: "/programs/elementary/trip/ai-omok.jpg",
+  },
+  /* ----- 이하 기존 순서 ----- */
+  {
+    slug: "basketball",
+    title: "농구",
+    category: "elementary",
+    group: "trip",
+    duration: "체험학습 패키지",
+    capacity: "현장 운영",
+    description:
+      "로봇을 직접 조종하여 농구 미션을 수행하며 방향 제어와 조작 원리를 체험합니다.",
+    image: "/programs/elementary/trip/basketball.jpg",
   },
   {
     slug: "motion-recognition",
@@ -309,39 +343,6 @@ const ELEMENTARY_TRIP: Program[] = [
     image: "/programs/elementary/trip/robot-ssireum.jpg",
   },
   {
-    slug: "ar-archery",
-    title: "AR 양궁",
-    category: "elementary",
-    group: "trip",
-    duration: "체험학습 패키지",
-    capacity: "현장 운영",
-    description:
-      "증강현실 기술이 적용된 양궁 콘텐츠를 통해 몰입형 스포츠 활동을 경험합니다.",
-    image: "/programs/elementary/trip/ar-archery.jpg",
-  },
-  {
-    slug: "ai-omok",
-    title: "인공지능 오목",
-    category: "elementary",
-    group: "trip",
-    duration: "체험학습 패키지",
-    capacity: "현장 운영",
-    description:
-      "AI 기반 오목 시스템과 대결하며 AI의 판단 방식과 전략 플레이를 경험합니다.",
-    image: "/programs/elementary/trip/ai-omok.jpg",
-  },
-  {
-    slug: "robot-soccer",
-    title: "로봇축구",
-    category: "elementary",
-    group: "trip",
-    duration: "체험학습 패키지",
-    capacity: "현장 운영",
-    description:
-      "로봇을 활용하여 전략과 조작을 통해 로봇 축구 경기를 하며 실감형 로봇 콘텐츠를 경험합니다.",
-    image: "/programs/elementary/trip/robot-soccer.jpg",
-  },
-  {
     slug: "robot-curling",
     title: "로봇 컬링",
     category: "elementary",
@@ -362,17 +363,6 @@ const ELEMENTARY_TRIP: Program[] = [
     description:
       "AR 기술이 적용된 큐브솔브 콘텐츠를 통해 실시간 인터랙션과 문제 해결 활동을 경험합니다.",
     image: "/programs/elementary/trip/ar-cube-solve.jpg",
-  },
-  {
-    slug: "pop-touch",
-    title: "팝 터치",
-    category: "elementary",
-    group: "trip",
-    duration: "체험학습 패키지",
-    capacity: "현장 운영",
-    description:
-      "화면에 나타나는 목표를 빠르게 터치하며 순발력 게임을 활동합니다.",
-    image: "/programs/elementary/trip/pop-touch.jpg",
   },
   {
     slug: "instant-photo",
