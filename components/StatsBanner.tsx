@@ -5,26 +5,10 @@ const STATS = [
     label: "운영 학교·기관",
     sub: "전국 초·중·고 및 기관",
     icon: (
-      <svg viewBox="0 0 48 48" className="h-12 w-12" fill="none" aria-hidden>
-        <path
-          d="M24 5 8 13v3h32v-3L24 5Z"
-          stroke="currentColor"
-          strokeWidth="2.4"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M10 18v22h28V18M16 22v14M24 22v14M32 22v14"
-          stroke="currentColor"
-          strokeWidth="2.4"
-          strokeLinecap="round"
-        />
-        <path
-          d="M6 41h36"
-          stroke="currentColor"
-          strokeWidth="2.4"
-          strokeLinecap="round"
-        />
-        <rect x="22" y="9" width="4" height="3" fill="currentColor" />
+      <svg viewBox="0 0 32 32" className="h-6 w-6" fill="none" aria-hidden>
+        <path d="M16 4 4 9v2h24V9L16 4Z" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round" />
+        <path d="M7 13v15h18V13M11 16v9M16 16v9M21 16v9" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+        <path d="M3 28h26" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
       </svg>
     ),
   },
@@ -34,21 +18,11 @@ const STATS = [
     label: "누적 참여 학생",
     sub: "다양한 학년 대상 운영",
     icon: (
-      <svg viewBox="0 0 48 48" className="h-12 w-12" fill="none" aria-hidden>
-        <circle cx="17" cy="17" r="6" stroke="currentColor" strokeWidth="2.4" />
-        <circle cx="32" cy="20" r="5" stroke="currentColor" strokeWidth="2.4" />
-        <path
-          d="M5 40c0-6.5 5.5-11 12-11s12 4.5 12 11"
-          stroke="currentColor"
-          strokeWidth="2.4"
-          strokeLinecap="round"
-        />
-        <path
-          d="M28 31c5 0 12 3 12 9"
-          stroke="currentColor"
-          strokeWidth="2.4"
-          strokeLinecap="round"
-        />
+      <svg viewBox="0 0 32 32" className="h-6 w-6" fill="none" aria-hidden>
+        <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.7" />
+        <circle cx="22" cy="14" r="3.5" stroke="currentColor" strokeWidth="1.7" />
+        <path d="M4 26c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+        <path d="M20 20.5c3.5 0 8 2 8 6" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
       </svg>
     ),
   },
@@ -58,14 +32,14 @@ const STATS = [
     label: "연간 운영 프로그램",
     sub: "체험부스·진로교육·캠프 등",
     icon: (
-      <svg viewBox="0 0 48 48" className="h-12 w-12" fill="none" aria-hidden>
-        <rect x="7" y="10" width="34" height="32" rx="3" stroke="currentColor" strokeWidth="2.4" />
-        <path d="M7 19h34" stroke="currentColor" strokeWidth="2.4" />
-        <path d="M15 6v8M33 6v8" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
-        <rect x="14" y="25" width="6" height="5" fill="currentColor" />
-        <rect x="28" y="25" width="6" height="5" fill="currentColor" />
-        <rect x="14" y="33" width="6" height="5" fill="currentColor" opacity="0.6" />
-        <rect x="28" y="33" width="6" height="5" fill="currentColor" opacity="0.6" />
+      <svg viewBox="0 0 32 32" className="h-6 w-6" fill="none" aria-hidden>
+        <rect x="5" y="7" width="22" height="21" rx="2.5" stroke="currentColor" strokeWidth="1.7" />
+        <path d="M5 13h22" stroke="currentColor" strokeWidth="1.7" />
+        <path d="M11 4v6M21 4v6" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+        <rect x="10" y="17" width="4" height="3" fill="currentColor" />
+        <rect x="18" y="17" width="4" height="3" fill="currentColor" />
+        <rect x="10" y="22" width="4" height="3" fill="currentColor" opacity="0.5" />
+        <rect x="18" y="22" width="4" height="3" fill="currentColor" opacity="0.5" />
       </svg>
     ),
   },
@@ -75,20 +49,10 @@ const STATS = [
     label: "교사 활용형 자료 지원",
     sub: "창체·진로활동 운영 지원",
     icon: (
-      <svg viewBox="0 0 48 48" className="h-12 w-12" fill="none" aria-hidden>
-        <path
-          d="M11 6h17l9 9v27H11z"
-          stroke="currentColor"
-          strokeWidth="2.4"
-          strokeLinejoin="round"
-        />
-        <path d="M28 6v9h9" stroke="currentColor" strokeWidth="2.4" strokeLinejoin="round" />
-        <path
-          d="M16 24h16M16 30h16M16 36h10"
-          stroke="currentColor"
-          strokeWidth="2.4"
-          strokeLinecap="round"
-        />
+      <svg viewBox="0 0 32 32" className="h-6 w-6" fill="none" aria-hidden>
+        <path d="M8 4h12l5 5v19H8z" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round" />
+        <path d="M20 4v5h5" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round" />
+        <path d="M12 16h10M12 21h10M12 26h7" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
       </svg>
     ),
   },
@@ -98,18 +62,10 @@ const STATS = [
     label: "전문 강사진",
     sub: "소수정예·검증된 강사 진행",
     icon: (
-      <svg viewBox="0 0 48 48" className="h-12 w-12" fill="none" aria-hidden>
-        <circle cx="24" cy="16" r="7" stroke="currentColor" strokeWidth="2.4" />
-        <path
-          d="M9 42c0-7 6.7-12 15-12s15 5 15 12"
-          stroke="currentColor"
-          strokeWidth="2.4"
-          strokeLinecap="round"
-        />
-        <path
-          d="m35 9 1.6 3.4L40 13l-2.4 2.2.6 3.4L35 17l-3.2 1.6.6-3.4L30 13l3.4-.6L35 9Z"
-          fill="currentColor"
-        />
+      <svg viewBox="0 0 32 32" className="h-6 w-6" fill="none" aria-hidden>
+        <circle cx="16" cy="11" r="5" stroke="currentColor" strokeWidth="1.7" />
+        <path d="M6 28c0-4.7 4.5-8 10-8s10 3.3 10 8" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+        <path d="m24 5 1 2.3 2.3.5L25.5 9.5l.4 2.4L24 11l-2 .9.5-2.4L21 7.8l2.3-.5L24 5Z" fill="currentColor" />
       </svg>
     ),
   },
@@ -124,133 +80,97 @@ const REGIONS = [
 
 export default function StatsBanner() {
   return (
-    <>
-      <section className="bg-brand-900 text-white">
-        <div className="container-pad shell-pad py-12 lg:py-16">
-          {/* 5 stat cards */}
-          <div className="grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-3 lg:grid-cols-5 lg:gap-x-2">
+    <section className="bg-ink-50">
+      <div className="container-pad shell-pad py-12 lg:py-16">
+        {/* 헤더 */}
+        <div className="mb-10 max-w-2xl">
+          <p className="section-eyebrow">JINROPANG IN NUMBERS</p>
+          <h2 className="section-title mt-3">
+            진로팡이 함께해온 <span className="text-brand-700">학교 미래교육</span>
+          </h2>
+          <p className="lead mt-3">
+            2026년 한 해, 전국 학교·기관에서 진로팡과 함께한 숫자입니다.
+          </p>
+        </div>
+
+        {/* 5개 스탯 — 라이트 카드 그리드, 라인으로 구분 */}
+        <dl className="overflow-hidden rounded-[3px] border border-ink-100 bg-white">
+          <div className="grid grid-cols-1 divide-y divide-ink-100 sm:grid-cols-2 sm:divide-y-0 sm:divide-x lg:grid-cols-5">
             {STATS.map((s, i) => (
-              <div
-                key={i}
-                className={`flex flex-col items-center text-center ${
-                  i > 0 ? "lg:border-l lg:border-white/15 lg:pl-2" : ""
-                }`}
-              >
-                {s.badge ? (
-                  <span className="rounded-[2px] bg-brand-700 px-2.5 py-1 text-[11px] font-bold tracking-[0.04em] text-white">
-                    {s.badge}
+              <div key={i} className="flex flex-col gap-3 p-5 sm:p-6 [&:nth-child(2)]:border-t [&:nth-child(2)]:border-ink-100 sm:[&:nth-child(2)]:border-t-0 lg:[&:nth-child(n)]:border-t-0">
+                <div className="flex items-center justify-between">
+                  <span className="grid h-9 w-9 place-items-center rounded-[2px] bg-brand-50 text-brand-700">
+                    {s.icon}
                   </span>
-                ) : (
-                  <span className="h-[24px]" aria-hidden />
-                )}
-                <span className="mt-4 inline-flex h-[52px] w-[52px] items-center justify-center text-brand-300">
-                  {s.icon}
-                </span>
-                <p
-                  className={`mt-4 font-bold leading-[1.2] tabular-nums ${
-                    s.badge ? "text-[28px] sm:text-[34px]" : "text-[17px] sm:text-[19px]"
+                  {s.badge && (
+                    <span className="rounded-[2px] bg-brand-50 px-2 py-1 text-[10.5px] font-bold tracking-[0.04em] text-brand-700">
+                      {s.badge}
+                    </span>
+                  )}
+                </div>
+                <dd
+                  className={`mt-1 font-extrabold leading-[1.1] tabular-nums text-ink-900 ${
+                    s.badge ? "text-[30px] sm:text-[34px]" : "text-[17px] sm:text-[19px]"
                   }`}
                 >
                   {s.value}
-                </p>
-                <p className="mt-1.5 text-[14px] font-semibold leading-[1.35] text-white">
+                </dd>
+                <dt className="text-[14px] font-semibold leading-[1.35] text-ink-900">
                   {s.label}
-                </p>
-                <p className="mt-2 text-[12.5px] leading-[1.5] text-white/55">
+                </dt>
+                <p className="text-[12.5px] leading-[1.55] text-ink-500">
                   {s.sub}
                 </p>
               </div>
             ))}
           </div>
+        </dl>
 
-          {/* 4개 지역 거점 운영 */}
-          <div className="mt-10 rounded-[3px] border border-white/10 bg-brand-900/60 p-5 sm:mt-12 sm:flex sm:items-center sm:gap-6 sm:p-6">
-            <div className="flex items-center gap-3 shrink-0">
-              <svg viewBox="0 0 24 24" className="h-7 w-7 text-brand-300" fill="none" aria-hidden>
-                <path
-                  d="M12 22s-7-7.5-7-13a7 7 0 0 1 14 0c0 5.5-7 13-7 13Z"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                />
-                <circle cx="12" cy="9" r="2.5" stroke="currentColor" strokeWidth="1.8" />
-              </svg>
-              <p className="text-[15px] font-bold leading-[1.3] sm:text-[16px]">
-                4개 지역<br className="sm:hidden" /> 거점 운영
-              </p>
-            </div>
-            <div className="mt-4 grid grid-cols-2 gap-3 sm:mt-0 sm:flex sm:flex-1 sm:flex-wrap">
-              {REGIONS.map((r) => (
-                <div key={r.name} className="flex items-center gap-2.5">
-                  <span className="rounded-full bg-brand-700 px-2.5 py-1 text-[11.5px] font-bold text-white">
-                    {r.name}
-                  </span>
-                  <span className="text-[12.5px] text-white/70 sm:text-[13px]">
-                    {r.cities}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 하단 메시지 — 학교 업무 부담을 줄입니다 */}
-      <section className="bg-soft-grad">
-        <div className="container-pad shell-pad py-8 lg:py-12">
-          <div className="flex items-center gap-5 rounded-[3px] border border-ink-100 bg-white px-5 py-6 sm:gap-7 sm:px-8 sm:py-7">
-            {/* 좌측 방패+학사모 아이콘 */}
-            <svg
-              viewBox="0 0 48 48"
-              className="hidden h-14 w-14 shrink-0 text-brand-700 sm:block"
-              fill="none"
-              aria-hidden
-            >
-              <path
-                d="M24 4 6 10v12c0 11 8 19 18 22 10-3 18-11 18-22V10L24 4Z"
-                stroke="currentColor"
-                strokeWidth="2.2"
-                strokeLinejoin="round"
-              />
-              <path
-                d="m14 22 10-5 10 5-10 5-10-5Z"
-                stroke="currentColor"
-                strokeWidth="2.2"
-                strokeLinejoin="round"
-                fill="currentColor"
-                fillOpacity="0.15"
-              />
-              <path
-                d="M30 24v6c0 1.5-2.7 2.5-6 2.5s-6-1-6-2.5v-6"
-                stroke="currentColor"
-                strokeWidth="2.2"
-              />
+        {/* 4개 지역 거점 운영 — 라이트 카드 */}
+        <div className="mt-5 grid grid-cols-1 gap-0 overflow-hidden rounded-[3px] border border-ink-100 bg-white sm:grid-cols-[auto_1fr] sm:items-stretch">
+          <div className="flex items-center gap-2.5 border-b border-ink-100 px-6 py-4 sm:border-b-0 sm:border-r">
+            <svg viewBox="0 0 24 24" className="h-5 w-5 text-brand-700" fill="none" aria-hidden>
+              <path d="M12 22s-7-7.5-7-13a7 7 0 0 1 14 0c0 5.5-7 13-7 13Z" stroke="currentColor" strokeWidth="1.8" />
+              <circle cx="12" cy="9" r="2.5" stroke="currentColor" strokeWidth="1.8" />
             </svg>
-            <div className="min-w-0 flex-1">
-              <p className="text-[13px] font-semibold leading-[1.4] text-ink-700 sm:text-[14.5px]">
-                운영 · 안전 · 결과정리까지 체계적으로 지원하여
-              </p>
-              <p className="mt-1 text-[20px] font-extrabold leading-[1.25] text-ink-900 sm:text-[26px]">
-                <span className="bg-gradient-to-b from-transparent from-[62%] to-amber-300 to-[62%] pb-0.5">
-                  학교 업무 부담
+            <p className="text-[14px] font-bold text-ink-900">
+              4개 지역 거점 운영
+            </p>
+          </div>
+          <ul className="grid grid-cols-2 divide-ink-100 sm:grid-cols-4 sm:divide-x">
+            {REGIONS.map((r) => (
+              <li
+                key={r.name}
+                className="flex flex-col items-start gap-1 border-t border-ink-100 px-5 py-4 sm:border-t-0"
+              >
+                <span className="rounded-[2px] bg-brand-700 px-2 py-0.5 text-[11px] font-bold text-white">
+                  {r.name}
                 </span>
-                을 줄입니다.
-              </p>
-            </div>
-            {/* 우측 클립보드 아이콘 */}
-            <svg
-              viewBox="0 0 48 48"
-              className="hidden h-14 w-14 shrink-0 text-brand-700 sm:block"
-              fill="none"
-              aria-hidden
-            >
-              <rect x="10" y="9" width="28" height="33" rx="3" stroke="currentColor" strokeWidth="2.2" />
-              <rect x="18" y="5" width="12" height="6" rx="1.5" stroke="currentColor" strokeWidth="2.2" />
-              <path d="m16 22 4 4 8-8" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="m16 33 4 4 8-8" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                <span className="text-[12.5px] text-ink-700">{r.cities}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* 하단 메시지 */}
+        <div className="mt-5 flex items-center gap-5 rounded-[3px] border border-ink-100 bg-white px-5 py-5 sm:gap-6 sm:px-7 sm:py-6">
+          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-[2px] bg-brand-50 text-brand-700 sm:h-14 sm:w-14">
+            <svg viewBox="0 0 32 32" className="h-7 w-7 sm:h-8 sm:w-8" fill="none" aria-hidden>
+              <path d="M16 3 4 7v8c0 7.5 5.4 13 12 14.5C22.6 28 28 22.5 28 15V7L16 3Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+              <path d="m11 16 3.5 3.5L22 12" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
+          </span>
+          <div className="min-w-0 flex-1">
+            <p className="text-[12.5px] font-semibold leading-[1.4] text-ink-500 sm:text-[13px]">
+              운영 · 안전 · 결과정리까지 체계적으로 지원하여
+            </p>
+            <p className="mt-1 text-[18px] font-extrabold leading-[1.3] text-ink-900 sm:text-[22px]">
+              학교 업무 부담을{" "}
+              <span className="text-brand-700">줄입니다.</span>
+            </p>
           </div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }
