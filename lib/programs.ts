@@ -397,6 +397,17 @@ const ELEMENTARY_TRIP: Program[] = [
       "공의 움직임에 맞춰 플레이하며 반응형 스포츠 콘텐츠를 활용하여 순발력과 타이밍 플레이를 경험해 볼 수 있습니다.",
     image: "/programs/elementary/trip/pinball-tennis.jpg",
   },
+  {
+    slug: "ar-glass-archery",
+    title: "AR 글라스 양궁",
+    category: "elementary",
+    group: "trip",
+    duration: "체험학습 패키지",
+    capacity: "현장 운영",
+    description:
+      "AR 글라스를 활용한 몰입형 양궁 콘텐츠를 통해 증강현실 스포츠를 경험할 수 있습니다.",
+    image: "/programs/elementary/trip/ar-glass-archery.jpg",
+  },
 ];
 
 export const ELEMENTARY: Program[] = [
@@ -901,8 +912,8 @@ const EVENT_STANDARD: Program[] = [
     duration: "현장 운영",
     capacity: "축제·행사부스",
     description:
-      "AR 글라스를 착용하고 화면 속 과녁을 조준하며 실감나는 양궁 체험을 즐길 수 있습니다.",
-    image: "/programs/event/ar-glass-archery.png",
+      "AR 글라스를 활용한 몰입형 양궁 콘텐츠를 통해 증강현실 스포츠를 경험할 수 있습니다.",
+    image: "/programs/event/ar-glass-archery.jpg",
   },
 ];
 
