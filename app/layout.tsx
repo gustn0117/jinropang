@@ -40,8 +40,9 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true, "max-image-preview": "large" },
   },
   verification: {
-    google: "",
-    other: { "naver-site-verification": "" },
+    other: {
+      "naver-site-verification": "93a446ce47d670a6f53fb16aeac57124e6893f99",
+    },
   },
   icons: {
     icon: "/favicon.svg",
