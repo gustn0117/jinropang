@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ProgramDetailView from "@/components/ProgramDetailView";
-import { SECONDARY, findSecondaryProgram } from "@/lib/programs";
+import { SECONDARY, SECONDARY_MAGIC, findSecondaryProgram } from "@/lib/programs";
 
 type Params = { slug: string };
 
 export async function generateStaticParams(): Promise<Params[]> {
-  return SECONDARY.map((p) => ({ slug: p.slug }));
+  return [...SECONDARY, ...SECONDARY_MAGIC].map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({

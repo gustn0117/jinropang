@@ -36,6 +36,22 @@ const GROUPS = [
       "여러 프로그램을 순환식으로 운영해, 한 학교에서 다양한 미래기술을 만나는 체험학습형 패키지입니다.",
     items: ELEMENTARY_GROUPS.trip,
   },
+  {
+    id: "science",
+    label: "과학체험부스",
+    title: "직접 만들고 관찰하는 과학 원리 체험",
+    description:
+      "빛·자기력·공기 흐름·구조의 균형 등 과학 원리를 직접 만들고 관찰하며 체험할 수 있는 부스 프로그램입니다.",
+    items: ELEMENTARY_GROUPS.science,
+  },
+  {
+    id: "magic",
+    label: "과학마술공연",
+    title: "마술로 만나는 신기한 과학 원리",
+    description:
+      "다양한 과학 원리를 마술 공연 형태로 풀어내며, 학생들의 눈높이에 맞춰 흥미롭게 진행하는 공연 프로그램입니다.",
+    items: ELEMENTARY_GROUPS.magic,
+  },
 ];
 
 export default function ElementaryPage() {
@@ -50,7 +66,7 @@ export default function ElementaryPage() {
       />
 
       <section className="container-pad py-10 lg:py-14">
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
           {GROUPS.map((g) => (
             <a
               key={g.id}

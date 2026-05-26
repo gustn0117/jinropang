@@ -2,8 +2,10 @@ export type Program = {
   slug: string;
   title: string;
   category: "elementary" | "secondary" | "event";
-  /** elementary: 학년 그룹 / 체험학습 · event: tier 기반 */
-  group?: "g12" | "g36" | "trip" | "festival";
+  /** elementary: 학년 그룹 / 체험학습 / 과학체험부스 / 과학마술공연 · event: tier 기반 */
+  group?: "g12" | "g36" | "trip" | "festival" | "science" | "magic";
+  /** secondary 한정 — 일반 교육프로그램 / 축제·진로의날 부스 / 과학마술공연 */
+  secondaryGroup?: "edu" | "festival" | "magic";
   /** event 한정 — 체험부스 고급형 / 일반형 */
   tier?: "premium" | "standard";
   duration: string;
@@ -410,16 +412,138 @@ const ELEMENTARY_TRIP: Program[] = [
   },
 ];
 
+/* ===== 초등 체험학습 - 과학체험부스 (0526 추가) ===== */
+const ELEMENTARY_SCIENCE: Program[] = [
+  {
+    slug: "periscope",
+    title: "잠만경 만들기",
+    category: "elementary",
+    group: "science",
+    duration: "체험학습 패키지",
+    capacity: "현장 운영",
+    description:
+      "빛이 거울에 반사되는 원리를 이용하여 보이지 않는 곳을 관찰해보는 체험입니다. 잠망경을 직접 만들며 빛의 반사와 진행 방향을 이해할 수 있습니다.",
+    image: "/programs/elementary/science/periscope.png",
+  },
+  {
+    slug: "magnetic-levitation",
+    title: "자기부상 실험",
+    category: "elementary",
+    group: "science",
+    duration: "체험학습 패키지",
+    capacity: "현장 운영",
+    description:
+      "자석의 같은 극끼리 밀어내는 힘을 이용하여 물체가 공중에 뜨는 모습을 관찰하는 활동입니다. 자석의 성질과 자기력의 원리를 재미있게 체험할 수 있습니다.",
+    image: "/programs/elementary/science/magnetic-levitation.png",
+  },
+  {
+    slug: "hologram",
+    title: "홀로그램 만들기",
+    category: "elementary",
+    group: "science",
+    duration: "체험학습 패키지",
+    capacity: "현장 운영",
+    description:
+      "빛의 반사와 굴절을 이용하여 입체적으로 보이는 영상을 만들어보는 활동입니다. 눈앞에 떠 있는 것처럼 보이는 신기한 홀로그램 원리를 경험할 수 있습니다.",
+    image: "/programs/elementary/science/hologram.png",
+  },
+  {
+    slug: "tensegrity",
+    title: "텐센그리티 만들기",
+    category: "elementary",
+    group: "science",
+    duration: "체험학습 패키지",
+    capacity: "현장 운영",
+    description:
+      "당기는 힘과 버티는 힘의 균형을 이용하여 구조물을 만드는 활동입니다. 서로 연결된 힘의 균형을 통해 구조물이 공중에 떠 있는 듯한 모습을 관찰할 수 있습니다.",
+    image: "/programs/elementary/science/tensegrity.png",
+  },
+  {
+    slug: "davinci-bridge",
+    title: "다빈치 다리",
+    category: "elementary",
+    group: "science",
+    duration: "체험학습 패키지",
+    capacity: "현장 운영",
+    description:
+      "나무 막대를 끼워 맞추어 균형을 이루는 구조물을 만들어보는 활동입니다. 무게 분산과 구조의 안정성 원리를 체험할 수 있습니다.",
+    image: "/programs/elementary/science/davinci-bridge.png",
+  },
+  {
+    slug: "flexible-puzzle",
+    title: "플렉시블 퍼즐",
+    category: "elementary",
+    group: "science",
+    duration: "체험학습 패키지",
+    capacity: "현장 운영",
+    description:
+      "구부러지고 튕기는 구조물을 만들며 탄성과 복원력의 원리를 알아보는 활동입니다. 힘을 가했을 때 다시 원래 모양으로 돌아오는 성질을 체험할 수 있습니다.",
+    image: "/programs/elementary/science/flexible-puzzle.png",
+  },
+  {
+    slug: "air-cannon",
+    title: "공기대포",
+    category: "elementary",
+    group: "science",
+    duration: "체험학습 패키지",
+    capacity: "현장 운영",
+    description:
+      "공기의 압력으로 물체가 움직이는 원리를 알아보는 활동입니다. 눈에 보이지 않는 공기의 힘과 압력의 변화를 직접 체험할 수 있습니다.",
+    image: "/programs/elementary/science/air-cannon.png",
+  },
+  {
+    slug: "bernoulli-stairs",
+    title: "베르누이 계단",
+    category: "elementary",
+    group: "science",
+    duration: "체험학습 패키지",
+    capacity: "현장 운영",
+    description:
+      "공기의 흐름 속도에 따라 압력이 달라지는 베르누이 원리를 체험하는 활동입니다. 공기의 힘으로 물체가 움직이는 신기한 모습을 관찰할 수 있습니다.",
+    image: "/programs/elementary/science/bernoulli-stairs.png",
+  },
+  {
+    slug: "herbarium",
+    title: "하바리움 만들기",
+    category: "elementary",
+    group: "science",
+    duration: "체험학습 패키지",
+    capacity: "현장 운영",
+    description:
+      "식물과 오일을 활용하여 나만의 작은 생태 공간을 만들어보는 활동입니다. 식물이 보존되는 과정을 관찰하며 자연과 환경의 소중함을 느낄 수 있습니다.",
+    image: "/programs/elementary/science/herbarium.png",
+  },
+];
+
+/* ===== 초등 체험학습 - 과학마술공연 (0526 추가) ===== */
+const ELEMENTARY_MAGIC: Program[] = [
+  {
+    slug: "science-magic-concert",
+    title: "과학 마술 콘서트",
+    category: "elementary",
+    group: "magic",
+    duration: "80분(2교시)",
+    capacity: "현장 운영",
+    description:
+      "다양한 과학적 원리를 마술 공연을 통해 재미있게 체험해 볼 수 있습니다. 학생들의 눈높이에 맞추어 공연을 진행합니다.",
+    image: "/programs/elementary/magic/science-magic-concert.png",
+  },
+];
+
 export const ELEMENTARY: Program[] = [
   ...ELEMENTARY_12,
   ...ELEMENTARY_36,
   ...ELEMENTARY_TRIP,
+  ...ELEMENTARY_SCIENCE,
+  ...ELEMENTARY_MAGIC,
 ];
 
 export const ELEMENTARY_GROUPS = {
   g12: ELEMENTARY_12,
   g36: ELEMENTARY_36,
   trip: ELEMENTARY_TRIP,
+  science: ELEMENTARY_SCIENCE,
+  magic: ELEMENTARY_MAGIC,
 };
 
 /* ===== 중·고등 교육 프로그램 (소요시간 전체 90-100분(2교시)로 통일) ===== */
@@ -569,6 +693,21 @@ export const SECONDARY: Program[] = [
   },
 ];
 
+/* ===== 중·고등 축제/진로의날 - 과학마술공연 (0526 추가) ===== */
+export const SECONDARY_MAGIC: Program[] = [
+  {
+    slug: "future-magic-show",
+    title: "미래산업매직쇼",
+    category: "secondary",
+    secondaryGroup: "magic",
+    duration: "80분(2교시)",
+    capacity: "현장 운영",
+    description:
+      "미래산업 기술과 마술을 결합하여 눈앞에서 펼쳐지는 신기한 과학 공연을 체험합니다. 과학의 원리와 상상력이 결합된 특별한 퍼포먼스를 통해 미래기술을 더욱 흥미롭게 경험할 수 있습니다.",
+    image: "/programs/secondary/future-magic-show.png",
+  },
+];
+
 /* ===== 행사부스 운영 — 체험부스 고급형 / 일반형 ===== */
 const EVENT_PREMIUM: Program[] = [
   {
@@ -658,6 +797,17 @@ const EVENT_PREMIUM: Program[] = [
     description:
       "공중에 떠 있는 홀로그램 콘텐츠 체험으로 가상 이미지와 현실 공간이 결합된 디지털 콘텐츠를 관찰하고 상호작용 하는 활동입니다.",
     image: "/programs/event/ar-hologram.png",
+  },
+  {
+    slug: "instant-photo-frame",
+    title: "인생네컷",
+    category: "event",
+    tier: "premium",
+    duration: "현장 운영",
+    capacity: "축제·행사부스",
+    description:
+      "친구들과 함께 재미있는 추억을 만들고 즉석에서 출력되는 사진을 간직할 수 있습니다. 행사의 즐거운 분위기를 오래 기억할 수 있는 인기 포토 콘텐츠입니다.",
+    image: "/programs/event/instant-photo-frame.png",
   },
 ];
 
@@ -928,15 +1078,21 @@ export const EVENT_GROUPS = {
 export const SECONDARY_FESTIVAL: Program[] = EVENT_PROGRAMS;
 
 /* ===== Helpers ===== */
-export type ElementaryGroupSegment = "12" | "36" | "trip";
+export type ElementaryGroupSegment = "12" | "36" | "trip" | "science" | "magic";
 
 export function groupToSegment(g?: Program["group"]): ElementaryGroupSegment {
-  return g === "g12" ? "12" : g === "g36" ? "36" : "trip";
+  if (g === "g12") return "12";
+  if (g === "g36") return "36";
+  if (g === "science") return "science";
+  if (g === "magic") return "magic";
+  return "trip";
 }
 export function segmentToGroup(s: string): Program["group"] | undefined {
   if (s === "12") return "g12";
   if (s === "36") return "g36";
   if (s === "trip") return "trip";
+  if (s === "science") return "science";
+  if (s === "magic") return "magic";
   return undefined;
 }
 export function programHref(p: Program): string {
@@ -965,7 +1121,7 @@ export function findElementaryProgram(
   return ELEMENTARY.find((p) => p.group === group && p.slug === slug);
 }
 export function findSecondaryProgram(slug: string): Program | undefined {
-  return SECONDARY.find((p) => p.slug === slug);
+  return [...SECONDARY, ...SECONDARY_MAGIC].find((p) => p.slug === slug);
 }
 export function findEventProgram(slug: string): Program | undefined {
   return EVENT_PROGRAMS.find((p) => p.slug === slug);
@@ -975,4 +1131,6 @@ export const ELEMENTARY_GROUP_LABEL: Record<ElementaryGroupSegment, string> = {
   "12": "1-2학년",
   "36": "3-6학년",
   trip: "체험학습 패키지",
+  science: "과학체험부스",
+  magic: "과학마술공연",
 };

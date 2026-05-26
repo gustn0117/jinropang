@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import ProgramCard from "@/components/ProgramCard";
 import CTASection from "@/components/CTASection";
-import { SECONDARY, SECONDARY_FESTIVAL } from "@/lib/programs";
+import { SECONDARY, SECONDARY_FESTIVAL, SECONDARY_MAGIC } from "@/lib/programs";
 
 export const metadata: Metadata = {
   title: "중·고등학교 미래교육 프로그램 — 진로 연계 워크숍",
@@ -71,6 +71,22 @@ export default function SecondaryPage() {
               <ProgramCard key={`festival-${p.slug}`} p={p} />
             ))}
           </div>
+        </div>
+      </section>
+
+      <section id="magic" className="container-pad scroll-mt-16 py-10 lg:py-14">
+        <div>
+          <p className="section-eyebrow">과학마술공연</p>
+          <h2 className="section-title mt-3">미래산업과 결합한 과학 마술쇼</h2>
+          <p className="lead mt-4 max-w-2xl">
+            미래산업 기술과 마술 공연을 결합하여, 학생들이 과학 원리와 상상력을
+            함께 경험할 수 있는 특별한 퍼포먼스를 진행합니다.
+          </p>
+        </div>
+        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {SECONDARY_MAGIC.map((p) => (
+            <ProgramCard key={`magic-${p.slug}`} p={p} />
+          ))}
         </div>
       </section>
 
