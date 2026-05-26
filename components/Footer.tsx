@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { NAV, SITE } from "@/lib/site";
 import Logo from "./Logo";
+import VisitorCounter from "./VisitorCounter";
 import {
   InstagramIcon,
   YoutubeIcon,
@@ -110,9 +111,12 @@ export default function Footer() {
             <span aria-hidden className="mx-2 text-ink-300">|</span>
             <span className="font-medium text-ink-700">진로팡</span>
           </p>
-          <p className="text-[12px] text-ink-500">
-            © {new Date().getFullYear()} 진로팡. All rights reserved. · 찾아가는 미래교육 · 전국 학교·기관 출강
-          </p>
+          <div className="flex flex-col gap-1 text-[12px] text-ink-500 sm:items-end">
+            <VisitorCounter />
+            <p>
+              © {new Date().getFullYear()} 진로팡. All rights reserved. · 찾아가는 미래교육 · 전국 학교·기관 출강
+            </p>
+          </div>
         </div>
       </div>
     </footer>
