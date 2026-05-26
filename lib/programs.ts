@@ -277,29 +277,7 @@ const ELEMENTARY_TRIP: Program[] = [
       "AI 기반 오목 시스템과 대결하며 AI의 판단 방식과 전략 플레이를 경험합니다.",
     image: "/programs/elementary/trip/ai-omok.jpg",
   },
-  /* ----- 이하 기존 순서 ----- */
-  {
-    slug: "basketball",
-    title: "농구",
-    category: "elementary",
-    group: "trip",
-    duration: "체험학습 패키지",
-    capacity: "현장 운영",
-    description:
-      "로봇을 직접 조종하여 농구 미션을 수행하며 방향 제어와 조작 원리를 체험합니다.",
-    image: "/programs/elementary/trip/basketball.jpg",
-  },
-  {
-    slug: "motion-recognition",
-    title: "모션인식",
-    category: "elementary",
-    group: "trip",
-    duration: "체험학습 패키지",
-    capacity: "현장 운영",
-    description:
-      "몸의 움직임에 따라 반응하는 스포츠 게임을 즐기며 실감형 콘텐츠를 체험합니다.",
-    image: "/programs/elementary/trip/motion-recognition.jpg",
-  },
+  /* ----- 이하 기존 순서 (0527 4종 → 끝으로 이동) ----- */
   {
     slug: "cube-maze",
     title: "큐브 미로찾기",
@@ -323,17 +301,6 @@ const ELEMENTARY_TRIP: Program[] = [
     image: "/programs/elementary/trip/balance-snowboard.jpg",
   },
   {
-    slug: "ar-shooting",
-    title: "AR 사격",
-    category: "elementary",
-    group: "trip",
-    duration: "체험학습 패키지",
-    capacity: "현장 운영",
-    description:
-      "증강현실 기술이 적용된 화면 속 표적을 조준하며 실감나는 AR 사격 게임을 체험합니다.",
-    image: "/programs/elementary/trip/ar-shooting.jpg",
-  },
-  {
     slug: "robot-ssireum",
     title: "로봇 씨름",
     category: "elementary",
@@ -343,17 +310,6 @@ const ELEMENTARY_TRIP: Program[] = [
     description:
       "로봇을 직접 조종하여 상대를 밀어내는 박진감 있는 씨름 경기를 체험합니다.",
     image: "/programs/elementary/trip/robot-ssireum.jpg",
-  },
-  {
-    slug: "robot-curling",
-    title: "로봇 컬링",
-    category: "elementary",
-    group: "trip",
-    duration: "체험학습 패키지",
-    capacity: "현장 운영",
-    description:
-      "로봇을 조종하여 목표 지점에 스톤을 보내며 전략형 스포츠 콘텐츠를 경험합니다.",
-    image: "/programs/elementary/trip/robot-curling.jpg",
   },
   {
     slug: "ar-cube-solve",
@@ -409,6 +365,51 @@ const ELEMENTARY_TRIP: Program[] = [
     description:
       "AR 글라스를 활용한 몰입형 양궁 콘텐츠를 통해 증강현실 스포츠를 경험할 수 있습니다.",
     image: "/programs/elementary/trip/ar-glass-archery.jpg",
+  },
+  /* ----- 0527 사용자 요청 — 가장 뒤로 이동된 항목들 ----- */
+  {
+    slug: "basketball",
+    title: "로봇 농구",
+    category: "elementary",
+    group: "trip",
+    duration: "체험학습 패키지",
+    capacity: "현장 운영",
+    description:
+      "로봇을 직접 조종하여 농구 미션을 수행하며 방향 제어와 조작 원리를 체험합니다.",
+    image: "/programs/elementary/trip/basketball.jpg",
+  },
+  {
+    slug: "motion-recognition",
+    title: "모션인식",
+    category: "elementary",
+    group: "trip",
+    duration: "체험학습 패키지",
+    capacity: "현장 운영",
+    description:
+      "몸의 움직임에 따라 반응하는 스포츠 게임을 즐기며 실감형 콘텐츠를 체험합니다.",
+    image: "/programs/elementary/trip/motion-recognition.jpg",
+  },
+  {
+    slug: "ar-shooting",
+    title: "AR 사격",
+    category: "elementary",
+    group: "trip",
+    duration: "체험학습 패키지",
+    capacity: "현장 운영",
+    description:
+      "증강현실 기술이 적용된 화면 속 표적을 조준하며 실감나는 AR 사격 게임을 체험합니다.",
+    image: "/programs/elementary/trip/ar-shooting.jpg",
+  },
+  {
+    slug: "robot-curling",
+    title: "로봇 컬링",
+    category: "elementary",
+    group: "trip",
+    duration: "체험학습 패키지",
+    capacity: "현장 운영",
+    description:
+      "로봇을 조종하여 목표 지점에 스톤을 보내며 전략형 스포츠 콘텐츠를 경험합니다.",
+    image: "/programs/elementary/trip/robot-curling.jpg",
   },
 ];
 

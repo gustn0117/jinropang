@@ -11,7 +11,7 @@ const PROGRAMS = [
   {
     href: "/programs/secondary",
     badge: "중·고등학교",
-    title: "학교로 찾아가는 체험학습",
+    title: "학교로 찾아가는 진로 체험",
     desc: "중·고등학교 진로 연계 워크숍·캠프·VR 진로직업 체험",
     image: "/card-secondary.jpg",
   },

@@ -28,11 +28,20 @@ export const metadata: Metadata = {
     siteName: SITE.name,
     title: `${SITE.brandFull} | 학교·기관 출강 로봇·코딩·AI 체험`,
     description: SITE.description,
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: SITE.brandFull,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: SITE.brandFull,
     description: SITE.description,
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
