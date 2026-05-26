@@ -70,6 +70,8 @@ export const NAV: NavItem[] = [
         ],
       },
       { href: "/programs/elementary#trip", label: "체험학습 패키지" },
+      { href: "/programs/elementary#science", label: "과학체험부스" },
+      { href: "/programs/elementary#magic", label: "과학마술공연" },
     ],
   },
   {
@@ -78,6 +80,7 @@ export const NAV: NavItem[] = [
     children: [
       { href: "/programs/secondary#middle", label: "교육 프로그램" },
       { href: "/programs/secondary#festival", label: "축제 · 진로의 날 부스" },
+      { href: "/programs/secondary#magic", label: "과학마술공연" },
     ],
   },
   {
