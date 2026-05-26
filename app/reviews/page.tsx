@@ -99,19 +99,35 @@ export default async function ReviewsPage() {
           ) : (
             <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
               {reviews.map((r) => (
-                <article key={r.id} className="card">
-                  {r.badge && <span className="chip">{r.badge}</span>}
-                  <h3 className="mt-5 text-lg leading-[1.4] font-bold text-ink-900">
-                    {r.title}
-                  </h3>
-                  <p className="mt-3 whitespace-pre-wrap text-[14px] leading-[1.8] text-ink-700">
-                    “{r.body}”
-                  </p>
-                  {r.meta && (
-                    <p className="mt-5 border-t border-ink-100 pt-3 text-[12px] leading-[1.5] font-semibold text-ink-500">
-                      {r.meta}
-                    </p>
+                <article
+                  key={r.id}
+                  className="group flex h-full flex-col overflow-hidden rounded-[3px] border border-ink-100 bg-white transition-colors hover:border-brand-300"
+                >
+                  {r.image && (
+                    <div className="relative aspect-[4/3] w-full overflow-hidden bg-ink-50">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={r.image}
+                        alt={r.title}
+                        loading="lazy"
+                        className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+                      />
+                    </div>
                   )}
+                  <div className="flex flex-1 flex-col p-6">
+                    {r.badge && <span className="chip">{r.badge}</span>}
+                    <h3 className="mt-4 text-lg leading-[1.4] font-bold text-ink-900">
+                      {r.title}
+                    </h3>
+                    <p className="mt-3 whitespace-pre-wrap text-[14px] leading-[1.8] text-ink-700">
+                      “{r.body}”
+                    </p>
+                    {r.meta && (
+                      <p className="mt-auto border-t border-ink-100 pt-3 text-[12px] leading-[1.5] font-semibold text-ink-500">
+                        {r.meta}
+                      </p>
+                    )}
+                  </div>
                 </article>
               ))}
             </div>

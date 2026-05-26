@@ -3,18 +3,83 @@ import path from "node:path";
 
 const DATA_DIR = process.env.DATA_DIR ?? path.join(process.cwd(), "data");
 const FILE = path.join(DATA_DIR, "reviews.jsonl");
+const IMG_DIR = path.join(DATA_DIR, "review-images");
 
 export type ReviewInput = {
   badge?: string;
   title: string;
   body: string;
   meta?: string;
+  image?: string;
 };
 
 export type Review = ReviewInput & {
   id: string;
   createdAt: string;
 };
+
+/* ===== 이미지 업로드 처리 ===== */
+const ALLOWED_IMG = new Map<string, string>([
+  ["image/jpeg", "jpg"],
+  ["image/jpg", "jpg"],
+  ["image/png", "png"],
+  ["image/webp", "webp"],
+]);
+const MAX_IMG_SIZE = 8 * 1024 * 1024; // 8 MB
+
+export type ImageSaveResult =
+  | { ok: true; filename: string; url: string }
+  | { ok: false; error: string };
+
+export async function saveImage(
+  reviewId: string,
+  file: File,
+): Promise<ImageSaveResult> {
+  const ext = ALLOWED_IMG.get(file.type);
+  if (!ext) return { ok: false, error: "지원하지 않는 형식 (jpg/png/webp만 가능)" };
+  if (file.size === 0)
+    return { ok: false, error: "빈 파일" };
+  if (file.size > MAX_IMG_SIZE)
+    return { ok: false, error: "8MB를 초과할 수 없습니다" };
+  await fs.mkdir(IMG_DIR, { recursive: true });
+  const filename = `${reviewId}.${ext}`;
+  const buf = Buffer.from(await file.arrayBuffer());
+  await fs.writeFile(path.join(IMG_DIR, filename), buf);
+  return { ok: true, filename, url: `/api/review-image/${filename}` };
+}
+
+export async function readImage(
+  filename: string,
+): Promise<{ data: Buffer; contentType: string } | null> {
+  if (!filename || filename.includes("/") || filename.includes(".."))
+    return null;
+  const ext = path.extname(filename).slice(1).toLowerCase();
+  const types: Record<string, string> = {
+    jpg: "image/jpeg",
+    jpeg: "image/jpeg",
+    png: "image/png",
+    webp: "image/webp",
+  };
+  const contentType = types[ext];
+  if (!contentType) return null;
+  try {
+    const data = await fs.readFile(path.join(IMG_DIR, filename));
+    return { data, contentType };
+  } catch {
+    return null;
+  }
+}
+
+async function deleteImageByUrl(imageUrl?: string): Promise<void> {
+  if (!imageUrl) return;
+  const filename = imageUrl.replace(/^\/api\/review-image\//, "");
+  if (!filename || filename.includes("/") || filename.includes("..")) return;
+  try {
+    await fs.unlink(path.join(IMG_DIR, filename));
+  } catch {
+    /* 파일이 이미 없거나 권한 없음 — 무시 */
+  }
+}
 
 const SEED: ReviewInput[] = [
   {
@@ -122,11 +187,31 @@ export async function appendReview(data: ReviewInput): Promise<Review> {
   return review;
 }
 
+export async function updateReview(
+  id: string,
+  patch: Partial<ReviewInput>,
+): Promise<Review | null> {
+  if (!(await fileExists())) return null;
+  const all = await listReviews();
+  const idx = all.findIndex((r) => r.id === id);
+  if (idx < 0) return null;
+  all[idx] = { ...all[idx], ...patch };
+  await fs.writeFile(
+    FILE,
+    all.map((r) => JSON.stringify(r)).join("\n") + "\n",
+    "utf8",
+  );
+  return all[idx];
+}
+
 export async function deleteReview(id: string): Promise<boolean> {
   if (!(await fileExists())) return false;
   const all = await listReviews();
+  const target = all.find((r) => r.id === id);
+  if (!target) return false;
+  // 첨부 이미지 함께 삭제
+  await deleteImageByUrl(target.image);
   const remaining = all.filter((r) => r.id !== id);
-  if (remaining.length === all.length) return false;
   await ensureDir();
   await fs.writeFile(
     FILE,

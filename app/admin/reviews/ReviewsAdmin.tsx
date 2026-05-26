@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState, useEffect, FormEvent, ChangeEvent } from "react";
 import type { Review } from "@/lib/reviews";
 
 const BADGE_PRESETS = [
@@ -33,24 +33,71 @@ export default function ReviewsAdmin({
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [meta, setMeta] = useState("");
+  const [image, setImage] = useState<File | null>(null);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [err, setErr] = useState("");
+  const [warning, setWarning] = useState("");
   const [deletingId, setDeletingId] = useState<string | null>(null);
+
+  // 미리보기 URL 생성·해제
+  useEffect(() => {
+    if (!image) {
+      setPreviewUrl(null);
+      return;
+    }
+    const url = URL.createObjectURL(image);
+    setPreviewUrl(url);
+    return () => URL.revokeObjectURL(url);
+  }, [image]);
+
+  function onImageChange(e: ChangeEvent<HTMLInputElement>) {
+    const f = e.target.files?.[0] ?? null;
+    setErr("");
+    if (f) {
+      if (!/^image\/(jpe?g|png|webp)$/i.test(f.type)) {
+        setErr("jpg / png / webp 형식만 업로드할 수 있습니다.");
+        e.target.value = "";
+        return;
+      }
+      if (f.size > 8 * 1024 * 1024) {
+        setErr("이미지는 8MB 이하만 업로드할 수 있습니다.");
+        e.target.value = "";
+        return;
+      }
+    }
+    setImage(f);
+  }
+
+  function resetForm() {
+    setBadge("");
+    setTitle("");
+    setBody("");
+    setMeta("");
+    setImage(null);
+    const fileInput = document.getElementById(
+      "review-image-input",
+    ) as HTMLInputElement | null;
+    if (fileInput) fileInput.value = "";
+  }
 
   async function submit(e: FormEvent) {
     e.preventDefault();
     setErr("");
+    setWarning("");
     if (!title.trim() || !body.trim()) {
       setErr("제목과 본문은 필수입니다.");
       return;
     }
     setSubmitting(true);
     try {
-      const r = await fetch("/api/review", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ badge, title, body, meta }),
-      });
+      const fd = new FormData();
+      fd.append("title", title);
+      fd.append("body", body);
+      if (badge) fd.append("badge", badge);
+      if (meta) fd.append("meta", meta);
+      if (image) fd.append("image", image);
+      const r = await fetch("/api/review", { method: "POST", body: fd });
       if (!r.ok) {
         const d = await r.json().catch(() => ({}));
         setErr(d?.error ?? "등록 실패");
@@ -59,10 +106,8 @@ export default function ReviewsAdmin({
       }
       const data = await r.json();
       setList((cur) => [data.review, ...cur]);
-      setBadge("");
-      setTitle("");
-      setBody("");
-      setMeta("");
+      if (data.warning) setWarning(data.warning);
+      resetForm();
     } catch {
       setErr("네트워크 오류");
     }
@@ -146,9 +191,70 @@ export default function ReviewsAdmin({
               className="mt-2 w-full rounded-[3px] border border-ink-100 bg-white px-3 py-2.5 text-[14px] outline-none transition focus:border-brand-500 focus:shadow-ring"
             />
           </div>
+          <div>
+            <label className="text-[13px] font-semibold text-ink-900">
+              사진 (선택)
+            </label>
+            <p className="mt-1 text-[12px] text-ink-500">
+              jpg · png · webp / 최대 8MB
+            </p>
+            {previewUrl ? (
+              <div className="mt-2 overflow-hidden rounded-[3px] border border-ink-100">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={previewUrl}
+                  alt="미리보기"
+                  className="block aspect-[4/3] w-full object-cover"
+                />
+                <div className="flex items-center justify-between gap-2 border-t border-ink-100 bg-soft-grad px-3 py-2 text-[12px]">
+                  <span className="truncate text-ink-700">
+                    {image?.name} ·{" "}
+                    {image
+                      ? `${(image.size / 1024).toFixed(0)} KB`
+                      : ""}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setImage(null);
+                      const fi = document.getElementById(
+                        "review-image-input",
+                      ) as HTMLInputElement | null;
+                      if (fi) fi.value = "";
+                    }}
+                    className="rounded-[2px] border border-ink-100 bg-white px-2 py-1 text-[11.5px] font-semibold text-ink-700 hover:border-red-500 hover:text-red-600"
+                  >
+                    제거
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <label
+                htmlFor="review-image-input"
+                className="mt-2 flex cursor-pointer items-center justify-center gap-2 rounded-[3px] border border-dashed border-ink-100 bg-white px-3 py-5 text-[13px] text-ink-600 transition-colors hover:border-brand-700 hover:text-brand-700"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
+                  <path d="M12 4v12m0 0 4-4m-4 4-4-4M5 21h14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                사진 선택
+              </label>
+            )}
+            <input
+              id="review-image-input"
+              type="file"
+              accept="image/jpeg,image/png,image/webp"
+              onChange={onImageChange}
+              className="hidden"
+            />
+          </div>
           {err && (
             <p className="rounded-[3px] bg-red-50 px-3 py-2 text-[13px] text-red-700">
               {err}
+            </p>
+          )}
+          {warning && (
+            <p className="rounded-[3px] bg-amber-50 px-3 py-2 text-[13px] text-amber-800">
+              {warning}
             </p>
           )}
           <button
@@ -205,6 +311,16 @@ export default function ReviewsAdmin({
                 <h3 className="mt-3 text-[15.5px] font-bold leading-[1.4] text-ink-900">
                   {r.title}
                 </h3>
+                {r.image && (
+                  <div className="mt-3 overflow-hidden rounded-[3px] border border-ink-100">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={r.image}
+                      alt={r.title}
+                      className="block aspect-[4/3] w-full object-cover"
+                    />
+                  </div>
+                )}
                 <p className="mt-2 whitespace-pre-wrap text-[13.5px] leading-[1.75] text-ink-700">
                   {r.body}
                 </p>
