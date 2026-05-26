@@ -22,11 +22,6 @@ export default function AdminTable({
   const [openId, setOpenId] = useState<string | null>(null);
   const [deletingId, setDeletingId] = useState<string | null>(null);
 
-  async function logout() {
-    await fetch("/api/admin/logout", { method: "POST" });
-    window.location.reload();
-  }
-
   async function remove(id: string) {
     if (!confirm("이 문의를 삭제하시겠습니까?")) return;
     setDeletingId(id);
@@ -106,9 +101,6 @@ export default function AdminTable({
             disabled={list.length === 0}
           >
             CSV 내보내기
-          </button>
-          <button onClick={logout} className="btn-ghost">
-            로그아웃
           </button>
         </div>
       </div>

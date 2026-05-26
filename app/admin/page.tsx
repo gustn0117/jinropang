@@ -4,6 +4,7 @@ import { COOKIE_NAME, isValidToken } from "@/lib/admin";
 import { listInquiries } from "@/lib/inquiries";
 import AdminLogin from "./AdminLogin";
 import AdminTable from "./AdminTable";
+import AdminNav from "./AdminNav";
 
 export const dynamic = "force-dynamic";
 
@@ -17,5 +18,12 @@ export default async function AdminPage() {
   const isAuth = isValidToken(c.get(COOKIE_NAME)?.value);
   if (!isAuth) return <AdminLogin />;
   const list = (await listInquiries()).reverse(); // 최신순
-  return <AdminTable initialList={list} />;
+  return (
+    <>
+      <div className="container-pad pt-10 lg:pt-14">
+        <AdminNav />
+      </div>
+      <AdminTable initialList={list} />
+    </>
+  );
 }
