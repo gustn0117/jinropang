@@ -165,7 +165,7 @@ const ELEMENTARY_36: Program[] = [
   },
   {
     slug: "generative-ai",
-    title: "생성형 AI 체험",
+    title: "생성형 AI 체험 (동화책 만들기)",
     category: "elementary",
     group: "g36",
     duration: "80분(2교시)",
@@ -633,7 +633,7 @@ export const SECONDARY: Program[] = [
   },
   {
     slug: "generative-ai",
-    title: "생성형 AI 체험",
+    title: "생성형 AI 체험 (동화책 만들기)",
     category: "secondary",
     duration: SECONDARY_DURATION,
     capacity: "20-30명",
