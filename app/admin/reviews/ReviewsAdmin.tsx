@@ -2,6 +2,11 @@
 
 import { useState, useEffect, FormEvent, ChangeEvent } from "react";
 import type { Review } from "@/lib/reviews";
+import {
+  PROGRAM_CATEGORIES,
+  categoryLabel,
+  type ProgramCategoryId,
+} from "@/lib/categories";
 
 const BADGE_PRESETS = [
   "초등 진로체험",
@@ -29,6 +34,9 @@ export default function ReviewsAdmin({
   initialList: Review[];
 }) {
   const [list, setList] = useState<Review[]>(initialList);
+  const [category, setCategory] = useState<ProgramCategoryId>(
+    PROGRAM_CATEGORIES[0].id,
+  );
   const [badge, setBadge] = useState("");
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
@@ -70,6 +78,7 @@ export default function ReviewsAdmin({
   }
 
   function resetForm() {
+    setCategory(PROGRAM_CATEGORIES[0].id);
     setBadge("");
     setTitle("");
     setBody("");
@@ -92,6 +101,7 @@ export default function ReviewsAdmin({
     setSubmitting(true);
     try {
       const fd = new FormData();
+      fd.append("category", category);
       fd.append("title", title);
       fd.append("body", body);
       if (badge) fd.append("badge", badge);
@@ -137,14 +147,30 @@ export default function ReviewsAdmin({
         <form onSubmit={submit} className="mt-5 grid gap-4">
           <div>
             <label className="text-[13px] font-semibold text-ink-900">
-              카테고리(뱃지)
+              카테고리 <span className="text-brand-600">*</span>
+            </label>
+            <select
+              value={category}
+              onChange={(e) => setCategory(e.target.value as ProgramCategoryId)}
+              className="mt-2 w-full rounded-[3px] border border-ink-100 bg-white px-3 py-2.5 text-[14px] outline-none transition focus:border-brand-500 focus:shadow-ring"
+            >
+              {PROGRAM_CATEGORIES.map((c) => (
+                <option key={c.id} value={c.id}>
+                  {c.label}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label className="text-[13px] font-semibold text-ink-900">
+              뱃지(세부 표시)
             </label>
             <input
               type="text"
               value={badge}
               onChange={(e) => setBadge(e.target.value)}
               list="badge-presets"
-              placeholder="예: 초등 진로체험"
+              placeholder="예: 초등 진로체험 (선택)"
               className="mt-2 w-full rounded-[3px] border border-ink-100 bg-white px-3 py-2.5 text-[14px] outline-none transition focus:border-brand-500 focus:shadow-ring"
             />
             <datalist id="badge-presets">
@@ -291,6 +317,11 @@ export default function ReviewsAdmin({
               >
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex flex-wrap items-center gap-2">
+                    {r.category && (
+                      <span className="rounded-[2px] bg-brand-700 px-2 py-0.5 text-[11px] font-bold text-white">
+                        {categoryLabel(r.category)}
+                      </span>
+                    )}
                     {r.badge && (
                       <span className="rounded-[2px] border border-ink-100 px-2 py-0.5 text-[11px] font-semibold text-ink-700">
                         {r.badge}

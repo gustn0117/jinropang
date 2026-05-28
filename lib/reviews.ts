@@ -1,11 +1,14 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+import type { ProgramCategoryId } from "@/lib/categories";
 
 const DATA_DIR = process.env.DATA_DIR ?? path.join(process.cwd(), "data");
 const FILE = path.join(DATA_DIR, "reviews.jsonl");
 const IMG_DIR = path.join(DATA_DIR, "review-images");
 
 export type ReviewInput = {
+  /** 0527 추가 — 3개 카테고리 중 하나 (기존 데이터 호환 위해 선택적) */
+  category?: ProgramCategoryId;
   badge?: string;
   title: string;
   body: string;
@@ -83,36 +86,42 @@ async function deleteImageByUrl(imageUrl?: string): Promise<void> {
 
 const SEED: ReviewInput[] = [
   {
+    category: "elementary",
     badge: "초등 진로체험",
     title: "5-6학년 코딩 드론 미션 비행",
     body: "안전 펜스 운영 덕분에 5-6학년 60명이 두 시간 동안 사고 없이 즐겁게 비행 미션을 끝냈습니다. 강사 분들이 학생 통제와 안내까지 잘 해 주셨어요.",
     meta: "수도권 초등학교 · 60명 · 120분",
   },
   {
+    category: "secondary",
     badge: "중학교 진로의 날",
     title: "VR 진로직업 체험 + AI 데이터 워크숍",
     body: "VR과 워크숍을 동시 운영해 학생들이 흥미를 잃지 않고 두 가지 미래기술을 함께 경험했습니다. 워크북까지 제공해 사후 활동도 수월했습니다.",
     meta: "지방 중학교 · 180명 · 4교시 분산 운영",
   },
   {
+    category: "secondary",
     badge: "고등학교 캠프",
     title: "로봇 엔지니어링 캠프 (2일)",
     body: "PID 튜닝까지 깊이 있게 다뤄 주셔서 학생부에 기록할 수 있는 결과물이 나왔습니다. 진로 포트폴리오용으로 매우 만족합니다.",
     meta: "특목고 · 24명 · 2일 캠프",
   },
   {
+    category: "event",
     badge: "학교 축제",
     title: "AI 포토 + VR + 로봇 대결 부스 패키지",
     body: "회전이 빠른 부스 위주로 구성해 줄이 길게 늘어졌지만 대기 시간이 짧았어요. MC 진행 지원까지 받아 행사 분위기가 좋았습니다.",
     meta: "도심 고등학교 축제 · 800명 · 6시간",
   },
   {
+    category: "event",
     badge: "교육청 대회",
     title: "지역 코딩·로봇 경진대회 운영",
     body: "기획·요강 작성부터 심사·시상까지 모두 맡겨 행사 운영이 정말 편했습니다. 사후 보고서도 깔끔하게 정리해 주셔서 결재가 빨랐습니다.",
     meta: "교육청 주관 대회 · 참가팀 32팀",
   },
   {
+    category: "event",
     badge: "기관 행사",
     title: "지역 어린이 과학 한마당 부스 운영",
     body: "메이커 미니키트와 메타버스 진로존을 함께 운영해 어린이와 학부모 모두 즐거워했습니다. 안전 동선 분리 운영이 인상적이었습니다.",

@@ -6,6 +6,7 @@ import {
   saveImage,
   updateReview,
 } from "@/lib/reviews";
+import { isValidCategory, type ProgramCategoryId } from "@/lib/categories";
 import { COOKIE_NAME, isValidToken } from "@/lib/admin";
 
 export const dynamic = "force-dynamic";
@@ -34,6 +35,7 @@ export async function POST(req: NextRequest) {
   let reviewBody = "";
   let badge: string | undefined;
   let meta: string | undefined;
+  let categoryRaw: unknown;
   let imageFile: File | null = null;
 
   if (ct.startsWith("multipart/form-data")) {
@@ -42,6 +44,7 @@ export async function POST(req: NextRequest) {
     reviewBody = String(fd.get("body") ?? "").trim();
     const b = String(fd.get("badge") ?? "").trim();
     const m = String(fd.get("meta") ?? "").trim();
+    categoryRaw = String(fd.get("category") ?? "").trim();
     badge = b || undefined;
     meta = m || undefined;
     const img = fd.get("image");
@@ -60,6 +63,7 @@ export async function POST(req: NextRequest) {
         typeof json.meta === "string" && json.meta.trim()
           ? json.meta.trim()
           : undefined;
+      categoryRaw = json.category;
     } catch {
       return NextResponse.json(
         { ok: false, error: "잘못된 요청" },
@@ -74,9 +78,16 @@ export async function POST(req: NextRequest) {
       { status: 400 },
     );
   }
+  if (!isValidCategory(categoryRaw)) {
+    return NextResponse.json(
+      { ok: false, error: "카테고리가 올바르지 않습니다." },
+      { status: 400 },
+    );
+  }
+  const category: ProgramCategoryId = categoryRaw;
 
   // 1) 본문 먼저 저장 → ID 확보
-  let review = await appendReview({ title, body: reviewBody, badge, meta });
+  let review = await appendReview({ category, title, body: reviewBody, badge, meta });
 
   // 2) 이미지가 있으면 ID 기반 파일명으로 저장 후 record 업데이트
   if (imageFile) {

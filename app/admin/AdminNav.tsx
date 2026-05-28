@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 const TABS = [
   { href: "/admin", label: "견적 문의" },
   { href: "/admin/reviews", label: "진행 후기" },
+  { href: "/admin/qna", label: "Q&A" },
 ];
 
 export default function AdminNav() {

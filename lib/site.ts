@@ -55,6 +55,7 @@ export const NAV: NavItem[] = [
       { href: "/about", label: "진로팡은" },
       { href: "/about#commitment", label: "약속하는 가치" },
       { href: "/about#contact", label: "오시는 길 · 연락처" },
+      { href: "/about/qna", label: "Q&A" },
     ],
   },
   {
