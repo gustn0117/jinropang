@@ -19,6 +19,7 @@ export default function ContactForm() {
   const [grade, setGrade] = useState("");
   const [count, setCount] = useState("");
   const [date, setDate] = useState("");
+  const [budget, setBudget] = useState("");
   const [memo, setMemo] = useState("");
   const [agree, setAgree] = useState(false);
   const [status, setStatus] = useState<"idle" | "sending" | "ok" | "err">(
@@ -43,6 +44,7 @@ export default function ContactForm() {
           grade,
           count,
           date,
+          budget,
           memo,
         }),
       });
@@ -60,6 +62,7 @@ export default function ContactForm() {
       setGrade("");
       setCount("");
       setDate("");
+      setBudget("");
       setMemo("");
       setAgree(false);
     } catch {
@@ -139,6 +142,12 @@ export default function ContactForm() {
           onChange={setCount}
           placeholder="예: 80명 / 부스 전 학생"
         />
+        <Field
+          label="예산 규모"
+          value={budget}
+          onChange={setBudget}
+          placeholder="예: 200만원 / 협의 가능 / 미정"
+        />
       </div>
 
       <div>
@@ -149,7 +158,7 @@ export default function ContactForm() {
           rows={5}
           value={memo}
           onChange={(e) => setMemo(e.target.value)}
-          placeholder="운영 목적, 예산 범위, 선호 프로그램, 공간 정보 등을 자유롭게 적어주세요."
+          placeholder="운영 목적, 선호 프로그램, 공간 정보 등을 자유롭게 적어주세요."
           className="mt-2 w-full rounded-[3px] border border-ink-100 bg-white p-4 text-[14px] leading-[1.7] outline-none transition placeholder:text-ink-300 focus:border-brand-500 focus:shadow-ring"
         />
       </div>

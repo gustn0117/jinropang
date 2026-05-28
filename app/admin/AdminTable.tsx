@@ -54,6 +54,7 @@ export default function AdminTable({
       "grade",
       "count",
       "date",
+      "budget",
       "memo",
     ];
     const esc = (v: string | undefined) => {
@@ -214,6 +215,7 @@ function FragmentRow({
               <Spec label="대상 학년" value={inquiry.grade} />
               <Spec label="예상 인원" value={inquiry.count} />
               <Spec label="희망 일정" value={inquiry.date} />
+              <Spec label="예산 규모" value={inquiry.budget} />
             </dl>
             <div className="mt-4">
               <p className="text-[12px] font-semibold uppercase tracking-[0.1em] text-ink-500">

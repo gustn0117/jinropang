@@ -13,6 +13,7 @@ export type InquiryInput = {
   grade?: string;
   count?: string;
   date?: string;
+  budget?: string;
   memo?: string;
 };
 

@@ -32,6 +32,7 @@ export async function POST(req: NextRequest) {
     grade: pick("grade"),
     count: pick("count"),
     date: pick("date"),
+    budget: pick("budget"),
     memo: pick("memo"),
   });
   return NextResponse.json({ ok: true, id: inquiry.id });

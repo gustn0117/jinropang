@@ -8,23 +8,22 @@ import {
   type ProgramCategoryId,
 } from "@/lib/categories";
 
-type FilterId = "all" | ProgramCategoryId;
-
-const FILTERS: { id: FilterId; label: string }[] = [
-  { id: "all", label: "전체" },
-  ...PROGRAM_CATEGORIES.map((c) => ({ id: c.id as FilterId, label: c.label })),
-];
+const FILTERS = PROGRAM_CATEGORIES.map((c) => ({
+  id: c.id,
+  label: c.label,
+}));
 
 export default function ReviewsList({ reviews }: { reviews: Review[] }) {
-  const [active, setActive] = useState<FilterId>("all");
+  const [active, setActive] = useState<ProgramCategoryId>(
+    PROGRAM_CATEGORIES[0].id,
+  );
 
-  // URL 해시(#elementary 등) 또는 #all 로 진입 시 해당 탭 자동 선택
+  // URL 해시(#elementary 등) 진입 시 해당 탭 자동 선택
   useEffect(() => {
     if (typeof window === "undefined") return;
     const applyHash = () => {
       const h = window.location.hash.replace(/^#/, "");
-      if (h === "all") setActive("all");
-      else if (isValidCategory(h)) setActive(h);
+      if (isValidCategory(h)) setActive(h);
     };
     applyHash();
     window.addEventListener("hashchange", applyHash);
@@ -32,8 +31,7 @@ export default function ReviewsList({ reviews }: { reviews: Review[] }) {
   }, []);
 
   const counts = useMemo(() => {
-    const c: Record<FilterId, number> = {
-      all: reviews.length,
+    const c: Record<ProgramCategoryId, number> = {
       elementary: 0,
       secondary: 0,
       event: 0,
@@ -44,10 +42,10 @@ export default function ReviewsList({ reviews }: { reviews: Review[] }) {
     return c;
   }, [reviews]);
 
-  const filtered = useMemo(() => {
-    if (active === "all") return reviews;
-    return reviews.filter((r) => r.category === active);
-  }, [reviews, active]);
+  const filtered = useMemo(
+    () => reviews.filter((r) => r.category === active),
+    [reviews, active],
+  );
 
   return (
     <>

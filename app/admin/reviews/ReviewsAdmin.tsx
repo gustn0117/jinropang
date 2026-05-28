@@ -35,6 +35,7 @@ export default function ReviewsAdmin({
 }) {
   const [list, setList] = useState<Review[]>(initialList);
   const [editingId, setEditingId] = useState<string | null>(null);
+  const [expandedIds, setExpandedIds] = useState<Set<string>>(new Set());
   const [existingImageUrl, setExistingImageUrl] = useState<string | null>(null);
   const [category, setCategory] = useState<ProgramCategoryId>(
     PROGRAM_CATEGORIES[0].id,
@@ -440,23 +441,66 @@ export default function ReviewsAdmin({
                 <h3 className="mt-3 text-[15.5px] font-bold leading-[1.4] text-ink-900">
                   {r.title}
                 </h3>
-                {r.image && (
-                  <div className="mt-3 overflow-hidden rounded-[3px] border border-ink-100">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={r.image}
-                      alt={r.title}
-                      className="block aspect-[4/3] w-full object-cover"
-                    />
-                  </div>
-                )}
-                <p className="mt-2 whitespace-pre-wrap text-[13.5px] leading-[1.75] text-ink-700">
-                  {r.body}
-                </p>
                 {r.meta && (
-                  <p className="mt-3 border-t border-ink-100 pt-2 text-[12px] font-semibold text-ink-500">
+                  <p className="mt-1.5 text-[12px] font-semibold text-ink-500">
                     {r.meta}
                   </p>
+                )}
+                {(r.body || r.image) && (
+                  <>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setExpandedIds((cur) => {
+                          const next = new Set(cur);
+                          if (next.has(r.id)) next.delete(r.id);
+                          else next.add(r.id);
+                          return next;
+                        })
+                      }
+                      aria-expanded={expandedIds.has(r.id)}
+                      className="mt-3 inline-flex items-center gap-1 text-[12.5px] font-semibold text-ink-500 hover:text-brand-700"
+                    >
+                      {expandedIds.has(r.id) ? "본문 접기" : "본문 보기"}
+                      <svg
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        aria-hidden
+                        className={`transition-transform ${
+                          expandedIds.has(r.id) ? "rotate-180" : ""
+                        }`}
+                      >
+                        <path
+                          d="m6 9 6 6 6-6"
+                          stroke="currentColor"
+                          strokeWidth="2.2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </button>
+                    {expandedIds.has(r.id) && (
+                      <div className="mt-3 border-t border-ink-100 pt-3">
+                        {r.image && (
+                          <div className="overflow-hidden rounded-[3px] border border-ink-100">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                              src={r.image}
+                              alt={r.title}
+                              className="block aspect-[4/3] w-full object-cover"
+                            />
+                          </div>
+                        )}
+                        {r.body && (
+                          <p className="mt-3 whitespace-pre-wrap text-[13.5px] leading-[1.75] text-ink-700">
+                            {r.body}
+                          </p>
+                        )}
+                      </div>
+                    )}
+                  </>
                 )}
               </li>
             ))}
