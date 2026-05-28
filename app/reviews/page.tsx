@@ -31,8 +31,57 @@ const TRUST_LIST = [
 
 export default async function ReviewsPage() {
   const reviews = (await listReviews()).reverse(); // 최신순
+
+  const reviewsJsonLd = {
+    "@context": "https://schema.org",
+    "@graph": reviews.flatMap((r) => {
+      const id = `${SITE.url}/reviews#${r.id}`;
+      const image = r.image ? `${SITE.url}${r.image}` : `${SITE.url}/og-image.png`;
+      const article = {
+        "@type": "Article",
+        "@id": `${id}-article`,
+        headline: r.title,
+        articleBody: r.body,
+        datePublished: r.createdAt,
+        inLanguage: "ko-KR",
+        author: { "@id": `${SITE.url}#organization` },
+        publisher: { "@id": `${SITE.url}#organization` },
+        image,
+        mainEntityOfPage: `${SITE.url}/reviews`,
+        articleSection: r.badge ?? "운영 사례",
+      };
+      const event = {
+        "@type": "Event",
+        "@id": `${id}-event`,
+        name: r.title,
+        description: r.body,
+        startDate: r.createdAt,
+        eventStatus: "https://schema.org/EventScheduled",
+        eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+        organizer: { "@id": `${SITE.url}#organization` },
+        location: {
+          "@type": "Place",
+          name: r.meta ?? "출강 학교·기관",
+          address: {
+            "@type": "PostalAddress",
+            addressCountry: "KR",
+            addressRegion: "대한민국",
+          },
+        },
+        image,
+      };
+      return [article, event];
+    }),
+  };
+
   return (
     <>
+      {reviews.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewsJsonLd) }}
+        />
+      )}
       <PageHero
         eyebrow="REVIEWS"
         image="/hero-reviews.png"

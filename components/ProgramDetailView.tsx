@@ -1,7 +1,20 @@
 import Link from "next/link";
 import PageHero from "./PageHero";
 import CTASection from "./CTASection";
-import { type Program, displayTitle } from "@/lib/programs";
+import { type Program, displayTitle, programHref } from "@/lib/programs";
+import { SITE } from "@/lib/site";
+
+function targetAudience(program: Program): string {
+  if (program.category === "elementary") {
+    return program.group === "g12"
+      ? "초등 1-2학년"
+      : program.group === "g36"
+        ? "초등 3-6학년"
+        : "초등 체험학습";
+  }
+  if (program.category === "secondary") return "중·고등학생";
+  return "축제·행사부스 / 전 학년";
+}
 
 export default function ProgramDetailView({
   program,
@@ -16,8 +29,57 @@ export default function ProgramDetailView({
   backHref: string;
   backLabel: string;
 }) {
+  const courseJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    name: displayTitle(program),
+    description: program.description,
+    url: `${SITE.url}${programHref(program)}`,
+    image: `${SITE.url}${program.image}`,
+    inLanguage: "ko-KR",
+    educationalLevel: targetAudience(program),
+    audience: {
+      "@type": "EducationalAudience",
+      educationalRole: "student",
+      audienceType: targetAudience(program),
+    },
+    timeRequired: program.duration,
+    provider: { "@id": `${SITE.url}#organization` },
+    offers: {
+      "@type": "Offer",
+      url: `${SITE.url}/contact`,
+      availability: "https://schema.org/InStock",
+      areaServed: { "@type": "Country", name: "대한민국", identifier: "KR" },
+      priceCurrency: "KRW",
+      priceSpecification: {
+        "@type": "PriceSpecification",
+        priceCurrency: "KRW",
+        description: "학교·기관 맞춤 견적 제공",
+      },
+    },
+    hasCourseInstance: {
+      "@type": "CourseInstance",
+      courseMode: "Onsite",
+      location: {
+        "@type": "Place",
+        name: "출강 학교·기관",
+        address: {
+          "@type": "PostalAddress",
+          addressCountry: "KR",
+          addressRegion: "대한민국",
+        },
+      },
+      courseWorkload: program.duration,
+      inLanguage: "ko-KR",
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseJsonLd) }}
+      />
       <PageHero
         eyebrow={eyebrow}
         image={program.image}

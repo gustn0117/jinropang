@@ -3,6 +3,7 @@ import PageHero from "@/components/PageHero";
 import CTASection from "@/components/CTASection";
 import QnaSections from "./QnaSections";
 import { listQna } from "@/lib/qna";
+import { SITE } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
 
@@ -16,8 +17,31 @@ export const metadata: Metadata = {
 export default async function QnaPage() {
   const list = await listQna();
   list.reverse(); // 최신 등록이 위로
+
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": `${SITE.url}/about/qna#faq`,
+    inLanguage: "ko-KR",
+    url: `${SITE.url}/about/qna`,
+    mainEntity: list.map((q) => ({
+      "@type": "Question",
+      name: q.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: q.answer,
+      },
+    })),
+  };
+
   return (
     <>
+      {list.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
       <PageHero
         eyebrow="Q&A"
         title="자주 묻는 질문"

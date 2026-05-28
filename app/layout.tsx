@@ -72,20 +72,33 @@ export default function RootLayout({
 }) {
   const orgJsonLd = {
     "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
+    "@type": ["Organization", "EducationalOrganization"],
+    "@id": `${SITE.url}#organization`,
     name: SITE.brandFull,
     alternateName: SITE.name,
     url: SITE.url,
+    logo: `${SITE.url}/logo.png`,
+    image: `${SITE.url}/og-image.png`,
     description: SITE.description,
     telephone: SITE.phone,
     email: SITE.email,
     address: {
       "@type": "PostalAddress",
       addressCountry: "KR",
-      addressRegion: "전국",
+      addressRegion: "대한민국",
     },
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        telephone: SITE.phone,
+        contactType: "customer service",
+        areaServed: "KR",
+        availableLanguage: ["Korean"],
+      },
+    ],
     sameAs: [SITE.social.youtube, SITE.social.instagram, SITE.social.blog],
-    areaServed: { "@type": "Country", name: "대한민국" },
+    areaServed: { "@type": "Country", name: "대한민국", identifier: "KR" },
+    serviceArea: { "@type": "Country", name: "대한민국", identifier: "KR" },
     taxID: "390-88-03117",
     knowsAbout: [
       "로봇 체험 교육",
@@ -101,12 +114,18 @@ export default function RootLayout({
   const websiteJsonLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": `${SITE.url}#website`,
     name: SITE.name,
+    alternateName: SITE.brandFull,
     url: SITE.url,
     inLanguage: "ko-KR",
+    publisher: { "@id": `${SITE.url}#organization` },
     potentialAction: {
       "@type": "SearchAction",
-      target: `${SITE.url}/?q={search_term_string}`,
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${SITE.url}/?q={search_term_string}`,
+      },
       "query-input": "required name=search_term_string",
     },
   };

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import ContactForm from "@/components/ContactForm";
+import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "견적 문의하기 / 상담 문의",
@@ -9,9 +10,40 @@ export const metadata: Metadata = {
   alternates: { canonical: "/contact" },
 };
 
+const contactJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "@id": `${SITE.url}/contact#contactpage`,
+  url: `${SITE.url}/contact`,
+  name: "진로팡 견적·상담 문의",
+  inLanguage: "ko-KR",
+  isPartOf: { "@id": `${SITE.url}#website` },
+  about: { "@id": `${SITE.url}#organization` },
+  mainEntity: {
+    "@type": "Organization",
+    "@id": `${SITE.url}#organization`,
+    name: SITE.brandFull,
+    url: SITE.url,
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        telephone: SITE.phone,
+        contactType: "customer service",
+        email: SITE.email,
+        areaServed: "KR",
+        availableLanguage: ["Korean"],
+      },
+    ],
+  },
+};
+
 export default function ContactPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactJsonLd) }}
+      />
       <PageHero
         eyebrow="CONTACT"
         title="무료 견적 · 상담 신청"
