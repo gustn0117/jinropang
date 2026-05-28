@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import type { Review } from "@/lib/reviews";
 import {
   PROGRAM_CATEGORIES,
@@ -14,21 +15,16 @@ const FILTERS = PROGRAM_CATEGORIES.map((c) => ({
 }));
 
 export default function ReviewsList({ reviews }: { reviews: Review[] }) {
-  const [active, setActive] = useState<ProgramCategoryId>(
-    PROGRAM_CATEGORIES[0].id,
-  );
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const catParam = searchParams.get("cat");
+  const active: ProgramCategoryId = isValidCategory(catParam)
+    ? catParam
+    : PROGRAM_CATEGORIES[0].id;
 
-  // URL 해시(#elementary 등) 진입 시 해당 탭 자동 선택
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const applyHash = () => {
-      const h = window.location.hash.replace(/^#/, "");
-      if (isValidCategory(h)) setActive(h);
-    };
-    applyHash();
-    window.addEventListener("hashchange", applyHash);
-    return () => window.removeEventListener("hashchange", applyHash);
-  }, []);
+  function setActive(id: ProgramCategoryId) {
+    router.replace(`/reviews?cat=${id}`, { scroll: false });
+  }
 
   const counts = useMemo(() => {
     const c: Record<ProgramCategoryId, number> = {

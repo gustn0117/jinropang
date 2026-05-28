@@ -109,18 +109,18 @@ export const NAV: NavItem[] = [
     href: "/reviews",
     label: "진행후기",
     children: [
-      { href: "/reviews#elementary", label: "초등 프로그램" },
-      { href: "/reviews#secondary", label: "중·고등 프로그램" },
-      { href: "/reviews#event", label: "행사부스 프로그램" },
+      { href: "/reviews?cat=elementary", label: "초등 프로그램" },
+      { href: "/reviews?cat=secondary", label: "중·고등 프로그램" },
+      { href: "/reviews?cat=event", label: "행사부스 프로그램" },
     ],
   },
   {
     href: "/qna",
     label: "Q&A",
     children: [
-      { href: "/qna#elementary", label: "초등 프로그램" },
-      { href: "/qna#secondary", label: "중·고등 프로그램" },
-      { href: "/qna#event", label: "행사부스 프로그램" },
+      { href: "/qna?cat=elementary", label: "초등 프로그램" },
+      { href: "/qna?cat=secondary", label: "중·고등 프로그램" },
+      { href: "/qna?cat=event", label: "행사부스 프로그램" },
     ],
   },
 ];

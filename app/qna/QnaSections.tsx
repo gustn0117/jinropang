@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import {
   PROGRAM_CATEGORIES,
   isValidCategory,
@@ -9,22 +10,17 @@ import {
 import type { Qna } from "@/lib/qna";
 
 export default function QnaSections({ list }: { list: Qna[] }) {
-  const [active, setActive] = useState<ProgramCategoryId>(
-    PROGRAM_CATEGORIES[0].id,
-  );
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const catParam = searchParams.get("cat");
+  const active: ProgramCategoryId = isValidCategory(catParam)
+    ? catParam
+    : PROGRAM_CATEGORIES[0].id;
   const [openIds, setOpenIds] = useState<Set<string>>(new Set());
 
-  // URL 해시(#elementary 등)로 진입 시 해당 탭 자동 선택
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const applyHash = () => {
-      const h = window.location.hash.replace(/^#/, "");
-      if (isValidCategory(h)) setActive(h);
-    };
-    applyHash();
-    window.addEventListener("hashchange", applyHash);
-    return () => window.removeEventListener("hashchange", applyHash);
-  }, []);
+  function setActive(id: ProgramCategoryId) {
+    router.replace(`/qna?cat=${id}`, { scroll: false });
+  }
 
   const grouped = useMemo(() => {
     const map: Record<ProgramCategoryId, Qna[]> = {
