@@ -54,10 +54,7 @@ export const metadata: Metadata = {
       "naver-site-verification": "a17238fa284a8c7899781122b1dcf1319020ae49",
     },
   },
-  icons: {
-    icon: "/favicon.svg",
-    apple: "/apple-touch-icon.png",
-  },
+  // 파비콘은 app/icon.png, app/apple-icon.png 자동 감지 사용
 };
 
 export const viewport: Viewport = {
