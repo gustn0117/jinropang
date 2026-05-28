@@ -105,6 +105,22 @@ export const NAV: NavItem[] = [
       { href: "/safety#step-05", label: "응급상황 대응" },
     ],
   },
-  { href: "/reviews", label: "진행후기" },
-  { href: "/qna", label: "Q&A" },
+  {
+    href: "/reviews",
+    label: "진행후기",
+    children: [
+      { href: "/reviews#elementary", label: "초등 프로그램" },
+      { href: "/reviews#secondary", label: "중·고등 프로그램" },
+      { href: "/reviews#event", label: "행사부스 프로그램" },
+    ],
+  },
+  {
+    href: "/qna",
+    label: "Q&A",
+    children: [
+      { href: "/qna#elementary", label: "초등 프로그램" },
+      { href: "/qna#secondary", label: "중·고등 프로그램" },
+      { href: "/qna#event", label: "행사부스 프로그램" },
+    ],
+  },
 ];

@@ -34,6 +34,8 @@ export default function ReviewsAdmin({
   initialList: Review[];
 }) {
   const [list, setList] = useState<Review[]>(initialList);
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [existingImageUrl, setExistingImageUrl] = useState<string | null>(null);
   const [category, setCategory] = useState<ProgramCategoryId>(
     PROGRAM_CATEGORIES[0].id,
   );
@@ -47,6 +49,8 @@ export default function ReviewsAdmin({
   const [err, setErr] = useState("");
   const [warning, setWarning] = useState("");
   const [deletingId, setDeletingId] = useState<string | null>(null);
+
+  const isEditing = editingId !== null;
 
   // 미리보기 URL 생성·해제
   useEffect(() => {
@@ -78,16 +82,41 @@ export default function ReviewsAdmin({
   }
 
   function resetForm() {
+    setEditingId(null);
+    setExistingImageUrl(null);
     setCategory(PROGRAM_CATEGORIES[0].id);
     setBadge("");
     setTitle("");
     setBody("");
     setMeta("");
     setImage(null);
+    setErr("");
+    setWarning("");
     const fileInput = document.getElementById(
       "review-image-input",
     ) as HTMLInputElement | null;
     if (fileInput) fileInput.value = "";
+  }
+
+  function startEdit(r: Review) {
+    setEditingId(r.id);
+    setExistingImageUrl(r.image ?? null);
+    setCategory(r.category ?? PROGRAM_CATEGORIES[0].id);
+    setBadge(r.badge ?? "");
+    setTitle(r.title);
+    setBody(r.body);
+    setMeta(r.meta ?? "");
+    setImage(null);
+    setErr("");
+    setWarning("");
+    const fileInput = document.getElementById(
+      "review-image-input",
+    ) as HTMLInputElement | null;
+    if (fileInput) fileInput.value = "";
+    // 모바일/태블릿에서 폼이 보이도록 상단으로 스크롤
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   }
 
   async function submit(e: FormEvent) {
@@ -104,18 +133,27 @@ export default function ReviewsAdmin({
       fd.append("category", category);
       fd.append("title", title);
       fd.append("body", body);
-      if (badge) fd.append("badge", badge);
-      if (meta) fd.append("meta", meta);
+      fd.append("badge", badge);
+      fd.append("meta", meta);
       if (image) fd.append("image", image);
-      const r = await fetch("/api/review", { method: "POST", body: fd });
+
+      const url = isEditing ? `/api/review/${editingId}` : "/api/review";
+      const method = isEditing ? "PATCH" : "POST";
+      const r = await fetch(url, { method, body: fd });
       if (!r.ok) {
         const d = await r.json().catch(() => ({}));
-        setErr(d?.error ?? "등록 실패");
+        setErr(d?.error ?? (isEditing ? "수정 실패" : "등록 실패"));
         setSubmitting(false);
         return;
       }
       const data = await r.json();
-      setList((cur) => [data.review, ...cur]);
+      if (isEditing) {
+        setList((cur) =>
+          cur.map((x) => (x.id === data.review.id ? data.review : x)),
+        );
+      } else {
+        setList((cur) => [data.review, ...cur]);
+      }
       if (data.warning) setWarning(data.warning);
       resetForm();
     } catch {
@@ -138,11 +176,30 @@ export default function ReviewsAdmin({
 
   return (
     <div className="mt-6 grid gap-8 lg:grid-cols-[minmax(0,360px)_1fr]">
-      {/* 등록 폼 */}
-      <section className="rounded-[3px] border border-ink-100 bg-white p-6 lg:sticky lg:top-24 lg:self-start">
-        <h2 className="text-[17px] font-bold text-ink-900">새 후기 등록</h2>
+      {/* 등록·수정 폼 */}
+      <section
+        className={`rounded-[3px] border bg-white p-6 lg:sticky lg:top-24 lg:self-start ${
+          isEditing ? "border-brand-700 ring-2 ring-brand-100" : "border-ink-100"
+        }`}
+      >
+        <div className="flex items-center justify-between gap-2">
+          <h2 className="text-[17px] font-bold text-ink-900">
+            {isEditing ? "후기 수정" : "새 후기 등록"}
+          </h2>
+          {isEditing && (
+            <button
+              type="button"
+              onClick={resetForm}
+              className="rounded-[2px] border border-ink-100 px-2.5 py-1 text-[12px] font-semibold text-ink-700 hover:border-ink-300 hover:bg-ink-50"
+            >
+              취소
+            </button>
+          )}
+        </div>
         <p className="mt-1 text-[13px] text-ink-500">
-          진행후기 페이지 상단에 노출됩니다.
+          {isEditing
+            ? "수정 후 저장하면 즉시 진행후기 페이지에 반영됩니다."
+            : "진행후기 페이지 상단에 노출됩니다."}
         </p>
         <form onSubmit={submit} className="mt-5 grid gap-4">
           <div>
@@ -254,6 +311,24 @@ export default function ReviewsAdmin({
                   </button>
                 </div>
               </div>
+            ) : existingImageUrl ? (
+              <div className="mt-2 overflow-hidden rounded-[3px] border border-ink-100">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={existingImageUrl}
+                  alt="기존 이미지"
+                  className="block aspect-[4/3] w-full object-cover"
+                />
+                <div className="flex items-center justify-between gap-2 border-t border-ink-100 bg-soft-grad px-3 py-2 text-[12px]">
+                  <span className="truncate text-ink-700">기존 이미지</span>
+                  <label
+                    htmlFor="review-image-input"
+                    className="cursor-pointer rounded-[2px] border border-ink-100 bg-white px-2 py-1 text-[11.5px] font-semibold text-ink-700 hover:border-brand-700 hover:text-brand-700"
+                  >
+                    교체
+                  </label>
+                </div>
+              </div>
             ) : (
               <label
                 htmlFor="review-image-input"
@@ -288,7 +363,13 @@ export default function ReviewsAdmin({
             disabled={submitting}
             className="btn-primary disabled:cursor-not-allowed disabled:opacity-60"
           >
-            {submitting ? "등록 중..." : "후기 등록"}
+            {submitting
+              ? isEditing
+                ? "저장 중..."
+                : "등록 중..."
+              : isEditing
+                ? "수정 저장"
+                : "후기 등록"}
           </button>
         </form>
       </section>
@@ -313,7 +394,11 @@ export default function ReviewsAdmin({
             {list.map((r) => (
               <li
                 key={r.id}
-                className="rounded-[3px] border border-ink-100 bg-white p-5"
+                className={`rounded-[3px] border bg-white p-5 ${
+                  editingId === r.id
+                    ? "border-brand-700 ring-2 ring-brand-100"
+                    : "border-ink-100"
+                }`}
               >
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex flex-wrap items-center gap-2">
@@ -330,14 +415,27 @@ export default function ReviewsAdmin({
                     <span className="text-[11.5px] text-ink-500 tabular-nums">
                       {formatDate(r.createdAt)}
                     </span>
+                    {editingId === r.id && (
+                      <span className="rounded-[2px] bg-amber-100 px-2 py-0.5 text-[11px] font-bold text-amber-800">
+                        수정 중
+                      </span>
+                    )}
                   </div>
-                  <button
-                    onClick={() => remove(r.id)}
-                    disabled={deletingId === r.id}
-                    className="rounded-[2px] border border-ink-100 px-2.5 py-1 text-[12px] font-semibold text-ink-700 hover:border-red-500 hover:text-red-600 disabled:opacity-50"
-                  >
-                    {deletingId === r.id ? "..." : "삭제"}
-                  </button>
+                  <div className="flex shrink-0 gap-1.5">
+                    <button
+                      onClick={() => startEdit(r)}
+                      className="rounded-[2px] border border-ink-100 px-2.5 py-1 text-[12px] font-semibold text-ink-700 hover:border-brand-700 hover:text-brand-700"
+                    >
+                      수정
+                    </button>
+                    <button
+                      onClick={() => remove(r.id)}
+                      disabled={deletingId === r.id}
+                      className="rounded-[2px] border border-ink-100 px-2.5 py-1 text-[12px] font-semibold text-ink-700 hover:border-red-500 hover:text-red-600 disabled:opacity-50"
+                    >
+                      {deletingId === r.id ? "..." : "삭제"}
+                    </button>
+                  </div>
                 </div>
                 <h3 className="mt-3 text-[15.5px] font-bold leading-[1.4] text-ink-900">
                   {r.title}

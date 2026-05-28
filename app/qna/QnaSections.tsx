@@ -1,8 +1,9 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   PROGRAM_CATEGORIES,
+  isValidCategory,
   type ProgramCategoryId,
 } from "@/lib/categories";
 import type { Qna } from "@/lib/qna";
@@ -12,6 +13,18 @@ export default function QnaSections({ list }: { list: Qna[] }) {
     PROGRAM_CATEGORIES[0].id,
   );
   const [openIds, setOpenIds] = useState<Set<string>>(new Set());
+
+  // URL 해시(#elementary 등)로 진입 시 해당 탭 자동 선택
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const applyHash = () => {
+      const h = window.location.hash.replace(/^#/, "");
+      if (isValidCategory(h)) setActive(h);
+    };
+    applyHash();
+    window.addEventListener("hashchange", applyHash);
+    return () => window.removeEventListener("hashchange", applyHash);
+  }, []);
 
   const grouped = useMemo(() => {
     const map: Record<ProgramCategoryId, Qna[]> = {

@@ -1,9 +1,10 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { Review } from "@/lib/reviews";
 import {
   PROGRAM_CATEGORIES,
+  isValidCategory,
   type ProgramCategoryId,
 } from "@/lib/categories";
 
@@ -16,6 +17,19 @@ const FILTERS: { id: FilterId; label: string }[] = [
 
 export default function ReviewsList({ reviews }: { reviews: Review[] }) {
   const [active, setActive] = useState<FilterId>("all");
+
+  // URL 해시(#elementary 등) 또는 #all 로 진입 시 해당 탭 자동 선택
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const applyHash = () => {
+      const h = window.location.hash.replace(/^#/, "");
+      if (h === "all") setActive("all");
+      else if (isValidCategory(h)) setActive(h);
+    };
+    applyHash();
+    window.addEventListener("hashchange", applyHash);
+    return () => window.removeEventListener("hashchange", applyHash);
+  }, []);
 
   const counts = useMemo(() => {
     const c: Record<FilterId, number> = {
