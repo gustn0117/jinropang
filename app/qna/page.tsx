@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: "Q&A — 자주 묻는 질문",
   description:
     "초등·중고등·행사부스 프로그램 관련 자주 묻는 질문과 답변을 카테고리별로 안내합니다.",
-  alternates: { canonical: "/about/qna" },
+  alternates: { canonical: "/qna" },
 };
 
 export default async function QnaPage() {
@@ -21,9 +21,9 @@ export default async function QnaPage() {
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "@id": `${SITE.url}/about/qna#faq`,
+    "@id": `${SITE.url}/qna#faq`,
     inLanguage: "ko-KR",
-    url: `${SITE.url}/about/qna`,
+    url: `${SITE.url}/qna`,
     mainEntity: list.map((q) => ({
       "@type": "Question",
       name: q.question,
@@ -46,10 +46,7 @@ export default async function QnaPage() {
         eyebrow="Q&A"
         title="자주 묻는 질문"
         description="프로그램 운영·견적·안전 관리 등 자주 받는 질문을 카테고리별로 정리했습니다. 원하는 답변이 없으시면 1:1로 빠르게 안내드립니다."
-        breadcrumb={[
-          { label: "진로팡 소개", href: "/about" },
-          { label: "Q&A" },
-        ]}
+        breadcrumb={[{ label: "Q&A" }]}
       />
 
       <QnaSections list={list} />
