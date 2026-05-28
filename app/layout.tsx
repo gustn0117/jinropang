@@ -8,7 +8,8 @@ import { SITE } from "@/lib/site";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: `${SITE.brandFull} | 학교·기관 출강 로봇·코딩·AI 체험`,
+    // 검색엔진 권장 — 40자 이내
+    default: `${SITE.brandFull} — 로봇·코딩·AI 체험`,
     template: `%s | ${SITE.name}`,
   },
   description: SITE.description,
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
     locale: "ko_KR",
     url: SITE.url,
     siteName: SITE.name,
-    title: `${SITE.brandFull} | 학교·기관 출강 로봇·코딩·AI 체험`,
+    title: `${SITE.brandFull} — 로봇·코딩·AI 체험`,
     description: SITE.description,
     images: [
       {

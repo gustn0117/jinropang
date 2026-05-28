@@ -1,13 +1,17 @@
 export const SITE = {
   name: "진로팡",
   brandFull: "찾아가는 미래교육 진로팡",
+  // 검색엔진 권장 — 80자 이내 (2026-05 네이버 웹마스터도구 가이드)
   description:
+    "진로팡은 전국 학교·기관에 출강하는 미래교육 진로체험 기관. 로봇·코딩·AI 체험을 안전하게 운영합니다.",
+  // 본문·소개용 긴 설명 (필요 시 사용)
+  descriptionLong:
     "진로팡은 학교·기관을 직접 찾아가는 미래교육 진로체험 전문기관입니다. 로봇·코딩·AI·메타버스 체험 프로그램, 축제·행사 부스, 대회 운영까지 안전하게 운영합니다.",
-  url: "https://www.jinropang.kr",
+  url: "https://www.jinropang.co.kr",
   phone: "1668-1758",
   phoneE164: "+8216681758",
   kakaoChannel: "http://pf.kakao.com/_XNtWG/chat",
-  email: "contact@jinropang.kr",
+  email: "contact@jinropang.co.kr",
   address: "대한민국 전 지역 학교·기관 출강",
   social: {
     youtube: "https://www.youtube.com/@jinropang",
