@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SITE } from "@/lib/site";
 
 export default function PageHero({
   eyebrow,
@@ -14,8 +15,36 @@ export default function PageHero({
   /** 히어로 배경 이미지 경로 (옵션). 지정 시 사진 위에 네이비 오버레이가 깔립니다. */
   image?: string;
 }) {
+  // BreadcrumbList JSON-LD — 보이는 빵부스러기와 동일 구조로 자동 생성
+  const breadcrumbJsonLd = breadcrumb && breadcrumb.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "홈",
+            item: SITE.url,
+          },
+          ...breadcrumb.map((b, i) => ({
+            "@type": "ListItem",
+            position: i + 2,
+            name: b.label,
+            ...(b.href ? { item: `${SITE.url}${b.href}` } : {}),
+          })),
+        ],
+      }
+    : null;
+
   return (
     <section className="relative isolate overflow-hidden bg-brand-900 text-white">
+      {breadcrumbJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        />
+      )}
       {image && (
         <img
           src={image}
