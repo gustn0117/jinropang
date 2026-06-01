@@ -20,6 +20,7 @@ function formatDate(iso: string): string {
 
 export default function QnaAdmin({ initialList }: { initialList: Qna[] }) {
   const [list, setList] = useState<Qna[]>(initialList);
+  const [editingId, setEditingId] = useState<string | null>(null);
   const [category, setCategory] = useState<ProgramCategoryId>(
     PROGRAM_CATEGORIES[0].id,
   );
@@ -28,6 +29,27 @@ export default function QnaAdmin({ initialList }: { initialList: Qna[] }) {
   const [submitting, setSubmitting] = useState(false);
   const [err, setErr] = useState("");
   const [deletingId, setDeletingId] = useState<string | null>(null);
+
+  const isEditing = editingId !== null;
+
+  function resetForm() {
+    setEditingId(null);
+    setCategory(PROGRAM_CATEGORIES[0].id);
+    setQuestion("");
+    setAnswer("");
+    setErr("");
+  }
+
+  function startEdit(q: Qna) {
+    setEditingId(q.id);
+    setCategory(q.category);
+    setQuestion(q.question);
+    setAnswer(q.answer);
+    setErr("");
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }
 
   async function submit(e: FormEvent) {
     e.preventDefault();
@@ -38,8 +60,10 @@ export default function QnaAdmin({ initialList }: { initialList: Qna[] }) {
     }
     setSubmitting(true);
     try {
-      const r = await fetch("/api/qna", {
-        method: "POST",
+      const url = isEditing ? `/api/qna/${editingId}` : "/api/qna";
+      const method = isEditing ? "PATCH" : "POST";
+      const r = await fetch(url, {
+        method,
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           category,
@@ -49,14 +73,19 @@ export default function QnaAdmin({ initialList }: { initialList: Qna[] }) {
       });
       if (!r.ok) {
         const d = await r.json().catch(() => ({}));
-        setErr(d?.error ?? "등록 실패");
+        setErr(d?.error ?? (isEditing ? "수정 실패" : "등록 실패"));
         setSubmitting(false);
         return;
       }
       const data = await r.json();
-      setList((cur) => [data.qna, ...cur]);
-      setQuestion("");
-      setAnswer("");
+      if (isEditing) {
+        setList((cur) =>
+          cur.map((x) => (x.id === data.qna.id ? data.qna : x)),
+        );
+      } else {
+        setList((cur) => [data.qna, ...cur]);
+      }
+      resetForm();
     } catch {
       setErr("네트워크 오류");
     }
@@ -70,6 +99,7 @@ export default function QnaAdmin({ initialList }: { initialList: Qna[] }) {
     setDeletingId(null);
     if (r.ok) {
       setList((cur) => cur.filter((x) => x.id !== id));
+      if (editingId === id) resetForm();
     } else {
       alert("삭제 실패");
     }
@@ -77,11 +107,30 @@ export default function QnaAdmin({ initialList }: { initialList: Qna[] }) {
 
   return (
     <div className="mt-6 grid gap-8 lg:grid-cols-[minmax(0,360px)_1fr]">
-      {/* 등록 폼 */}
-      <section className="rounded-[3px] border border-ink-100 bg-white p-6 lg:sticky lg:top-24 lg:self-start">
-        <h2 className="text-[17px] font-bold text-ink-900">새 Q&A 등록</h2>
+      {/* 등록·수정 폼 */}
+      <section
+        className={`rounded-[3px] border bg-white p-6 lg:sticky lg:top-24 lg:self-start ${
+          isEditing ? "border-brand-700 ring-2 ring-brand-100" : "border-ink-100"
+        }`}
+      >
+        <div className="flex items-center justify-between gap-2">
+          <h2 className="text-[17px] font-bold text-ink-900">
+            {isEditing ? "Q&A 수정" : "새 Q&A 등록"}
+          </h2>
+          {isEditing && (
+            <button
+              type="button"
+              onClick={resetForm}
+              className="rounded-[2px] border border-ink-100 px-2.5 py-1 text-[12px] font-semibold text-ink-700 hover:border-ink-300 hover:bg-ink-50"
+            >
+              취소
+            </button>
+          )}
+        </div>
         <p className="mt-1 text-[13px] text-ink-500">
-          공개 Q&A 페이지에 즉시 노출됩니다.
+          {isEditing
+            ? "수정 후 저장하면 즉시 Q&A 페이지에 반영됩니다."
+            : "공개 Q&A 페이지에 즉시 노출됩니다."}
         </p>
         <form onSubmit={submit} className="mt-5 grid gap-4">
           <div>
@@ -136,7 +185,13 @@ export default function QnaAdmin({ initialList }: { initialList: Qna[] }) {
             disabled={submitting}
             className="btn-primary disabled:cursor-not-allowed disabled:opacity-60"
           >
-            {submitting ? "등록 중..." : "Q&A 등록"}
+            {submitting
+              ? isEditing
+                ? "저장 중..."
+                : "등록 중..."
+              : isEditing
+                ? "수정 저장"
+                : "Q&A 등록"}
           </button>
         </form>
       </section>
@@ -161,7 +216,11 @@ export default function QnaAdmin({ initialList }: { initialList: Qna[] }) {
             {list.map((q) => (
               <li
                 key={q.id}
-                className="rounded-[3px] border border-ink-100 bg-white p-5"
+                className={`rounded-[3px] border bg-white p-5 ${
+                  editingId === q.id
+                    ? "border-brand-700 ring-2 ring-brand-100"
+                    : "border-ink-100"
+                }`}
               >
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex flex-wrap items-center gap-2">
@@ -171,14 +230,27 @@ export default function QnaAdmin({ initialList }: { initialList: Qna[] }) {
                     <span className="text-[11.5px] text-ink-500 tabular-nums">
                       {formatDate(q.createdAt)}
                     </span>
+                    {editingId === q.id && (
+                      <span className="rounded-[2px] bg-amber-100 px-2 py-0.5 text-[11px] font-bold text-amber-800">
+                        수정 중
+                      </span>
+                    )}
                   </div>
-                  <button
-                    onClick={() => remove(q.id)}
-                    disabled={deletingId === q.id}
-                    className="rounded-[2px] border border-ink-100 px-2.5 py-1 text-[12px] font-semibold text-ink-700 hover:border-red-500 hover:text-red-600 disabled:opacity-50"
-                  >
-                    {deletingId === q.id ? "..." : "삭제"}
-                  </button>
+                  <div className="flex shrink-0 gap-1.5">
+                    <button
+                      onClick={() => startEdit(q)}
+                      className="rounded-[2px] border border-ink-100 px-2.5 py-1 text-[12px] font-semibold text-ink-700 hover:border-brand-700 hover:text-brand-700"
+                    >
+                      수정
+                    </button>
+                    <button
+                      onClick={() => remove(q.id)}
+                      disabled={deletingId === q.id}
+                      className="rounded-[2px] border border-ink-100 px-2.5 py-1 text-[12px] font-semibold text-ink-700 hover:border-red-500 hover:text-red-600 disabled:opacity-50"
+                    >
+                      {deletingId === q.id ? "..." : "삭제"}
+                    </button>
+                  </div>
                 </div>
                 <h3 className="mt-3 text-[15.5px] font-bold leading-[1.4] text-ink-900">
                   Q. {q.question}

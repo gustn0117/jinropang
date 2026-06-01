@@ -65,6 +65,24 @@ export async function appendQna(data: QnaInput): Promise<Qna> {
   return qna;
 }
 
+export async function updateQna(
+  id: string,
+  patch: Partial<QnaInput>,
+): Promise<Qna | null> {
+  if (!(await fileExists())) return null;
+  const all = await listQna();
+  const idx = all.findIndex((q) => q.id === id);
+  if (idx < 0) return null;
+  all[idx] = { ...all[idx], ...patch };
+  await ensureDir();
+  await fs.writeFile(
+    FILE,
+    all.map((q) => JSON.stringify(q)).join("\n") + "\n",
+    "utf8",
+  );
+  return all[idx];
+}
+
 export async function deleteQna(id: string): Promise<boolean> {
   if (!(await fileExists())) return false;
   const all = await listQna();
