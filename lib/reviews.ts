@@ -7,7 +7,7 @@ const FILE = path.join(DATA_DIR, "reviews.jsonl");
 const IMG_DIR = path.join(DATA_DIR, "review-images");
 
 export type ReviewInput = {
-  /** 0527 추가 — 3개 카테고리 중 하나 (기존 데이터 호환 위해 선택적) */
+  /** 3개 카테고리 중 하나 (기존 데이터 호환 위해 선택적) */
   category?: ProgramCategoryId;
   badge?: string;
   title: string;

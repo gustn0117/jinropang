@@ -1,5 +1,5 @@
 /**
- * 진행후기·Q&A 공통 카테고리 — 사용자 요청(3종).
+ * 진행후기·Q&A 공통 카테고리 (3종).
  * 클라이언트 컴포넌트에서도 import 하므로, Node 전용 모듈에 의존하지 않습니다.
  */
 export const PROGRAM_CATEGORIES = [

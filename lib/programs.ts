@@ -277,7 +277,6 @@ const ELEMENTARY_TRIP: Program[] = [
       "AI 기반 오목 시스템과 대결하며 AI의 판단 방식과 전략 플레이를 경험합니다.",
     image: "/programs/elementary/trip/ai-omok.jpg",
   },
-  /* ----- 이하 기존 순서 (0527 4종 → 끝으로 이동) ----- */
   {
     slug: "cube-maze",
     title: "큐브 미로찾기",
@@ -366,7 +365,6 @@ const ELEMENTARY_TRIP: Program[] = [
       "AR 글라스를 활용한 몰입형 양궁 콘텐츠를 통해 증강현실 스포츠를 경험할 수 있습니다.",
     image: "/programs/elementary/trip/ar-glass-archery.jpg",
   },
-  /* ----- 0527 사용자 요청 — 가장 뒤로 이동된 항목들 ----- */
   {
     slug: "basketball",
     title: "로봇 농구",
@@ -413,7 +411,7 @@ const ELEMENTARY_TRIP: Program[] = [
   },
 ];
 
-/* ===== 초등 체험학습 - 과학체험부스 (0526 추가) ===== */
+/* ===== 초등 체험학습 - 과학체험부스 ===== */
 const ELEMENTARY_SCIENCE: Program[] = [
   {
     slug: "periscope",
@@ -516,7 +514,7 @@ const ELEMENTARY_SCIENCE: Program[] = [
   },
 ];
 
-/* ===== 초등 체험학습 - 과학마술공연 (0526 추가) ===== */
+/* ===== 초등 체험학습 - 과학마술공연 ===== */
 const ELEMENTARY_MAGIC: Program[] = [
   {
     slug: "science-magic-concert",
@@ -651,7 +649,6 @@ export const SECONDARY: Program[] = [
       "드론의 구조와 비행 제어 원리를 이해하고 다양한 주행 미션과 항공 기술을 경험합니다.",
     image: "/programs/secondary/drone.jpg",
   },
-  /* ===== 신규 추가 (PDF 0518) ===== */
   {
     slug: "app-dev",
     title: "앱 개발",
@@ -694,7 +691,7 @@ export const SECONDARY: Program[] = [
   },
 ];
 
-/* ===== 중·고등 축제/진로의날 - 과학마술공연 (0526 추가) ===== */
+/* ===== 중·고등 축제/진로의날 - 과학마술공연 ===== */
 export const SECONDARY_MAGIC: Program[] = [
   {
     slug: "future-magic-show",
