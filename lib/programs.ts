@@ -2,8 +2,8 @@ export type Program = {
   slug: string;
   title: string;
   category: "elementary" | "secondary" | "event";
-  /** elementary: 학년 그룹 / 체험학습 / 과학체험부스 / 과학마술공연 · event: tier 기반 */
-  group?: "g12" | "g36" | "trip" | "festival" | "science" | "magic";
+  /** elementary: 학년 그룹 / 체험학습 / 과학체험부스 / 과학마술공연 / 미니올림픽 · event: tier 기반 */
+  group?: "g12" | "g36" | "trip" | "festival" | "science" | "magic" | "mini";
   /** secondary 한정 — 일반 교육프로그램 / 축제·진로의날 부스 / 과학마술공연 */
   secondaryGroup?: "edu" | "festival" | "magic";
   /** event 한정 — 체험부스 고급형 / 일반형 */
@@ -512,6 +512,17 @@ const ELEMENTARY_SCIENCE: Program[] = [
       "식물과 오일을 활용하여 나만의 작은 생태 공간을 만들어보는 활동입니다. 식물이 보존되는 과정을 관찰하며 자연과 환경의 소중함을 느낄 수 있습니다.",
     image: "/programs/elementary/science/herbarium.png",
   },
+  {
+    slug: "magnetic-car",
+    title: "자기력 자동차",
+    category: "elementary",
+    group: "science",
+    duration: "체험학습 패키지",
+    capacity: "현장 운영",
+    description:
+      "자석의 밀어내는 힘인 자기력의 원리를 활용하여 자동차를 직접 만들고 움직여보는 체험 활동입니다. 자기력과 운동의 관계를 쉽고 재미있게 이해하며 과학적 사고력을 키울 수 있습니다.",
+    image: "/programs/elementary/science/magnetic-car.png",
+  },
 ];
 
 /* ===== 초등 체험학습 - 과학마술공연 ===== */
@@ -529,12 +540,28 @@ const ELEMENTARY_MAGIC: Program[] = [
   },
 ];
 
+/* ===== 초등 체험학습 - 미니 올림픽 ===== */
+const ELEMENTARY_MINI: Program[] = [
+  {
+    slug: "mini-olympics",
+    title: "미니 올림픽",
+    category: "elementary",
+    group: "mini",
+    duration: "체험학습 패키지",
+    capacity: "현장 운영",
+    description:
+      "참가자들이 함께 힘을 모아 다양한 팀 미션을 수행하며 협동심과 도전정신을 키우는 체험형 활동입니다. 초대형 볼을 활용한 협력 미션과 신체 활동을 통해 서로의 소통과 팀워크를 자연스럽게 경험할 수 있습니다. 단순한 경쟁을 넘어 모두가 함께 참여하고 즐기는 과정 속에서 성취감과 유대감을 느끼며, 활동적인 에너지 발산과 긍정적인 협동 경험을 동시에 제공합니다.",
+    image: "/programs/elementary/mini/mini-olympics.jpg",
+  },
+];
+
 export const ELEMENTARY: Program[] = [
   ...ELEMENTARY_12,
   ...ELEMENTARY_36,
   ...ELEMENTARY_TRIP,
   ...ELEMENTARY_SCIENCE,
   ...ELEMENTARY_MAGIC,
+  ...ELEMENTARY_MINI,
 ];
 
 export const ELEMENTARY_GROUPS = {
@@ -543,6 +570,7 @@ export const ELEMENTARY_GROUPS = {
   trip: ELEMENTARY_TRIP,
   science: ELEMENTARY_SCIENCE,
   magic: ELEMENTARY_MAGIC,
+  mini: ELEMENTARY_MINI,
 };
 
 /* ===== 중·고등 교육 프로그램 (소요시간 전체 90-100분(2교시)로 통일) ===== */
@@ -1076,13 +1104,20 @@ export const EVENT_GROUPS = {
 export const SECONDARY_FESTIVAL: Program[] = EVENT_PROGRAMS;
 
 /* ===== Helpers ===== */
-export type ElementaryGroupSegment = "12" | "36" | "trip" | "science" | "magic";
+export type ElementaryGroupSegment =
+  | "12"
+  | "36"
+  | "trip"
+  | "science"
+  | "magic"
+  | "mini";
 
 export function groupToSegment(g?: Program["group"]): ElementaryGroupSegment {
   if (g === "g12") return "12";
   if (g === "g36") return "36";
   if (g === "science") return "science";
   if (g === "magic") return "magic";
+  if (g === "mini") return "mini";
   return "trip";
 }
 export function segmentToGroup(s: string): Program["group"] | undefined {
@@ -1091,6 +1126,7 @@ export function segmentToGroup(s: string): Program["group"] | undefined {
   if (s === "trip") return "trip";
   if (s === "science") return "science";
   if (s === "magic") return "magic";
+  if (s === "mini") return "mini";
   return undefined;
 }
 export function programHref(p: Program): string {
@@ -1131,4 +1167,5 @@ export const ELEMENTARY_GROUP_LABEL: Record<ElementaryGroupSegment, string> = {
   trip: "체험학습 패키지",
   science: "과학체험부스",
   magic: "과학마술공연",
+  mini: "미니 올림픽",
 };

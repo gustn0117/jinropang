@@ -76,6 +76,7 @@ export const NAV: NavItem[] = [
       { href: "/programs/elementary#trip", label: "체험학습 패키지" },
       { href: "/programs/elementary#science", label: "과학체험부스" },
       { href: "/programs/elementary#magic", label: "과학마술공연" },
+      { href: "/programs/elementary#mini", label: "미니 올림픽" },
     ],
   },
   {

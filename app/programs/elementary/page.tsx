@@ -52,6 +52,14 @@ const GROUPS = [
       "다양한 과학 원리를 마술 공연 형태로 풀어내며, 학생들의 눈높이에 맞춰 흥미롭게 진행하는 공연 프로그램입니다.",
     items: ELEMENTARY_GROUPS.magic,
   },
+  {
+    id: "mini",
+    label: "미니 올림픽",
+    title: "함께 도전하고 협력하는 미니 올림픽",
+    description:
+      "팀 단위 미션과 신체 활동으로 협동심·도전정신을 키우는 체험형 프로그램입니다. 모두가 함께 즐기는 과정에서 성취감과 유대감을 경험할 수 있습니다.",
+    items: ELEMENTARY_GROUPS.mini,
+  },
 ];
 
 export default function ElementaryPage() {
@@ -66,7 +74,7 @@ export default function ElementaryPage() {
       />
 
       <section className="container-pad py-10 lg:py-14">
-        <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+        <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
           {GROUPS.map((g) => (
             <a
               key={g.id}
