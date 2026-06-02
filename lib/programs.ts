@@ -835,6 +835,17 @@ const EVENT_PREMIUM: Program[] = [
       "친구들과 함께 재미있는 추억을 만들고 즉석에서 출력되는 사진을 간직할 수 있습니다. 행사의 즐거운 분위기를 오래 기억할 수 있는 인기 포토 콘텐츠입니다.",
     image: "/programs/event/instant-photo-frame.png",
   },
+  {
+    slug: "eco-cotton-candy",
+    title: "친환경 에너지 솜사탕",
+    category: "event",
+    tier: "premium",
+    duration: "현장 운영",
+    capacity: "축제·행사부스",
+    description:
+      "자전거 페달을 돌려 솜사탕 기계를 작동시키며 에너지 변환의 원리를 체험하는 프로그램입니다. 직접 만든 솜사탕을 맛보며 과학을 더욱 즐겁게 배울 수 있습니다.",
+    image: "/programs/event/eco-cotton-candy.png",
+  },
 ];
 
 const EVENT_STANDARD: Program[] = [

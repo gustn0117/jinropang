@@ -5,7 +5,7 @@ import { LeftAside, RightAside } from "@/components/SiteAsides";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: `${SITE.brandFull} — 로봇·코딩·AI 체험`,
+  title: `${SITE.name} | 학교로 찾아가는 AI·로봇·코딩 진로체험 전문기관`,
   description: SITE.description,
   alternates: { canonical: "/" },
 };
