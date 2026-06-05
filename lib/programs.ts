@@ -278,6 +278,28 @@ const ELEMENTARY_TRIP: Program[] = [
     image: "/programs/elementary/trip/ai-omok.jpg",
   },
   {
+    slug: "ar-cube-solve",
+    title: "AR 큐브 솔브",
+    category: "elementary",
+    group: "trip",
+    duration: "체험학습 패키지",
+    capacity: "현장 운영",
+    description:
+      "AR 기술이 적용된 큐브솔브 콘텐츠를 통해 실시간 인터랙션과 문제 해결 활동을 경험합니다.",
+    image: "/programs/elementary/trip/ar-cube-solve.jpg",
+  },
+  {
+    slug: "ar-glass-archery",
+    title: "AR 글라스 양궁",
+    category: "elementary",
+    group: "trip",
+    duration: "체험학습 패키지",
+    capacity: "현장 운영",
+    description:
+      "AR 글라스를 활용한 몰입형 양궁 콘텐츠를 통해 증강현실 스포츠를 경험할 수 있습니다.",
+    image: "/programs/elementary/trip/ar-glass-archery.jpg",
+  },
+  {
     slug: "cube-maze",
     title: "큐브 미로찾기",
     category: "elementary",
@@ -311,17 +333,6 @@ const ELEMENTARY_TRIP: Program[] = [
     image: "/programs/elementary/trip/robot-ssireum.jpg",
   },
   {
-    slug: "ar-cube-solve",
-    title: "AR 큐브 솔브",
-    category: "elementary",
-    group: "trip",
-    duration: "체험학습 패키지",
-    capacity: "현장 운영",
-    description:
-      "AR 기술이 적용된 큐브솔브 콘텐츠를 통해 실시간 인터랙션과 문제 해결 활동을 경험합니다.",
-    image: "/programs/elementary/trip/ar-cube-solve.jpg",
-  },
-  {
     slug: "instant-photo",
     title: "즉석 포토",
     category: "elementary",
@@ -353,17 +364,6 @@ const ELEMENTARY_TRIP: Program[] = [
     description:
       "공의 움직임에 맞춰 플레이하며 반응형 스포츠 콘텐츠를 활용하여 순발력과 타이밍 플레이를 경험해 볼 수 있습니다.",
     image: "/programs/elementary/trip/pinball-tennis.jpg",
-  },
-  {
-    slug: "ar-glass-archery",
-    title: "AR 글라스 양궁",
-    category: "elementary",
-    group: "trip",
-    duration: "체험학습 패키지",
-    capacity: "현장 운영",
-    description:
-      "AR 글라스를 활용한 몰입형 양궁 콘텐츠를 통해 증강현실 스포츠를 경험할 수 있습니다.",
-    image: "/programs/elementary/trip/ar-glass-archery.jpg",
   },
   {
     slug: "basketball",
@@ -960,6 +960,28 @@ const EVENT_STANDARD: Program[] = [
     image: "/programs/event/ar-shooting.jpg",
   },
   {
+    slug: "ar-cube-solve",
+    title: "AR 큐브 솔브",
+    category: "event",
+    tier: "standard",
+    duration: "현장 운영",
+    capacity: "축제·행사부스",
+    description:
+      "AR 기술이 적용된 큐브솔브 콘텐츠를 통해 실시간 인터랙션과 문제 해결 활동을 경험합니다.",
+    image: "/programs/event/ar-cube-solve.jpg",
+  },
+  {
+    slug: "ar-glass-archery",
+    title: "AR 글라스 양궁",
+    category: "event",
+    tier: "standard",
+    duration: "현장 운영",
+    capacity: "축제·행사부스",
+    description:
+      "AR 글라스를 활용한 몰입형 양궁 콘텐츠를 통해 증강현실 스포츠를 경험할 수 있습니다.",
+    image: "/programs/event/ar-glass-archery.jpg",
+  },
+  {
     slug: "brain-spider",
     title: "뇌파 스파이더 챌린지",
     category: "event",
@@ -1080,28 +1102,6 @@ const EVENT_STANDARD: Program[] = [
       "촬영과 즉석 출력 체험을 통해 행사 속 특별한 순간을 추억으로 기록할 수 있습니다.",
     image: "/programs/event/instant-photo.jpg",
   },
-  {
-    slug: "ar-cube-solve",
-    title: "AR 큐브 솔브",
-    category: "event",
-    tier: "standard",
-    duration: "현장 운영",
-    capacity: "축제·행사부스",
-    description:
-      "AR 기술이 적용된 큐브솔브 콘텐츠를 통해 실시간 인터랙션과 문제 해결 활동을 경험합니다.",
-    image: "/programs/event/ar-cube-solve.jpg",
-  },
-  {
-    slug: "ar-glass-archery",
-    title: "AR 글라스 양궁",
-    category: "event",
-    tier: "standard",
-    duration: "현장 운영",
-    capacity: "축제·행사부스",
-    description:
-      "AR 글라스를 활용한 몰입형 양궁 콘텐츠를 통해 증강현실 스포츠를 경험할 수 있습니다.",
-    image: "/programs/event/ar-glass-archery.jpg",
-  },
 ];
 
 export const EVENT_PROGRAMS: Program[] = [...EVENT_PREMIUM, ...EVENT_STANDARD];
@@ -1111,8 +1111,29 @@ export const EVENT_GROUPS = {
   standard: EVENT_STANDARD,
 };
 
-/** 중·고등 #festival 섹션 — 동일한 행사부스 데이터 공유 */
-export const SECONDARY_FESTIVAL: Program[] = EVENT_PROGRAMS;
+/** 슬러그 단위로 항목들을 anchorSlug 직후로 이동시키는 순수 정렬 헬퍼 */
+function reorderAfter<T extends { slug: string }>(
+  arr: T[],
+  anchorSlug: string,
+  slugsToMove: string[],
+): T[] {
+  const moveSet = new Set(slugsToMove);
+  const toMove = slugsToMove
+    .map((s) => arr.find((a) => a.slug === s))
+    .filter((x): x is T => x !== undefined);
+  const filtered = arr.filter((a) => !moveSet.has(a.slug));
+  const anchorIdx = filtered.findIndex((a) => a.slug === anchorSlug);
+  if (anchorIdx === -1) return arr;
+  filtered.splice(anchorIdx + 1, 0, ...toMove);
+  return filtered;
+}
+
+/** 중·고등 #festival 섹션 — 행사부스 데이터를 공유하되 정렬은 별도 (AR 큐브 솔브·AR 글라스 양궁을 로봇 축구 직후로 이동) */
+export const SECONDARY_FESTIVAL: Program[] = reorderAfter(
+  EVENT_PROGRAMS,
+  "robot-soccer",
+  ["ar-cube-solve", "ar-glass-archery"],
+);
 
 /* ===== Helpers ===== */
 export type ElementaryGroupSegment =
