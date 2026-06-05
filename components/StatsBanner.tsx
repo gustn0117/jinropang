@@ -72,10 +72,26 @@ const STATS = [
 ];
 
 const REGIONS = [
-  { name: "수도권", cities: "서울 · 경기 · 인천" },
-  { name: "충청권", cities: "대전 · 세종 · 충청" },
-  { name: "경상권", cities: "부산 · 대구 · 경상" },
-  { name: "전라권", cities: "광주 · 전라" },
+  {
+    name: "수도권",
+    cities: "서울 · 경기 · 인천",
+    address: "경기도 성남시 분당구 판교역로192번길 14-2 골드타워 9층",
+  },
+  {
+    name: "충청권",
+    cities: "대전 · 세종 · 충청",
+    address: "충청북도 청주시 상당구 용암북로120번길 31-5 3층",
+  },
+  {
+    name: "경상권",
+    cities: "부산 · 대구 · 경상",
+    address: "대구광역시 북구 연경지묘로 2 1동 4층",
+  },
+  {
+    name: "전라권",
+    cities: "광주 · 전라",
+    address: "전북특별자치도 전주시 완산구 홍산중앙로 20 금양빌딩 5층",
+  },
 ];
 
 export default function StatsBanner() {
@@ -142,16 +158,21 @@ export default function StatsBanner() {
               4개 지역 거점 운영
             </p>
           </div>
-          <ul className="grid grid-cols-2 divide-ink-100 sm:grid-cols-4 sm:divide-x">
+          <ul className="grid grid-cols-1 divide-ink-100 sm:grid-cols-2 lg:grid-cols-4 lg:divide-x">
             {REGIONS.map((r) => (
               <li
                 key={r.name}
-                className="flex flex-col items-start gap-1 border-t border-ink-100 px-5 py-4 sm:border-t-0"
+                className="flex flex-col items-start gap-1.5 border-t border-ink-100 px-5 py-4 sm:border-t-0 sm:[&:nth-child(n+3)]:border-t lg:[&:nth-child(n+3)]:border-t-0"
               >
-                <span className="rounded-[2px] bg-brand-700 px-2 py-0.5 text-[11px] font-bold text-white">
-                  {r.name}
-                </span>
-                <span className="text-[12.5px] text-ink-700">{r.cities}</span>
+                <div className="flex items-center gap-2">
+                  <span className="rounded-[2px] bg-brand-700 px-2 py-0.5 text-[11px] font-bold text-white">
+                    {r.name}
+                  </span>
+                  <span className="text-[12.5px] text-ink-700">{r.cities}</span>
+                </div>
+                <p className="text-[12px] leading-[1.55] text-ink-500">
+                  {r.address}
+                </p>
               </li>
             ))}
           </ul>

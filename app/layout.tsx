@@ -84,6 +84,52 @@ export default function RootLayout({
       addressCountry: "KR",
       addressRegion: "대한민국",
     },
+    location: [
+      {
+        "@type": "Place",
+        name: "진로팡 수도권 거점",
+        address: {
+          "@type": "PostalAddress",
+          addressCountry: "KR",
+          addressRegion: "경기도",
+          addressLocality: "성남시 분당구",
+          streetAddress: "판교역로192번길 14-2 골드타워 9층",
+        },
+      },
+      {
+        "@type": "Place",
+        name: "진로팡 충청권 거점",
+        address: {
+          "@type": "PostalAddress",
+          addressCountry: "KR",
+          addressRegion: "충청북도",
+          addressLocality: "청주시 상당구",
+          streetAddress: "용암북로120번길 31-5 3층",
+        },
+      },
+      {
+        "@type": "Place",
+        name: "진로팡 경상권 거점",
+        address: {
+          "@type": "PostalAddress",
+          addressCountry: "KR",
+          addressRegion: "대구광역시",
+          addressLocality: "북구",
+          streetAddress: "연경지묘로 2 1동 4층",
+        },
+      },
+      {
+        "@type": "Place",
+        name: "진로팡 전라권 거점",
+        address: {
+          "@type": "PostalAddress",
+          addressCountry: "KR",
+          addressRegion: "전북특별자치도",
+          addressLocality: "전주시 완산구",
+          streetAddress: "홍산중앙로 20 금양빌딩 5층",
+        },
+      },
+    ],
     contactPoint: [
       {
         "@type": "ContactPoint",
